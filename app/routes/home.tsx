@@ -1,13 +1,13 @@
 import type { Route } from "./+types/home";
-import { Welcome } from "../welcome/welcome";
+import { Portfolio } from "../components/Portfolio";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
+    { title: "Syed Mohamad Arif | Frontend/Mobile App Developer" },
+    { name: "description", content: "Portfolio of Syed Mohamad Arif - A dedicated Frontend Developer with 4 years of experience specializing in React Native for mobile apps and React for web platforms." },
   ];
 }
 
 export default function Home() {
-  return <Welcome />;
+  return <Portfolio />;
 }
