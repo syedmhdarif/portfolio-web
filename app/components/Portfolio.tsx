@@ -38,8 +38,8 @@ export function Portfolio() {
               />
             </div>
             <div className="text-center md:text-left">
-              <h1 className="text-4xl md:text-5xl font-bold mb-2">SYED MOHAMAD ARIF</h1>
-              <p className="text-xl md:text-2xl text-white/90 mb-6">Frontend/Mobile App Developer</p>
+              <h1 className="text-3xl md:text-4xl font-bold mb-2">SYED MOHAMAD ARIF</h1>
+              <p className="text-lg md:text-xl text-white/90 mb-6">Frontend/Mobile App Developer</p>
               <div className="flex flex-wrap justify-center md:justify-start gap-4">
                 <a href="tel:+60145297072" className="flex items-center gap-2 hover:text-white/80 transition-colors">
                   <Phone className="w-5 h-5" />
@@ -54,7 +54,7 @@ export function Portfolio() {
                   <span>Sentul, Kuala Lumpur</span>
                 </span>
               </div>
-              <div className="flex justify-center md:justify-start gap-4 mt-4">
+              <div className="flex justify-center md:justify-start gap-2 mt-4">
                 <a
                   href="https://linkedin.com/in/syedmhdarif"
                   target="_blank"
