@@ -213,7 +213,7 @@ export function Portfolio() {
         </section>
 
         {/* Reference Section */}
-        <section id="reference" className="mb-16 scroll-mt-20">
+        {/* <section id="reference" className="mb-16 scroll-mt-20">
           <h2 className="section-title">Reference</h2>
           <div className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg">
             <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100">Shahid Roger</h3>
@@ -229,7 +229,7 @@ export function Portfolio() {
               </a>
             </div>
           </div>
-        </section>
+        </section> */}
       </main>
 
       {/* Footer */}
