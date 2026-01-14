@@ -1,14 +1,17 @@
 import { createRequestHandler } from "@react-router/cloudflare";
-// @ts-expect-error - Build output module
-import * as serverBuild from "../build/server/index.js";
 
-const requestHandler = createRequestHandler(serverBuild);
+const requestHandler = createRequestHandler(
+  // @ts-expect-error - Build output module
+  () => import("../build/server/index.js")
+);
 
 interface Env {
   [key: string]: unknown;
 }
 
 interface CfProperties {
+  colo?: string;
+  country?: string;
   [key: string]: unknown;
 }
 
@@ -24,7 +27,7 @@ export default {
     ctx: WorkerContext
   ) {
     return requestHandler(request, {
-      cloudflare: { env, ctx, cf: request.cf },
+      cloudflare: { env, ctx, cf: request.cf ?? {} },
     });
   },
 };
