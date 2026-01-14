@@ -3,8 +3,21 @@ import { Portfolio } from "../components/Portfolio";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Syed Mohamad Arif | Frontend/Mobile App Developer" },
-    { name: "description", content: "Portfolio of Syed Mohamad Arif - A dedicated Frontend Developer with 4 years of experience specializing in React Native for mobile apps and React for web platforms." },
+    { title: "Syed Arif – Frontend & Mobile Developer" },
+    { name: "description", content: "Frontend & React Native developer specializing in high-performance apps, clean UI/UX, and scalable systems." },
+    { name: "author", content: "Syed Arif" },
+    { name: "robots", content: "index, follow" },
+    // Open Graph
+    { property: "og:title", content: "Syed Arif – Frontend & Mobile Developer" },
+    { property: "og:description", content: "Frontend & React Native developer specializing in high-performance apps, clean UI/UX, and scalable systems." },
+    { property: "og:type", content: "website" },
+    { property: "og:url", content: "https://syed-arif-portfolio.pages.dev/" },
+    { property: "og:image", content: "https://syed-arif-portfolio.pages.dev/assets/syedArif-BwDWV4i4.png" },
+    // Twitter Card
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:image", content: "https://syed-arif-portfolio.pages.dev/assets/syedArif-BwDWV4i4.png" },
+    { name: "twitter:title", content: "Syed Arif – Frontend & Mobile Developer" },
+    { name: "twitter:description", content: "Frontend & React Native developer specializing in high-performance apps, clean UI/UX, and scalable systems." },
   ];
 }
 
