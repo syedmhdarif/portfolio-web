@@ -10,6 +10,8 @@ import {
 import type { Route } from "./+types/root";
 import "./app.css";
 
+import profileImage from "../assets/syedArif.png";
+
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
@@ -42,10 +44,10 @@ export const meta = () => {
     },
     { property: "og:type", content: "website" },
     { property: "og:url", content: "https://syed-arif-portfolio.pages.dev/" },
-    { property: "og:image", content: "https://syed-arif-portfolio.pages.dev/assets/syedArif-BwDWV4i4.png" },
+    { property: "og:image", content: profileImage },
     // Twitter Card
     { name: "twitter:card", content: "summary_large_image" },
-    { name: "twitter:image", content: "https://syed-arif-portfolio.pages.dev/assets/syedArif-BwDWV4i4.png" },
+    { name: "twitter:image", content: profileImage },
     { name: "twitter:title", content: "Syed Arif – Frontend & Mobile Developer" },
     {
       name: "twitter:description",
