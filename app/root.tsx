@@ -42,8 +42,10 @@ export const meta = () => {
     },
     { property: "og:type", content: "website" },
     { property: "og:url", content: "https://syed-arif-portfolio.pages.dev/" },
+    { property: "og:image", content: "https://syed-arif-portfolio.pages.dev/assets/syedArif-BwDWV4i4.png" },
     // Twitter Card
-    { name: "twitter:card", content: "summary" },
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:image", content: "https://syed-arif-portfolio.pages.dev/assets/syedArif-BwDWV4i4.png" },
     { name: "twitter:title", content: "Syed Arif – Frontend & Mobile Developer" },
     {
       name: "twitter:description",
