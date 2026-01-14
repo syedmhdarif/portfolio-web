@@ -23,6 +23,37 @@ export const links: Route.LinksFunction = () => [
   },
 ];
 
+export const meta = () => {
+  return [
+    { title: "Syed Arif – Frontend & Mobile Developer" },
+    {
+      name: "description",
+      content:
+        "Frontend & React Native developer specializing in high-performance apps, clean UI/UX, and scalable systems.",
+    },
+    { name: "author", content: "Syed Arif" },
+    { name: "robots", content: "index, follow" },
+    // Open Graph
+    { property: "og:title", content: "Syed Arif – Frontend & Mobile Developer" },
+    {
+      property: "og:description",
+      content:
+        "Frontend & React Native developer specializing in high-performance apps, clean UI/UX, and scalable systems.",
+    },
+    { property: "og:type", content: "website" },
+    { property: "og:url", content: "https://syed-arif-portfolio.pages.dev/" },
+    // Twitter Card
+    { name: "twitter:card", content: "summary" },
+    { name: "twitter:title", content: "Syed Arif – Frontend & Mobile Developer" },
+    {
+      name: "twitter:description",
+      content:
+        "Frontend & React Native developer specializing in high-performance apps, clean UI/UX, and scalable systems.",
+    },
+  ];
+};
+
+
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
@@ -31,6 +62,22 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Syed Arif",
+              jobTitle: "Frontend & Mobile Developer",
+              url: "https://syed-arif-portfolio.pages.dev/",
+              sameAs: [
+                "https://github.com/syedmhdarif",
+                "https://www.linkedin.com/in/syedmhdarif",
+              ],
+            }),
+          }}
+        />
       </head>
       <body>
         {children}
