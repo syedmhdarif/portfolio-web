@@ -18,7 +18,7 @@ export function Portfolio() {
               <a href="#education" className="hover:text-primary dark:hover:text-primary-dark transition-colors">Education</a>
               <a href="#skills" className="hover:text-primary dark:hover:text-primary-dark transition-colors">Skills</a>
               <a href="#experience" className="hover:text-primary dark:hover:text-primary-dark transition-colors">Experience</a>
-              <a href="#reference" className="hover:text-primary dark:hover:text-primary-dark transition-colors">Reference</a>
+              {/* <a href="#reference" className="hover:text-primary dark:hover:text-primary-dark transition-colors">Reference</a> */}
             </div>
           </div>
         </div>
