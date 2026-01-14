@@ -1,4 +1,4 @@
-name = "syed-arif-portfolio"
+name = "syed-arif-portfolio-web-worker"
 compatibility_date = "2024-12-30"
 compatibility_flags = ["nodejs_compat"]
 main = "./workers/app.ts"
