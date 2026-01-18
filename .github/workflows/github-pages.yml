@@ -31,6 +31,10 @@ jobs:
       - name: Build with base path
         run: BASE_PATH=/portfolio-web/ npm run build
 
+      - name: Fix basename for GitHub Pages
+        run: |
+          sed -i 's/"basename":"\//"basename":"\/portfolio-web/g' ./build/client/index.html
+
       - name: Create 404.html for SPA routing
         run: cp ./build/client/index.html ./build/client/404.html
 
