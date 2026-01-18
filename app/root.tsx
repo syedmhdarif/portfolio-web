@@ -25,18 +25,18 @@ export const links: Route.LinksFunction = () => [
 
 export const meta = () => {
   return [
-    { title: "Syed Arif – Frontend & Mobile Developer" },
+    { title: "Syed Mohamad Arif – Frontend & Mobile Developer" },
     {
       name: "description",
       content:
         "Frontend & React Native developer specializing in high-performance apps, clean UI/UX, and scalable systems.",
     },
-    { name: "author", content: "Syed Arif" },
+    { name: "author", content: "Syed Mohamad Arif" },
     { name: "robots", content: "index, follow" },
     // Google Search Console
     { name: "google-site-verification", content: "6n28iJJhOuBcRAY4U_0kOigQ8Xbv2KCDlmahCnch_nM" },
     // Open Graph
-    { property: "og:title", content: "Syed Arif – Frontend & Mobile Developer" },
+    { property: "og:title", content: "Syed Mohamad Arif – Frontend & Mobile Developer" },
     {
       property: "og:description",
       content:
@@ -48,7 +48,7 @@ export const meta = () => {
     // Twitter Card
     { name: "twitter:card", content: "summary_large_image" },
     { name: "twitter:image", content: "https://syed-arif-portfolio.pages.dev/assets/syedArif-BwDWV4i4.png" },
-    { name: "twitter:title", content: "Syed Arif – Frontend & Mobile Developer" },
+    { name: "twitter:title", content: "Syed Mohamad Arif – Frontend & Mobile Developer" },
     {
       name: "twitter:description",
       content:
@@ -72,7 +72,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Person",
-              name: "Syed Arif",
+              name: "Syed Mohamad Arif",
               jobTitle: "Frontend & Mobile Developer",
               url: "https://syed-arif-portfolio.pages.dev/",
               sameAs: [

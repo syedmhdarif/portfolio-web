@@ -10,7 +10,7 @@ export function Portfolio() {
         <div className="max-w-6xl mx-auto px-4 py-4">
           <div className="flex justify-between items-center">
             <a href="#" className="text-xl font-bold text-primary dark:text-primary-dark">
-              SYED ARIF
+              SYED MOHAMAD ARIF
             </a>
             <div className="hidden md:flex gap-6">
               <a href="#about" className="hover:text-primary dark:hover:text-primary-dark transition-colors">About</a>
