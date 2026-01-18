@@ -33,6 +33,8 @@ export const meta = () => {
     },
     { name: "author", content: "Syed Arif" },
     { name: "robots", content: "index, follow" },
+    // Google Search Console
+    { name: "google-site-verification", content: "6n28iJJhOuBcRAY4U_0kOigQ8Xbv2KCDlmahCnch_nM" },
     // Open Graph
     { property: "og:title", content: "Syed Arif – Frontend & Mobile Developer" },
     {
