@@ -31,8 +31,13 @@ jobs:
       - name: Build with base path
         run: BASE_PATH=/portfolio-web npm run build
 
-      - name: Create 404.html for SPA routing
-        run: cp ./build/client/index.html ./build/client/404.html
+      - name: Prepare GitHub Pages structure
+        run: |
+          # Move prerendered index.html from subdirectory to root
+          mv ./build/client/portfolio-web/index.html ./build/client/index.html
+          rm -rf ./build/client/portfolio-web
+          # Create 404.html for SPA routing
+          cp ./build/client/index.html ./build/client/404.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
