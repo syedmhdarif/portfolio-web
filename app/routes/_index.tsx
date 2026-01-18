@@ -1,4 +1,4 @@
-import type { Route } from "./+types/home";
+import type { Route } from "./+types/_index";
 import { Portfolio } from "../components/Portfolio";
 
 export function meta({}: Route.MetaArgs) {
