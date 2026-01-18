@@ -29,7 +29,7 @@ jobs:
         run: npm ci
 
       - name: Build with base path
-        run: BASE_PATH=/portfolio-web npm run build
+        run: BASE_PATH=/portfolio-web/ npm run build
 
       - name: Prepare GitHub Pages structure
         run: |
