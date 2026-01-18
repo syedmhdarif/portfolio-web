@@ -31,16 +31,8 @@ jobs:
       - name: Build with base path
         run: BASE_PATH=/portfolio-web/ npm run build
 
-      - name: Restructure for GitHub Pages
-        run: |
-          # Move assets into portfolio-web folder
-          mv ./build/client/assets ./build/client/portfolio-web/assets
-          # Move favicon into portfolio-web folder
-          mv ./build/client/favicon.ico ./build/client/portfolio-web/favicon.ico
-          # Copy index.html to root as 404.html for SPA routing
-          cp ./build/client/portfolio-web/index.html ./build/client/404.html
-          # Also copy to root index.html to redirect to /portfolio-web/
-          echo '<meta http-equiv="refresh" content="0;url=/portfolio-web/">' > ./build/client/index.html
+      - name: Create 404.html for SPA routing
+        run: cp ./build/client/index.html ./build/client/404.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
