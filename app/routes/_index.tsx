@@ -1,7 +1,7 @@
 import type { Route } from "./+types/_index";
 import { Portfolio } from "../components/Portfolio";
 
-export function meta({}: Route.MetaArgs) {
+export function meta(_: Route.MetaArgs) {
   return [
     { title: "Syed Mohamad Arif – Frontend & Mobile Developer" },
     { name: "description", content: "Frontend & React Native developer specializing in high-performance apps, clean UI/UX, and scalable systems." },
