@@ -31,10 +31,10 @@ export function Portfolio() {
             {/* Profile Image */}
             <div className="w-48 h-48 rounded-full bg-white/20 border-4 border-white/50 flex items-center justify-center overflow-hidden">
               <img
-
                 src={profileImage}
-                alt="Syed Mohamad Arif"
+                alt="Syed Mohamad Arif - Frontend and Mobile App Developer from Kuala Lumpur, Malaysia"
                 className="w-full h-full object-cover"
+                loading="eager"
               />
             </div>
             <div className="text-center md:text-left">
@@ -92,45 +92,63 @@ export function Portfolio() {
        
 
         {/* Featured Project Section */}
-        <section id="projects" className="mb-16 scroll-mt-20">
-          {/* <h2 className="section-title">Featured Project</h2> */}
-          <div className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg">
+        <section id="projects" className="mb-16 scroll-mt-20" aria-labelledby="projects-title">
+          <h2 id="projects-title" className="section-title">Featured Project</h2>
+          <article className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg" itemScope itemType="https://schema.org/MobileApplication">
             <div className="flex flex-col md:flex-row gap-6">
               <div className="w-full md:w-48 h-48 bg-gray-100 dark:bg-gray-800 rounded-xl flex items-center justify-center overflow-hidden shrink-0">
                 <img
                   src={hikayatAppIcon}
-                  alt="Hikayat Daily Global"
+                  alt="Hikayat Daily Global - Mobile App by Syed Mohamad Arif available on Google Play Store"
                   className="w-full h-full object-contain p-2"
+                  loading="lazy"
+                  itemProp="image"
                 />
               </div>
               <div className="flex-1">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100">Hikayat Daily Global</h3>
-                <p className="text-primary dark:text-primary-dark font-medium mt-1">Mobile Application</p>
-                <p className="text-gray-700 dark:text-gray-300 mt-3">
-                  A live mobile application available on Google Play Store. This project showcases my expertise in mobile app development and delivering production-ready applications to end users.
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100" itemProp="name">Hikayat Daily Global</h3>
+                <p className="text-primary dark:text-primary-dark font-medium mt-1" itemProp="applicationCategory">Mobile Application</p>
+                <p className="text-gray-700 dark:text-gray-300 mt-3" itemProp="description">
+                  <strong>Hikayat Daily Global</strong> is a live mobile application created by <strong>Syed Mohamad Arif</strong>, available on the Google Play Store.
+                  Built with React Native and modern mobile development practices, this app demonstrates expertise in delivering production-ready,
+                  user-friendly applications. The project showcases end-to-end mobile development skills from UI/UX design to deployment and maintenance.
                 </p>
+                <p className="text-gray-600 dark:text-gray-400 mt-2 text-sm">
+                  Technologies: React Native, TypeScript, Firebase, Redux
+                </p>
+                <meta itemProp="operatingSystem" content="Android" />
+                <meta itemProp="author" content="Syed Mohamad Arif" />
                 <a
                   href="https://play.google.com/store/apps/details?id=com.hikayatdailyglobal&hl=en"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 mt-4 bg-primary hover:bg-primary/90 text-white px-5 py-2.5 rounded-lg transition-colors"
+                  itemProp="url"
+                  aria-label="Download Hikayat Daily Global from Google Play Store"
                 >
                   <PlayStore className="w-5 h-5" />
                   <span>View on Play Store</span>
                 </a>
               </div>
             </div>
-          </div>
+          </article>
         </section>
 
 
          {/* About Section */}
-        <section id="about" className="mb-16 scroll-mt-20">
-          <h2 className="section-title">About Me</h2>
-          <div className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg">
-            <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-              A dedicated Frontend Developer with 4 years of experience specializing in React Native for mobile apps
-              and React for web platforms. I work across the full product lifecycle, from UI/UX design and prototyping
+        <section id="about" className="mb-16 scroll-mt-20" aria-labelledby="about-title">
+          <h2 id="about-title" className="section-title">About Me</h2>
+          <div className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg" itemScope itemType="https://schema.org/Person">
+            <meta itemProp="name" content="Syed Mohamad Arif" />
+            <meta itemProp="jobTitle" content="Frontend & Mobile Developer" />
+            <meta itemProp="address" content="Kuala Lumpur, Malaysia" />
+            <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300" itemProp="description">
+              I'm <strong>Syed Mohamad Arif</strong>, a dedicated Frontend Developer based in <strong>Kuala Lumpur, Malaysia</strong> with 4+ years of experience
+              specializing in <strong>React Native</strong> for mobile apps and <strong>React</strong> for web platforms. I'm the creator of
+              <strong> Hikayat Daily Global</strong>, a mobile application available on the Google Play Store.
+            </p>
+            <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300 mt-4">
+              I work across the full product lifecycle, from UI/UX design and prototyping
               to development, testing, and deployment. Skilled in Git, CI/CD, and Agile practices, I build scalable
               features that enhance user experience and business value. With a strong eye for design and proficiency
               in Figma and Adobe tools, I bridge the gap between design and engineering to deliver intuitive interfaces.
@@ -140,8 +158,8 @@ export function Portfolio() {
         </section>
 
         {/* Education Section */}
-        <section id="education" className="mb-16 scroll-mt-20">
-          <h2 className="section-title">Education History</h2>
+        <section id="education" className="mb-16 scroll-mt-20" aria-labelledby="education-title">
+          <h2 id="education-title" className="section-title">Education History</h2>
           <div className="space-y-6">
             <div className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg border-l-4 border-primary">
               <h3 className="text-xl font-semibold text-primary dark:text-primary-dark">Bachelor of Information Technology</h3>
@@ -157,8 +175,8 @@ export function Portfolio() {
         </section>
 
         {/* Skills Section */}
-        <section id="skills" className="mb-16 scroll-mt-20">
-          <h2 className="section-title">Skills</h2>
+        <section id="skills" className="mb-16 scroll-mt-20" aria-labelledby="skills-title">
+          <h2 id="skills-title" className="section-title">Skills</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <SkillCard
               title="Programming Languages"
@@ -180,8 +198,8 @@ export function Portfolio() {
         </section>
 
         {/* Work Experience Section */}
-        <section id="experience" className="mb-16 scroll-mt-20">
-          <h2 className="section-title">Work Experience</h2>
+        <section id="experience" className="mb-16 scroll-mt-20" aria-labelledby="experience-title">
+          <h2 id="experience-title" className="section-title">Work Experience</h2>
           <div className="space-y-8">
             <ExperienceCard
               title="Mobile App Developer"
@@ -233,15 +251,16 @@ export function Portfolio() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-secondary text-white py-8">
+      <footer className="bg-secondary text-white py-8" role="contentinfo">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <p className="mb-4">Let's connect and build something amazing together!</p>
-          <div className="flex justify-center gap-6">
+          <nav aria-label="Social media links" className="flex justify-center gap-6">
             <a
               href="https://linkedin.com/in/syedmhdarif"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-primary-dark transition-colors"
+              aria-label="Connect with Syed Mohamad Arif on LinkedIn"
             >
               <Linkedin className="w-6 h-6" />
             </a>
@@ -250,12 +269,14 @@ export function Portfolio() {
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-primary-dark transition-colors"
+              aria-label="View Syed Mohamad Arif's projects on GitHub"
             >
               <Github className="w-6 h-6" />
             </a>
             <a
               href="mailto:syedarifjr@gmail.com"
               className="hover:text-primary-dark transition-colors"
+              aria-label="Email Syed Mohamad Arif"
             >
               <Mail className="w-6 h-6" />
             </a>
@@ -264,12 +285,13 @@ export function Portfolio() {
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-primary-dark transition-colors"
+              aria-label="Contact Syed Mohamad Arif on WhatsApp"
             >
               <Phone className="w-6 h-6" />
             </a>
-          </div>
+          </nav>
           <p className="mt-6 text-sm text-gray-400">
-            © 2025 Syed Mohamad Arif. All rights reserved.
+            © 2025 Syed Mohamad Arif. All rights reserved. | Creator of Hikayat Daily Global
           </p>
         </div>
       </footer>
