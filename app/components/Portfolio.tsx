@@ -1,6 +1,9 @@
-import { Phone, Mail, MapPin, Linkedin, Github, PlayStore, Code, Briefcase, GraduationCap, Sparkles } from "./icons";
+import { Phone, Mail, MapPin, Linkedin, Github, PlayStore, Code, Briefcase, GraduationCap, Sparkles, ExternalLink } from "./icons";
 import profileImage from "../assets/syedArif.png";
 import hikayatAppIcon from "../assets/hikayatDailyWhiteBg.png";
+import citysageImage from "../assets/citysage.png";
+import interactiveRoomImage from "../assets/Interactive-room.png";
+import hikayatDiriImage from "../assets/Hikayat-diri-logo.png";
 
 export function Portfolio() {
   return (
@@ -229,15 +232,16 @@ export function Portfolio() {
           </div>
         </section>
 
-        {/* Featured Project Section */}
+        {/* Featured Projects Section */}
         <section id="projects" className="py-24 gradient-bg scroll-mt-20" aria-labelledby="projects-title">
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-16">
-              <h2 id="projects-title" className="section-title">Featured Project</h2>
-              <p className="section-subtitle">Personal project available on Play Store</p>
+              <h2 id="projects-title" className="section-title">Featured Projects</h2>
+              <p className="section-subtitle">Personal projects and side builds</p>
             </div>
 
-            <article className="glass-card p-8 glow hover-lift" itemScope itemType="https://schema.org/MobileApplication">
+            {/* Hikayat Daily Global - Main Featured */}
+            <article className="glass-card p-8 glow hover-lift mb-8" itemScope itemType="https://schema.org/MobileApplication">
               <div className="grid md:grid-cols-2 gap-8 items-center">
                 <div className="order-2 md:order-1">
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-sm mb-4">
@@ -288,6 +292,110 @@ export function Portfolio() {
                 </div>
               </div>
             </article>
+
+            {/* Web Projects Grid */}
+            <div className="grid md:grid-cols-3 gap-8">
+              {/* CitySage */}
+              <article className="glass-card overflow-hidden hover-lift group">
+                <div className="relative h-48 bg-surface-elevated flex items-center justify-center overflow-hidden">
+                  <div className="absolute inset-0 bg-accent/10 group-hover:bg-accent/20 transition-colors"></div>
+                  <img
+                    src={citysageImage}
+                    alt="CitySage - Web Project"
+                    className="w-24 h-24 object-contain relative z-10"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-text-primary mb-2">CitySage</h3>
+                  <p className="text-accent font-medium text-sm mb-3">Web Application</p>
+                  <p className="text-text-secondary text-sm leading-relaxed mb-4">
+                    A city guide web application providing smart insights and recommendations for urban exploration.
+                  </p>
+                  <div className="flex flex-wrap gap-2 mb-5">
+                    {["React", "TypeScript", "Tailwind CSS"].map((tech) => (
+                      <span key={tech} className="skill-badge text-xs">{tech}</span>
+                    ))}
+                  </div>
+                  <a
+                    href="https://syedmhdarif.github.io/citysage-web-project/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-accent hover:text-accent-dark font-medium text-sm transition-colors"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    View Live
+                  </a>
+                </div>
+              </article>
+
+              {/* Interactive Room */}
+              <article className="glass-card overflow-hidden hover-lift group">
+                <div className="relative h-48 bg-surface-elevated overflow-hidden">
+                  <img
+                    src={interactiveRoomImage}
+                    alt="Interactive Room - 3D Web Experience"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-text-primary mb-2">Interactive Room</h3>
+                  <p className="text-gradient-mid font-medium text-sm mb-3">3D Web Experience</p>
+                  <p className="text-text-secondary text-sm leading-relaxed mb-4">
+                    An interactive 3D portfolio world built with Three.js, featuring explorable environments and immersive navigation.
+                  </p>
+                  <div className="flex flex-wrap gap-2 mb-5">
+                    {["Three.js", "React", "3D", "WebGL"].map((tech) => (
+                      <span key={tech} className="skill-badge text-xs">{tech}</span>
+                    ))}
+                  </div>
+                  <a
+                    href="https://interactive-room-wine.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-accent hover:text-accent-dark font-medium text-sm transition-colors"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    View Live
+                  </a>
+                </div>
+              </article>
+
+              {/* Hikayat Diri */}
+              <article className="glass-card overflow-hidden hover-lift group">
+                <div className="relative h-48 bg-surface-elevated flex items-center justify-center overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-end/10 group-hover:bg-gradient-end/20 transition-colors"></div>
+                  <img
+                    src={hikayatDiriImage}
+                    alt="Hikayat Diri - Personal Story Web App"
+                    className="w-24 h-24 object-contain relative z-10"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-text-primary mb-2">Hikayat Diri</h3>
+                  <p className="text-gradient-end font-medium text-sm mb-3">Web Application</p>
+                  <p className="text-text-secondary text-sm leading-relaxed mb-4">
+                    A personal storytelling web app that brings narratives to life with a clean, elegant reading experience.
+                  </p>
+                  <div className="flex flex-wrap gap-2 mb-5">
+                    {["React", "TypeScript", "Vercel"].map((tech) => (
+                      <span key={tech} className="skill-badge text-xs">{tech}</span>
+                    ))}
+                  </div>
+                  <a
+                    href="https://hikayat-diri-web.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-accent hover:text-accent-dark font-medium text-sm transition-colors"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    View Live
+                  </a>
+                </div>
+              </article>
+            </div>
           </div>
         </section>
 
