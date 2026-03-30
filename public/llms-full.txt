@@ -1,0 +1,98 @@
+# Syed Mohamad Arif - Frontend & Mobile Developer
+
+> Full portfolio details for Syed Mohamad Arif, a Frontend & Mobile Developer based in Kuala Lumpur, Malaysia. Creator of Hikayat Daily Global app on Google Play Store. 4+ years of experience building high-performance mobile apps with React Native, TypeScript, and modern web technologies.
+
+Website: https://syedmohamadarif.site
+
+---
+
+## About
+
+Syed Mohamad Arif is a dedicated Frontend Developer based in Kuala Lumpur, Malaysia with 4+ years of experience specializing in React Native for mobile apps and React for web platforms. He works across the full product lifecycle, from UI/UX design and prototyping to development, testing, and deployment. Skilled in Git, CI/CD, and Agile practices, he builds scalable features that enhance user experience and business value. With a strong eye for design and proficiency in Figma and Adobe tools, he bridges the gap between design and engineering to deliver intuitive interfaces.
+
+---
+
+## Skills & Technologies
+
+### Languages
+JavaScript, TypeScript, HTML/CSS, SQL, Swift, Java/Kotlin
+
+### Frameworks
+React Native, React.js, Next.js, Node.js, Redux, React Query
+
+### Tools
+Android Studio, Xcode, VS Code, Figma, Postman, Maestro
+
+### Databases
+PostgreSQL, MySQL, MongoDB, Firebase
+
+---
+
+## Work Experience
+
+### Mobile App Developer @ Paywatch Malaysia (Feb 2025 - Present)
+- Build and enhance key features such as health insurance, critical illness insurance, QR payments, and voucher systems
+- Work closely with UI/UX designers to translate designs into smooth, user-friendly components
+- Manage TestFlight and Firebase App Distribution for testing and releases
+- Support CI/CD processes through Azure Pipeline to ensure efficient builds and deployments
+- Technologies: React Native, TypeScript, Firebase, Azure DevOps, Maestro
+
+### Junior Mobile App Developer @ Zonar Malaysia (Sep 2023 - Jan 2025)
+- Specialize in React Native development using Firebase, Redux, and React Navigation
+- Responsible for designing the UI/UX of the Zonar app, ensuring user-friendly functionality
+- Work across the full project lifecycle using insights from Google Analytics
+- Follow Agile sprints with regular scrum meetings to track progress
+- Technologies: React Native, Firebase, Redux, Figma, Google Analytics
+
+### Junior Mobile App Developer @ Accenture (Aug 2022 - Sep 2023)
+- Maintain, enhance, and build new features for the Unifi mobile prepaid (TM) app
+- Integrate RESTful APIs and manage state with Redux
+- Implement OneSignal for push notifications
+- Use Git for efficient version control and team collaboration
+- Technologies: React Native, Redux, RESTful APIs, OneSignal, Git
+
+---
+
+## Featured Projects
+
+### Hikayat Daily Global (Mobile Application - Live on Play Store)
+A live mobile application showcasing end-to-end mobile development skills from UI/UX design to deployment. Built with React Native and modern mobile development practices, demonstrating expertise in delivering production-ready, user-friendly applications.
+- Technologies: React Native, TypeScript, Firebase, Redux
+- Platform: Android
+- Play Store: https://play.google.com/store/apps/details?id=com.hikayatdailyglobal&hl=en
+
+### CitySage (Web Application)
+A city guide web application providing smart insights and recommendations for urban exploration.
+- Technologies: React, TypeScript, Tailwind CSS
+- Live: https://syedmhdarif.github.io/citysage-web-project/
+
+### Interactive Room (3D Web Experience)
+An interactive 3D portfolio world built with Three.js, featuring explorable environments and immersive navigation.
+- Technologies: Three.js, React, 3D, WebGL
+- Live: https://interactive-room-wine.vercel.app/
+
+### Hikayat Diri (Web Application)
+A personal storytelling web app that brings narratives to life with a clean, elegant reading experience.
+- Technologies: React, TypeScript, Vercel
+- Live: https://hikayat-diri-web.vercel.app/
+
+---
+
+## Education
+
+### Bachelor of Information Technology
+International Islamic University Malaysia (2017 - 2020)
+
+### Foundation in Engineering
+CFS IIUM Petaling Jaya (2015 - 2017)
+
+---
+
+## Contact
+
+- Email: syedarifjr@gmail.com
+- Phone: +60 14-529 7072
+- Location: Sentul, Kuala Lumpur, Malaysia
+- LinkedIn: https://linkedin.com/in/syedmhdarif
+- GitHub: https://github.com/syedmhdarif
+- WhatsApp: https://wa.me/60145297072

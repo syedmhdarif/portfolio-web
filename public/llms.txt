@@ -1,0 +1,19 @@
+# Syed Mohamad Arif - Portfolio
+
+> Frontend & Mobile Developer based in Kuala Lumpur, Malaysia. Creator of Hikayat Daily Global app. 4+ years of experience building high-performance mobile apps with React Native, TypeScript, and modern web technologies.
+
+## About
+
+Syed Mohamad Arif is a dedicated Frontend & Mobile Developer specializing in React Native for mobile apps and React for web platforms. He works across the full product lifecycle — from UI/UX design and prototyping to development, testing, and deployment. Skilled in Git, CI/CD, and Agile practices.
+
+## Contact
+
+- Email: syedarifjr@gmail.com
+- Phone: +60 14-529 7072
+- Location: Kuala Lumpur, Malaysia
+- LinkedIn: https://linkedin.com/in/syedmhdarif
+- GitHub: https://github.com/syedmhdarif
+
+## Links
+
+- [Full Details](https://syedmohamadarif.site/llms-full.txt)
