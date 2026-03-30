@@ -37,7 +37,7 @@ export const meta = () => {
     { name: "author", content: "Syed Mohamad Arif" },
     { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
     { name: "keywords", content: "Syed Mohamad Arif, Hikayat Daily, Hikayat Daily Global, React Native Developer, Mobile App Developer, Frontend Developer, Malaysia Developer, Kuala Lumpur, syedmhdarif, React Developer, TypeScript Developer" },
-    { rel: "canonical", href: "https://syed-arif-portfolio.pages.dev/" },
+    { rel: "canonical", href: "https://syedmohamadarif.site/" },
     // Google Search Console
     { name: "google-site-verification", content: "6n28iJJhOuBcRAY4U_0kOigQ8Xbv2KCDlmahCnch_nM" },
     // Open Graph
@@ -48,14 +48,14 @@ export const meta = () => {
         "Syed Mohamad Arif is a Frontend & React Native developer from Kuala Lumpur, Malaysia. Creator of Hikayat Daily Global app on Google Play Store. Specializing in high-performance mobile apps and clean UI/UX.",
     },
     { property: "og:type", content: "website" },
-    { property: "og:url", content: "https://syed-arif-portfolio.pages.dev/" },
-    { property: "og:image", content: "https://syed-arif-portfolio.pages.dev/assets/syedArif-BwDWV4i4.png" },
+    { property: "og:url", content: "https://syedmohamadarif.site/" },
+    { property: "og:image", content: "https://syedmohamadarif.site/og-image.png" },
     { property: "og:image:alt", content: "Syed Mohamad Arif - Frontend & Mobile Developer" },
     { property: "og:site_name", content: "Syed Mohamad Arif Portfolio" },
     { property: "og:locale", content: "en_US" },
     // Twitter Card
     { name: "twitter:card", content: "summary_large_image" },
-    { name: "twitter:image", content: "https://syed-arif-portfolio.pages.dev/assets/syedArif-BwDWV4i4.png" },
+    { name: "twitter:image", content: "https://syedmohamadarif.site/og-image.png" },
     { name: "twitter:title", content: "Syed Mohamad Arif – Frontend & Mobile Developer | Hikayat Daily Creator" },
     {
       name: "twitter:description",
@@ -83,15 +83,15 @@ export function Layout({ children }: { children: React.ReactNode }) {
               "@graph": [
                 {
                   "@type": "Person",
-                  "@id": "https://syed-arif-portfolio.pages.dev/#person",
+                  "@id": "https://syedmohamadarif.site/#person",
                   name: "Syed Mohamad Arif",
                   givenName: "Syed Mohamad",
                   familyName: "Arif",
                   alternateName: ["syedmhdarif", "Syed Arif"],
                   jobTitle: "Frontend & Mobile Developer",
                   description: "Frontend & React Native developer with 4+ years of experience specializing in high-performance mobile apps, clean UI/UX, and scalable systems. Creator of Hikayat Daily Global app.",
-                  url: "https://syed-arif-portfolio.pages.dev/",
-                  image: "https://syed-arif-portfolio.pages.dev/assets/syedArif-BwDWV4i4.png",
+                  url: "https://syedmohamadarif.site/",
+                  image: "https://syedmohamadarif.site/og-image.png",
                   email: "syedarifjr@gmail.com",
                   telephone: "+60145297072",
                   address: {
@@ -131,16 +131,16 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 },
                 {
                   "@type": "WebSite",
-                  "@id": "https://syed-arif-portfolio.pages.dev/#website",
-                  url: "https://syed-arif-portfolio.pages.dev/",
+                  "@id": "https://syedmohamadarif.site/#website",
+                  url: "https://syedmohamadarif.site/",
                   name: "Syed Mohamad Arif - Portfolio",
                   description: "Portfolio website of Syed Mohamad Arif, a Frontend & Mobile Developer from Malaysia",
-                  publisher: { "@id": "https://syed-arif-portfolio.pages.dev/#person" },
+                  publisher: { "@id": "https://syedmohamadarif.site/#person" },
                   inLanguage: "en-US"
                 },
                 {
                   "@type": "MobileApplication",
-                  "@id": "https://syed-arif-portfolio.pages.dev/#hikayatdaily",
+                  "@id": "https://syedmohamadarif.site/#hikayatdaily",
                   name: "Hikayat Daily Global",
                   alternateName: "Hikayat Daily",
                   description: "A mobile application available on Google Play Store, showcasing expertise in mobile app development and delivering production-ready applications.",
@@ -149,8 +149,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
                   url: "https://play.google.com/store/apps/details?id=com.hikayatdailyglobal&hl=en",
                   downloadUrl: "https://play.google.com/store/apps/details?id=com.hikayatdailyglobal&hl=en",
                   softwareVersion: "1.0",
-                  author: { "@id": "https://syed-arif-portfolio.pages.dev/#person" },
-                  creator: { "@id": "https://syed-arif-portfolio.pages.dev/#person" },
+                  author: { "@id": "https://syedmohamadarif.site/#person" },
+                  creator: { "@id": "https://syedmohamadarif.site/#person" },
                   offers: {
                     "@type": "Offer",
                     price: "0",
@@ -160,10 +160,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 },
                 {
                   "@type": "ProfilePage",
-                  "@id": "https://syed-arif-portfolio.pages.dev/#profilepage",
-                  url: "https://syed-arif-portfolio.pages.dev/",
+                  "@id": "https://syedmohamadarif.site/#profilepage",
+                  url: "https://syedmohamadarif.site/",
                   name: "Syed Mohamad Arif - Frontend & Mobile Developer Portfolio",
-                  mainEntity: { "@id": "https://syed-arif-portfolio.pages.dev/#person" },
+                  mainEntity: { "@id": "https://syedmohamadarif.site/#person" },
                   dateCreated: "2024-01-01",
                   dateModified: new Date().toISOString().split('T')[0],
                   inLanguage: "en-US"
