@@ -159,3 +159,8 @@ body {
 .timeline-dot {
   @apply absolute left-0 md:left-1/2 w-4 h-4 rounded-full bg-accent border-4 border-surface transform -translate-x-1/2;
 }
+
+/* Article content styles */
+.article-content .glass-card + .glass-card {
+  margin-top: 1.5rem;
+}

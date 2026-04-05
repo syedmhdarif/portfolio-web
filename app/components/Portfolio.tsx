@@ -1,4 +1,5 @@
-import { Phone, Mail, MapPin, Linkedin, Github, PlayStore, Code, Briefcase, GraduationCap, Sparkles, ExternalLink } from "./icons";
+import { Phone, Mail, MapPin, Linkedin, Github, PlayStore, Code, Briefcase, GraduationCap, Sparkles, ExternalLink, BookOpen } from "./icons";
+import { Link } from "react-router";
 import profileImage from "../assets/syedArif.png";
 import hikayatAppIcon from "../assets/hikayatDailyWhiteBg.png";
 import citysageImage from "../assets/citysage.png";
@@ -41,6 +42,12 @@ export function Portfolio() {
           >
             Experience
           </a>
+          <Link
+            to="/learn"
+            className="px-4 py-2 text-sm font-medium text-text-secondary hover:text-accent transition-colors"
+          >
+            Learn
+          </Link>
           <a
             href="#contact"
             className="ml-2 px-4 py-2 text-sm font-medium bg-accent text-white rounded-xl hover:bg-accent-dark transition-colors"
@@ -88,6 +95,13 @@ export function Portfolio() {
                   <Sparkles className="w-5 h-5" />
                   View Projects
                 </a>
+                <Link
+                  to="/learn"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-surface-elevated border border-border hover:border-accent text-text-primary font-medium rounded-xl transition-all hover:scale-105"
+                >
+                  <BookOpen className="w-5 h-5" />
+                  Learning Space
+                </Link>
               </div>
 
               <div className="flex items-center gap-6 pt-4">
