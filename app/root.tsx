@@ -32,7 +32,7 @@ export const meta = () => {
     {
       name: "description",
       content:
-        "Syed Mohamad Arif is a Frontend & React Native developer from Kuala Lumpur, Malaysia. Creator of Hikayat Daily Global app. 4+ years experience building high-performance mobile apps with React Native, TypeScript, and modern web technologies.",
+        "Syed Mohamad Arif is a Frontend & React Native developer from Kuala Lumpur, Malaysia. Creator of Hikayat Daily Global app. 5 years experience building high-performance mobile apps with React Native, TypeScript, and modern web technologies.",
     },
     { name: "author", content: "Syed Mohamad Arif" },
     { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
@@ -89,7 +89,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                   familyName: "Arif",
                   alternateName: ["syedmhdarif", "Syed Arif"],
                   jobTitle: "Frontend & Mobile Developer",
-                  description: "Frontend & React Native developer with 4+ years of experience specializing in high-performance mobile apps, clean UI/UX, and scalable systems. Creator of Hikayat Daily Global app.",
+                  description: "Frontend & React Native developer with 5 years of experience specializing in high-performance mobile apps, clean UI/UX, and scalable systems. Creator of Hikayat Daily Global app.",
                   url: "https://syedmohamadarif.site/",
                   image: "https://syedmohamadarif.site/og-image.png",
                   email: "syedarifjr@gmail.com",
