@@ -1,19 +1,35 @@
-# Syed Mohamad Arif - Portfolio
+# Syed Mohamad Arif — Portfolio
 
-> Frontend & Mobile Developer based in Kuala Lumpur, Malaysia. Creator of Hikayat Daily Global app. 4+ years of experience building high-performance mobile apps with React Native, TypeScript, and modern web technologies.
+> Frontend & Mobile Developer based in Kuala Lumpur, Malaysia. Creator of Hikayat Daily Global, Hikayat Diri, and LokalGig. 5 years of experience building high-performance mobile apps and web platforms with React Native, React, and TypeScript.
 
 ## About
 
-Syed Mohamad Arif is a dedicated Frontend & Mobile Developer specializing in React Native for mobile apps and React for web platforms. He works across the full product lifecycle — from UI/UX design and prototyping to development, testing, and deployment. Skilled in Git, CI/CD, and Agile practices.
+Syed Mohamad Arif is a Frontend & Mobile Developer specializing in React Native for cross-platform mobile apps and React / Next.js for the web. He works across the full product lifecycle — UI/UX design and prototyping in Figma, development in TypeScript, testing, CI/CD, and store / cloud deployment. Currently a Mobile App Developer at Paywatch Malaysia.
+
+## Quick facts
+
+- Name: Syed Mohamad Arif (also: Syed Arif, syedmhdarif)
+- Role: Frontend & Mobile Developer
+- Location: Sentul, Kuala Lumpur, Malaysia
+- Experience: 5 years
+- Current employer: Paywatch Malaysia
+- Notable creations: Hikayat Daily Global, Hikayat Diri, LokalGig
+- Available for: freelance / contract web and mobile app development
+
+## Sections
+
+- [Portfolio (home)](https://syedmohamadarif.site/): about, projects, services, experience, skills, education, contact
+- [Learning Space](https://syedmohamadarif.site/learn): notes and deep dives on software engineering and security
+- [OWASP Top 10 — Key Takeaways](https://syedmohamadarif.site/learn/owasp-top-10)
 
 ## Contact
 
 - Email: syedarifjr@gmail.com
-- Phone: +60 14-529 7072
-- Location: Kuala Lumpur, Malaysia
+- Phone / WhatsApp: +60 14-529 7072
 - LinkedIn: https://linkedin.com/in/syedmhdarif
 - GitHub: https://github.com/syedmhdarif
 
 ## Links
 
-- [Full Details](https://syedmohamadarif.site/llms-full.txt)
+- [Full details](https://syedmohamadarif.site/llms-full.txt)
+- [Sitemap](https://syedmohamadarif.site/sitemap.xml)

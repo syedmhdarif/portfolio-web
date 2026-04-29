@@ -26,43 +26,19 @@ export const links: Route.LinksFunction = () => [
   },
 ];
 
+// Site-wide defaults. Per-route meta() overrides title/description/og/twitter/canonical for that route.
 export const meta = () => {
   return [
-    { title: "Syed Mohamad Arif – Frontend & Mobile Developer | Creator of Hikayat Daily" },
-    {
-      name: "description",
-      content:
-        "Syed Mohamad Arif is a Frontend & React Native developer from Kuala Lumpur, Malaysia. Creator of Hikayat Daily Global app. 5 years experience building high-performance mobile apps with React Native, TypeScript, and modern web technologies.",
-    },
     { name: "author", content: "Syed Mohamad Arif" },
     { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
-    { name: "keywords", content: "Syed Mohamad Arif, Hikayat Daily, Hikayat Daily Global, React Native Developer, Mobile App Developer, Frontend Developer, Malaysia Developer, Kuala Lumpur, syedmhdarif, React Developer, TypeScript Developer" },
-    { rel: "canonical", href: "https://syedmohamadarif.site/" },
-    // Google Search Console
+    { name: "keywords", content: "Syed Mohamad Arif, Hikayat Daily, Hikayat Daily Global, React Native Developer, Mobile App Developer, Frontend Developer, Malaysia Developer, Kuala Lumpur, syedmhdarif, React Developer, TypeScript Developer, LokalGig, Hikayat Diri, OWASP Top 10" },
     { name: "google-site-verification", content: "6n28iJJhOuBcRAY4U_0kOigQ8Xbv2KCDlmahCnch_nM" },
-    // Open Graph
-    { property: "og:title", content: "Syed Mohamad Arif – Frontend & Mobile Developer | Creator of Hikayat Daily" },
-    {
-      property: "og:description",
-      content:
-        "Syed Mohamad Arif is a Frontend & React Native developer from Kuala Lumpur, Malaysia. Creator of Hikayat Daily Global app on Google Play Store. Specializing in high-performance mobile apps and clean UI/UX.",
-    },
-    { property: "og:type", content: "website" },
-    { property: "og:url", content: "https://syedmohamadarif.site/" },
-    { property: "og:image", content: "https://syedmohamadarif.site/og-image.png" },
-    { property: "og:image:alt", content: "Syed Mohamad Arif - Frontend & Mobile Developer" },
     { property: "og:site_name", content: "Syed Mohamad Arif Portfolio" },
     { property: "og:locale", content: "en_US" },
-    // Twitter Card
-    { name: "twitter:card", content: "summary_large_image" },
-    { name: "twitter:image", content: "https://syedmohamadarif.site/og-image.png" },
-    { name: "twitter:title", content: "Syed Mohamad Arif – Frontend & Mobile Developer | Hikayat Daily Creator" },
-    {
-      name: "twitter:description",
-      content:
-        "Frontend & React Native developer from Malaysia. Creator of Hikayat Daily Global app. Building high-performance mobile apps with modern technologies.",
-    },
+    { property: "og:locale:alternate", content: "en_MY" },
+    { property: "og:locale:alternate", content: "ms_MY" },
     { name: "twitter:creator", content: "@syedmhdarif" },
+    { name: "twitter:site", content: "@syedmhdarif" },
   ];
 };
 
@@ -89,44 +65,63 @@ export function Layout({ children }: { children: React.ReactNode }) {
                   familyName: "Arif",
                   alternateName: ["syedmhdarif", "Syed Arif"],
                   jobTitle: "Frontend & Mobile Developer",
-                  description: "Frontend & React Native developer with 5 years of experience specializing in high-performance mobile apps, clean UI/UX, and scalable systems. Creator of Hikayat Daily Global app.",
+                  description: "Frontend & React Native developer based in Kuala Lumpur, Malaysia, with 5 years of experience specializing in high-performance mobile apps, clean UI/UX, and scalable systems. Creator of Hikayat Daily Global, Hikayat Diri, and LokalGig.",
                   url: "https://syedmohamadarif.site/",
-                  image: "https://syedmohamadarif.site/og-image.png",
-                  email: "syedarifjr@gmail.com",
+                  mainEntityOfPage: "https://syedmohamadarif.site/",
+                  image: {
+                    "@type": "ImageObject",
+                    url: "https://syedmohamadarif.site/og-image.png",
+                    width: 1200,
+                    height: 630
+                  },
+                  email: "mailto:syedarifjr@gmail.com",
                   telephone: "+60145297072",
+                  nationality: { "@type": "Country", name: "Malaysia" },
                   address: {
                     "@type": "PostalAddress",
                     addressLocality: "Sentul, Kuala Lumpur",
-                    addressCountry: "Malaysia"
+                    addressRegion: "Wilayah Persekutuan Kuala Lumpur",
+                    addressCountry: "MY"
                   },
                   alumniOf: [
                     {
                       "@type": "CollegeOrUniversity",
                       name: "International Islamic University Malaysia",
+                      sameAs: "https://www.iium.edu.my/",
                       department: "Information Technology"
+                    },
+                    {
+                      "@type": "EducationalOrganization",
+                      name: "CFS IIUM Petaling Jaya",
+                      department: "Foundation in Engineering"
                     }
                   ],
                   knowsAbout: [
                     "React Native", "React", "TypeScript", "JavaScript", "Mobile App Development",
                     "Frontend Development", "Next.js", "Node.js", "Redux", "Firebase",
-                    "iOS Development", "Android Development", "UI/UX Design", "Figma"
+                    "iOS Development", "Android Development", "UI/UX Design", "Figma",
+                    "Supabase", "Tailwind CSS", "Three.js", "OWASP Top 10", "Web Application Security"
                   ],
+                  knowsLanguage: ["English", "Malay"],
                   hasOccupation: [
                     {
                       "@type": "Occupation",
                       name: "Mobile App Developer",
                       occupationLocation: { "@type": "Country", name: "Malaysia" },
-                      skills: "React Native, TypeScript, Firebase, Redux, CI/CD"
+                      estimatedSalary: { "@type": "MonetaryAmountDistribution", name: "base", currency: "MYR" },
+                      skills: "React Native, TypeScript, Firebase, Redux, CI/CD, Expo, EAS, Codemagic"
                     }
                   ],
                   worksFor: {
                     "@type": "Organization",
-                    name: "Paywatch Malaysia"
+                    name: "Paywatch Malaysia",
+                    url: "https://paywatch.com/"
                   },
                   sameAs: [
                     "https://github.com/syedmhdarif",
                     "https://www.linkedin.com/in/syedmhdarif",
-                    "https://wa.me/60145297072"
+                    "https://wa.me/60145297072",
+                    "https://play.google.com/store/apps/dev?id=com.hikayatdailyglobal"
                   ]
                 },
                 {
@@ -167,6 +162,110 @@ export function Layout({ children }: { children: React.ReactNode }) {
                   dateCreated: "2024-01-01",
                   dateModified: new Date().toISOString().split('T')[0],
                   inLanguage: "en-US"
+                },
+                {
+                  "@type": "ProfessionalService",
+                  "@id": "https://syedmohamadarif.site/#service",
+                  name: "Syed Mohamad Arif — Web & Mobile Development Services",
+                  description: "Freelance web and mobile app development services for Malaysian and international clients. Marketing sites, dashboards, full-stack web apps, and cross-platform iOS & Android apps with React Native.",
+                  url: "https://syedmohamadarif.site/#services",
+                  provider: { "@id": "https://syedmohamadarif.site/#person" },
+                  areaServed: [
+                    { "@type": "Country", name: "Malaysia" },
+                    { "@type": "Place", name: "Worldwide (remote)" }
+                  ],
+                  serviceType: ["Website Development", "Mobile App Development", "React Native Development", "Frontend Development"],
+                  hasOfferCatalog: {
+                    "@type": "OfferCatalog",
+                    name: "Development Services",
+                    itemListElement: [
+                      {
+                        "@type": "Offer",
+                        itemOffered: {
+                          "@type": "Service",
+                          name: "Website Development",
+                          description: "Marketing sites, dashboards, and full-stack web apps built with React, React Router, and Next.js — typed, tested, and tuned for SEO and Core Web Vitals."
+                        }
+                      },
+                      {
+                        "@type": "Offer",
+                        itemOffered: {
+                          "@type": "Service",
+                          name: "Mobile App Development",
+                          description: "Cross-platform iOS and Android apps from one React Native + Expo codebase, with full release pipelines through EAS or Codemagic."
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "@type": "BreadcrumbList",
+                  "@id": "https://syedmohamadarif.site/#breadcrumb-home",
+                  itemListElement: [
+                    { "@type": "ListItem", position: 1, name: "Home", item: "https://syedmohamadarif.site/" }
+                  ]
+                },
+                {
+                  "@type": "FAQPage",
+                  "@id": "https://syedmohamadarif.site/#faq",
+                  mainEntity: [
+                    {
+                      "@type": "Question",
+                      name: "Who is Syed Mohamad Arif?",
+                      acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Syed Mohamad Arif is a Frontend and Mobile Developer based in Kuala Lumpur, Malaysia, with 5 years of experience building cross-platform applications with React Native, React, and TypeScript. He currently works as a Mobile App Developer at Paywatch Malaysia and is the creator of the Hikayat Daily Global app on Google Play."
+                      }
+                    },
+                    {
+                      "@type": "Question",
+                      name: "Who created Hikayat Daily Global?",
+                      acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Hikayat Daily Global was created by Syed Mohamad Arif, a Malaysian React Native developer. The Android app is published on the Google Play Store at https://play.google.com/store/apps/details?id=com.hikayatdailyglobal."
+                      }
+                    },
+                    {
+                      "@type": "Question",
+                      name: "What is LokalGig?",
+                      acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "LokalGig is a Malaysian local services marketplace connecting freelancers with clients for everyday gigs and side projects. It was built end-to-end by Syed Mohamad Arif with React, TypeScript, Tailwind, Supabase, and Vercel, and is live at https://lokalgig.my/."
+                      }
+                    },
+                    {
+                      "@type": "Question",
+                      name: "What technologies does Syed Mohamad Arif specialize in?",
+                      acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Syed Mohamad Arif specializes in React Native and Expo for cross-platform mobile apps, and React, Next.js, and TypeScript for web. His regular toolkit also includes Tailwind CSS, Redux, React Query, Firebase, Supabase, PostgreSQL, and CI/CD pipelines through Azure DevOps, Expo EAS, and Codemagic."
+                      }
+                    },
+                    {
+                      "@type": "Question",
+                      name: "Is Syed Mohamad Arif available for freelance or contract work?",
+                      acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Yes. Syed Mohamad Arif offers freelance website and mobile app development services to clients in Malaysia and remotely worldwide. Engagements typically cover design in Figma, development in React or React Native, and full deployment to Vercel and the App Store / Play Store. Reach him at syedarifjr@gmail.com or +60 14-529 7072."
+                      }
+                    },
+                    {
+                      "@type": "Question",
+                      name: "Where is Syed Mohamad Arif based?",
+                      acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Syed Mohamad Arif is based in Sentul, Kuala Lumpur, Malaysia, and is open to remote work worldwide."
+                      }
+                    },
+                    {
+                      "@type": "Question",
+                      name: "How can I contact Syed Mohamad Arif?",
+                      acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Email: syedarifjr@gmail.com. Phone / WhatsApp: +60 14-529 7072. LinkedIn: https://linkedin.com/in/syedmhdarif. GitHub: https://github.com/syedmhdarif."
+                      }
+                    }
+                  ]
                 }
               ]
             }),

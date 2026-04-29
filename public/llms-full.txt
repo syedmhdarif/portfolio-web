@@ -1,6 +1,6 @@
-# Syed Mohamad Arif - Frontend & Mobile Developer
+# Syed Mohamad Arif — Frontend & Mobile Developer
 
-> Full portfolio details for Syed Mohamad Arif, a Frontend & Mobile Developer based in Kuala Lumpur, Malaysia. Creator of Hikayat Daily Global app on Google Play Store. 4+ years of experience building high-performance mobile apps with React Native, TypeScript, and modern web technologies.
+> Full portfolio details for Syed Mohamad Arif, a Frontend & Mobile Developer based in Kuala Lumpur, Malaysia. Creator of Hikayat Daily Global, Hikayat Diri, and LokalGig. 5 years of experience building high-performance mobile apps and web platforms with React Native, React, and TypeScript.
 
 Website: https://syedmohamadarif.site
 
@@ -8,7 +8,22 @@ Website: https://syedmohamadarif.site
 
 ## About
 
-Syed Mohamad Arif is a dedicated Frontend Developer based in Kuala Lumpur, Malaysia with 4+ years of experience specializing in React Native for mobile apps and React for web platforms. He works across the full product lifecycle, from UI/UX design and prototyping to development, testing, and deployment. Skilled in Git, CI/CD, and Agile practices, he builds scalable features that enhance user experience and business value. With a strong eye for design and proficiency in Figma and Adobe tools, he bridges the gap between design and engineering to deliver intuitive interfaces.
+Syed Mohamad Arif is a Frontend & Mobile Developer based in Sentul, Kuala Lumpur, Malaysia, with 5 years of professional experience. He specializes in React Native and Expo for cross-platform mobile apps, and React, Next.js, and TypeScript for the web. He works across the full product lifecycle — UI/UX design and prototyping in Figma, development, testing, CI/CD, and deployment to Vercel and the App Store / Play Store. He bridges the gap between design and engineering and is currently a Mobile App Developer at Paywatch Malaysia.
+
+He also offers freelance website and mobile app development services to clients in Malaysia and remotely worldwide.
+
+---
+
+## Identity
+
+- Full name: Syed Mohamad Arif
+- Also known as: Syed Arif, syedmhdarif
+- Nationality: Malaysian
+- Languages: English, Malay
+- Location: Sentul, Kuala Lumpur, Malaysia
+- Website: https://syedmohamadarif.site
+- LinkedIn: https://linkedin.com/in/syedmhdarif
+- GitHub: https://github.com/syedmhdarif
 
 ---
 
@@ -21,70 +36,151 @@ JavaScript, TypeScript, HTML/CSS, SQL, Swift, Java/Kotlin
 React Native, React.js, Next.js, Node.js, Redux, React Query
 
 ### Tools
-Android Studio, Xcode, VS Code, Figma, Postman, Maestro
+Android Studio, Xcode, VS Code, Figma, Postman, Maestro, Git
 
-### Databases
-PostgreSQL, MySQL, MongoDB, Firebase
+### Databases & Backend
+PostgreSQL, MySQL, MongoDB, Firebase, Supabase
+
+### Build & Release
+Expo, EAS, Codemagic, Vercel, Cloudflare Pages, Azure DevOps, TestFlight, Firebase App Distribution
+
+### Security
+OWASP Top 10 awareness, ASVS-aligned access control, secure authentication and authorization patterns
 
 ---
 
 ## Work Experience
 
-### Mobile App Developer @ Paywatch Malaysia (Feb 2025 - Present)
+### Mobile App Developer @ Paywatch Malaysia (Feb 2025 – Present)
 - Build and enhance key features such as health insurance, critical illness insurance, QR payments, and voucher systems
-- Work closely with UI/UX designers to translate designs into smooth, user-friendly components
+- Work closely with UI/UX designers to translate Figma designs into smooth, user-friendly components
 - Manage TestFlight and Firebase App Distribution for testing and releases
 - Support CI/CD processes through Azure Pipeline to ensure efficient builds and deployments
-- Technologies: React Native, TypeScript, Firebase, Azure DevOps, Maestro
+- Stack: React Native, TypeScript, Firebase, Azure DevOps, Maestro
 
-### Junior Mobile App Developer @ Zonar Malaysia (Sep 2023 - Jan 2025)
-- Specialize in React Native development using Firebase, Redux, and React Navigation
-- Responsible for designing the UI/UX of the Zonar app, ensuring user-friendly functionality
-- Work across the full project lifecycle using insights from Google Analytics
-- Follow Agile sprints with regular scrum meetings to track progress
-- Technologies: React Native, Firebase, Redux, Figma, Google Analytics
+### Junior Mobile App Developer @ Zonar Malaysia (Sep 2023 – Jan 2025)
+- Specialized in React Native development with Firebase, Redux, and React Navigation
+- Designed the UI/UX of the Zonar app, ensuring user-friendly functionality
+- Worked across the full project lifecycle using insights from Google Analytics
+- Followed Agile sprints with regular scrum meetings to track progress
+- Stack: React Native, Firebase, Redux, Figma, Google Analytics
 
-### Junior Mobile App Developer @ Accenture (Aug 2022 - Sep 2023)
-- Maintain, enhance, and build new features for the Unifi mobile prepaid (TM) app
-- Integrate RESTful APIs and manage state with Redux
-- Implement OneSignal for push notifications
-- Use Git for efficient version control and team collaboration
-- Technologies: React Native, Redux, RESTful APIs, OneSignal, Git
+### Junior Mobile App Developer @ Accenture (Aug 2022 – Sep 2023)
+- Maintained, enhanced, and built new features for the Unifi Mobile Prepaid (TM) app
+- Integrated RESTful APIs and managed state with Redux
+- Implemented OneSignal for push notifications
+- Used Git for efficient version control and team collaboration
+- Stack: React Native, Redux, RESTful APIs, OneSignal, Git
 
 ---
 
 ## Featured Projects
 
-### Hikayat Daily Global (Mobile Application - Live on Play Store)
-A live mobile application showcasing end-to-end mobile development skills from UI/UX design to deployment. Built with React Native and modern mobile development practices, demonstrating expertise in delivering production-ready, user-friendly applications.
-- Technologies: React Native, TypeScript, Firebase, Redux
+### LokalGig (Web Platform — Live)
+A Malaysian local services marketplace connecting freelancers with clients for everyday gigs and side projects. Built end-to-end — discovery, booking, and the full client–freelancer workflow.
+- Stack: React, TypeScript, Tailwind CSS, Supabase, Vercel
+- Live: https://lokalgig.my/
+
+### Hikayat Daily Global (Android — Live on Play Store)
+A daily storytelling Android application showcasing end-to-end mobile work, from UI/UX design to a production Play Store release. Demonstrates expertise in delivering production-ready, user-friendly applications.
+- Stack: React Native, TypeScript, Firebase, Redux
 - Platform: Android
 - Play Store: https://play.google.com/store/apps/details?id=com.hikayatdailyglobal&hl=en
 
-### CitySage (Web Application)
+### Hikayat Diri Mobile (Android — Live on Play Store)
+The Android companion to Hikayat Diri — journal and revisit personal stories anywhere, with a calm, focused reading experience.
+- Stack: React Native, Expo, TypeScript
+- Play Store: https://play.google.com/store/apps/details?id=com.syedmhdarif.hikayatdiri&hl=en
+
+### Hikayat Diri Web (Live)
+A personal storytelling web app that brings narratives to life with a clean, elegant reading experience.
+- Stack: React, TypeScript, Vercel
+- Live: https://hikayat-diri-web.vercel.app/
+
+### CitySage (Live)
 A city guide web application providing smart insights and recommendations for urban exploration.
-- Technologies: React, TypeScript, Tailwind CSS
+- Stack: React, TypeScript, Tailwind CSS
 - Live: https://syedmhdarif.github.io/citysage-web-project/
 
-### Interactive Room (3D Web Experience)
+### Interactive Room (Live)
 An interactive 3D portfolio world built with Three.js, featuring explorable environments and immersive navigation.
-- Technologies: Three.js, React, 3D, WebGL
+- Stack: Three.js, React, WebGL
 - Live: https://interactive-room-wine.vercel.app/
 
-### Hikayat Diri (Web Application)
-A personal storytelling web app that brings narratives to life with a clean, elegant reading experience.
-- Technologies: React, TypeScript, Vercel
-- Live: https://hikayat-diri-web.vercel.app/
+---
+
+## Services Offered
+
+Syed Mohamad Arif provides freelance website and mobile app development services to clients in Malaysia and remotely worldwide.
+
+### Website Development
+Marketing sites, dashboards, and full-stack web applications. Built with React, React Router, and Next.js — typed, tested, and tuned for SEO and Core Web Vitals. Deliverables include:
+- Responsive UI in React + Tailwind CSS
+- Authentication, payments, and dashboards
+- SEO, sitemap, and analytics setup
+- Domain, hosting, and email setup
+- Stack used: React, React Router, Next.js, Tailwind, Supabase, Vercel
+
+### Mobile App Development
+Cross-platform iOS and Android apps from one React Native + Expo codebase, with full release pipelines through EAS or Codemagic. Deliverables include:
+- iOS and Android from one codebase
+- Push notifications and deep links
+- Over-the-air updates and crash reporting
+- App Store and Play Store submission
+- Stack used: React Native, Expo, TypeScript, Firebase, EAS, Codemagic
+
+### Process
+1. Design — wireframes and high-fidelity prototypes in Figma
+2. Development — typed, modular, version-controlled code with Git-based reviews and preview deployments
+3. Production & Deployment — custom domain, SSL, analytics, and store submissions; monitoring and OTA updates after launch
+
+---
+
+## Learning Space
+
+A growing collection of notes and deep dives on software engineering and web application security.
+
+### OWASP Top 10 — Key Takeaways
+A concise study guide to the OWASP Top 10 (2021): what OWASP is, the methodology behind the list, key terminology (CWE, CVE, CVSS, ASVS), and a deep dive into the #1 risk — Broken Access Control.
+- URL: https://syedmohamadarif.site/learn/owasp-top-10
 
 ---
 
 ## Education
 
 ### Bachelor of Information Technology
-International Islamic University Malaysia (2017 - 2020)
+International Islamic University Malaysia (IIUM), 2017 – 2020
 
 ### Foundation in Engineering
-CFS IIUM Petaling Jaya (2015 - 2017)
+CFS IIUM Petaling Jaya, 2015 – 2017
+
+---
+
+## Frequently Asked Questions
+
+### Who is Syed Mohamad Arif?
+Syed Mohamad Arif is a Frontend and Mobile Developer based in Kuala Lumpur, Malaysia, with 5 years of experience building cross-platform applications with React Native, React, and TypeScript. He currently works as a Mobile App Developer at Paywatch Malaysia and is the creator of the Hikayat Daily Global app on Google Play.
+
+### Who created Hikayat Daily Global?
+Hikayat Daily Global was created by Syed Mohamad Arif, a Malaysian React Native developer. The Android app is published on the Google Play Store at https://play.google.com/store/apps/details?id=com.hikayatdailyglobal.
+
+### What is LokalGig?
+LokalGig is a Malaysian local services marketplace connecting freelancers with clients for everyday gigs and side projects. It was built end-to-end by Syed Mohamad Arif with React, TypeScript, Tailwind, Supabase, and Vercel, and is live at https://lokalgig.my/.
+
+### What technologies does Syed Mohamad Arif specialize in?
+Syed Mohamad Arif specializes in React Native and Expo for cross-platform mobile apps, and React, Next.js, and TypeScript for the web. His regular toolkit also includes Tailwind CSS, Redux, React Query, Firebase, Supabase, PostgreSQL, and CI/CD pipelines through Azure DevOps, Expo EAS, and Codemagic.
+
+### Is Syed Mohamad Arif available for freelance or contract work?
+Yes. Syed Mohamad Arif offers freelance website and mobile app development services to clients in Malaysia and remotely worldwide. Engagements typically cover design in Figma, development in React or React Native, and full deployment to Vercel and the App Store / Play Store. Reach him at syedarifjr@gmail.com or +60 14-529 7072.
+
+### Where is Syed Mohamad Arif based?
+Sentul, Kuala Lumpur, Malaysia. Open to remote work worldwide.
+
+### How can I contact Syed Mohamad Arif?
+- Email: syedarifjr@gmail.com
+- Phone / WhatsApp: +60 14-529 7072
+- LinkedIn: https://linkedin.com/in/syedmhdarif
+- GitHub: https://github.com/syedmhdarif
 
 ---
 
@@ -92,7 +188,7 @@ CFS IIUM Petaling Jaya (2015 - 2017)
 
 - Email: syedarifjr@gmail.com
 - Phone: +60 14-529 7072
+- WhatsApp: https://wa.me/60145297072
 - Location: Sentul, Kuala Lumpur, Malaysia
 - LinkedIn: https://linkedin.com/in/syedmhdarif
 - GitHub: https://github.com/syedmhdarif
-- WhatsApp: https://wa.me/60145297072

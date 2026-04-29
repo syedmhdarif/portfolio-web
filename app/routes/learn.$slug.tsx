@@ -2,36 +2,183 @@ import type { Route } from "./+types/learn.$slug";
 import { Link, useParams } from "react-router";
 import { ArrowLeft, BookOpen, Shield, Clock } from "../components/icons";
 
-const articles: Record<
-  string,
-  {
-    title: string;
-    description: string;
-    category: string;
-    readTime: string;
-    date: string;
-    content: () => React.ReactNode;
-  }
-> = {
+type ArticleMeta = {
+  title: string;
+  description: string;
+  category: string;
+  readTime: string;
+  /** ISO date for schema.org datePublished */
+  datePublished: string;
+  /** ISO date for schema.org dateModified */
+  dateModified: string;
+  /** Display label */
+  date: string;
+  /** Reading time in minutes for schema.org timeRequired (ISO 8601 duration) */
+  timeRequiredISO: string;
+  /** Word count for schema.org wordCount */
+  wordCount: number;
+  /** Topical keywords for schema.org keywords */
+  keywords: string[];
+  /** FAQ used for FAQPage schema (also surfaces in AI answer engines) */
+  faq: { question: string; answer: string }[];
+  /** Speakable CSS selectors for voice search */
+  speakableSelectors: string[];
+  content: () => React.ReactNode;
+};
+
+const SITE_URL = "https://syedmohamadarif.site";
+const OG_IMAGE = `${SITE_URL}/og-image.png`;
+
+const articles: Record<string, ArticleMeta> = {
   "owasp-top-10": {
     title: "OWASP Top 10 — Key Takeaways",
     description:
-      "A concise study guide covering the OWASP organization, its methodology, and the #1 security risk: Broken Access Control.",
+      "A concise study guide to the OWASP Top 10 (2021): what OWASP is, the methodology behind the list, key terminology (CWE, CVE, CVSS, ASVS), and a deep dive into the #1 risk — Broken Access Control.",
     category: "Security",
     readTime: "12 min read",
+    datePublished: "2025-10-15",
+    dateModified: "2026-04-29",
     date: "2025",
+    timeRequiredISO: "PT12M",
+    wordCount: 1800,
+    keywords: [
+      "OWASP",
+      "OWASP Top 10",
+      "Broken Access Control",
+      "Web Application Security",
+      "ASVS",
+      "CWE",
+      "CVE",
+      "CVSS",
+      "Authentication",
+      "Authorization",
+      "RBAC",
+    ],
+    faq: [
+      {
+        question: "What does OWASP stand for?",
+        answer:
+          "OWASP stands for Open Web Application Security Project. It is a free, open, non-profit global community founded in 2001 (non-profit since 2004) that produces freely available articles, methodologies, documentation, tools, and technologies to help organizations make web applications safer.",
+      },
+      {
+        question: "What is the OWASP Top 10?",
+        answer:
+          "The OWASP Top 10 is an awareness document that lists the most critical web application security risks. It is published roughly every 3–4 years. The current 2021 edition is based on data from 500,000+ applications — the largest dataset OWASP has ever used — with 8 of 10 categories derived from data and 2 from practitioner surveys.",
+      },
+      {
+        question: "What is the #1 risk in the OWASP Top 10 (2021)?",
+        answer:
+          "The #1 risk is Broken Access Control. It maps to 34 CWEs, was found in up to 94.55% of tested apps, and affected 318,487 of the 500,000+ applications studied — meaning users could access things they should not be able to access.",
+      },
+      {
+        question: "What is the difference between authentication and authorization?",
+        answer:
+          "Authentication answers \"who are you?\" — proving identity, for example with a password or biometric. Authorization answers \"what can you do?\" — checking permissions, for example whether you are allowed to delete a record. Both must be enforced; authentication alone does not protect resources.",
+      },
+      {
+        question: "How do you prevent Broken Access Control?",
+        answer:
+          "Deny by default, enforce access checks server-side (never trust client-side), implement access control logic once and reuse it, enforce record ownership so users can only CRUD their own data, disable directory listings, invalidate JWTs on logout, rate-limit APIs, log all failures, and test like an attacker.",
+      },
+      {
+        question: "What is the difference between CWE, CVE, and CVSS?",
+        answer:
+          "CWE is a general category of a software weakness, such as path traversal. CVE is a specific named vulnerability in a real product, such as Log4Shell. CVSS is a 1–10 scoring system that rates how exploitable and impactful a vulnerability is.",
+      },
+      {
+        question: "What is OWASP ASVS?",
+        answer:
+          "ASVS is the OWASP Application Security Verification Standard — an actionable checklist you run against your application. The Top 10 tells you what the problems are; ASVS tells you how to build against them.",
+      },
+    ],
+    speakableSelectors: ["h1", "h2", "h3", ".article-content p"],
     content: OWASPContent,
   },
 };
 
 export function meta({ params }: Route.MetaArgs) {
-  const article = articles[params.slug ?? ""];
+  const slug = params.slug ?? "";
+  const article = articles[slug];
   if (!article) {
-    return [{ title: "Article Not Found – Learning Space" }];
+    return [
+      { title: "Article Not Found – Learning Space | Syed Mohamad Arif" },
+      { name: "robots", content: "noindex, follow" },
+    ];
   }
+
+  const url = `${SITE_URL}/learn/${slug}`;
+  const title = `${article.title} – Learning Space | Syed Mohamad Arif`;
+  const description = article.description;
+
   return [
-    { title: `${article.title} – Learning Space` },
-    { name: "description", content: article.description },
+    { title },
+    { name: "description", content: description },
+    { tagName: "link", rel: "canonical", href: url },
+    { property: "og:title", content: article.title },
+    { property: "og:description", content: description },
+    { property: "og:type", content: "article" },
+    { property: "og:url", content: url },
+    { property: "og:image", content: OG_IMAGE },
+    { property: "article:published_time", content: article.datePublished },
+    { property: "article:modified_time", content: article.dateModified },
+    { property: "article:author", content: "Syed Mohamad Arif" },
+    { property: "article:section", content: article.category },
+    ...article.keywords.map((tag) => ({ property: "article:tag", content: tag })),
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:title", content: article.title },
+    { name: "twitter:description", content: description },
+    { name: "twitter:image", content: OG_IMAGE },
+    {
+      "script:ld+json": {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "TechArticle",
+            "@id": `${url}#article`,
+            headline: article.title,
+            description,
+            url,
+            mainEntityOfPage: url,
+            datePublished: article.datePublished,
+            dateModified: article.dateModified,
+            inLanguage: "en-US",
+            articleSection: article.category,
+            keywords: article.keywords.join(", "),
+            wordCount: article.wordCount,
+            timeRequired: article.timeRequiredISO,
+            image: { "@type": "ImageObject", url: OG_IMAGE, width: 1200, height: 630 },
+            author: { "@id": `${SITE_URL}/#person` },
+            creator: { "@id": `${SITE_URL}/#person` },
+            publisher: { "@id": `${SITE_URL}/#person` },
+            isPartOf: { "@id": `${SITE_URL}/#website` },
+            about: article.keywords.map((k) => ({ "@type": "Thing", name: k })),
+            speakable: {
+              "@type": "SpeakableSpecification",
+              cssSelector: article.speakableSelectors,
+            },
+            citation: "OWASP Top 10 (2021) — InfoSec Skills Learning Path by John Wagnon (F5 Networks)",
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": `${url}#breadcrumb`,
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+              { "@type": "ListItem", position: 2, name: "Learning Space", item: `${SITE_URL}/learn` },
+              { "@type": "ListItem", position: 3, name: article.title, item: url },
+            ],
+          },
+          {
+            "@type": "FAQPage",
+            "@id": `${url}#faq`,
+            mainEntity: article.faq.map((qa) => ({
+              "@type": "Question",
+              name: qa.question,
+              acceptedAnswer: { "@type": "Answer", text: qa.answer },
+            })),
+          },
+        ],
+      },
+    },
   ];
 }
 

@@ -2,13 +2,64 @@ import type { Route } from "./+types/learn";
 import { Link } from "react-router";
 import { ArrowLeft, BookOpen, Shield, Clock, ChevronRight } from "../components/icons";
 
+const PAGE_TITLE = "Learning Space – Notes on Software Engineering & Security | Syed Mohamad Arif";
+const PAGE_DESCRIPTION =
+  "Notes, takeaways, and deep dives from Syed Mohamad Arif's continuous learning journey in software development and web application security — including the OWASP Top 10.";
+const PAGE_URL = "https://syedmohamadarif.site/learn";
+const OG_IMAGE = "https://syedmohamadarif.site/og-image.png";
+
 export function meta(_: Route.MetaArgs) {
   return [
-    { title: "Learning Space – Syed Mohamad Arif" },
+    { title: PAGE_TITLE },
+    { name: "description", content: PAGE_DESCRIPTION },
+    { tagName: "link", rel: "canonical", href: PAGE_URL },
+    { property: "og:title", content: PAGE_TITLE },
+    { property: "og:description", content: PAGE_DESCRIPTION },
+    { property: "og:type", content: "website" },
+    { property: "og:url", content: PAGE_URL },
+    { property: "og:image", content: OG_IMAGE },
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:title", content: PAGE_TITLE },
+    { name: "twitter:description", content: PAGE_DESCRIPTION },
+    { name: "twitter:image", content: OG_IMAGE },
     {
-      name: "description",
-      content:
-        "A collection of notes, takeaways, and deep dives from my continuous learning journey in software development and security.",
+      "script:ld+json": {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "CollectionPage",
+            "@id": `${PAGE_URL}#collection`,
+            url: PAGE_URL,
+            name: PAGE_TITLE,
+            description: PAGE_DESCRIPTION,
+            inLanguage: "en-US",
+            isPartOf: { "@id": "https://syedmohamadarif.site/#website" },
+            about: { "@id": "https://syedmohamadarif.site/#person" },
+            author: { "@id": "https://syedmohamadarif.site/#person" },
+            mainEntity: {
+              "@type": "ItemList",
+              itemListOrder: "https://schema.org/ItemListOrderDescending",
+              numberOfItems: 1,
+              itemListElement: [
+                {
+                  "@type": "ListItem",
+                  position: 1,
+                  url: "https://syedmohamadarif.site/learn/owasp-top-10",
+                  name: "OWASP Top 10 — Key Takeaways",
+                },
+              ],
+            },
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": `${PAGE_URL}#breadcrumb`,
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: "https://syedmohamadarif.site/" },
+              { "@type": "ListItem", position: 2, name: "Learning Space", item: PAGE_URL },
+            ],
+          },
+        ],
+      },
     },
   ];
 }
