@@ -534,8 +534,11 @@ export function Portfolio() {
         <section id="services" className="py-16 md:py-24 scroll-mt-20" aria-labelledby="services-title">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <div className="text-center mb-10 md:mb-16">
-              <h2 id="services-title" className="section-title">Services I Offer</h2>
+              <h2 id="services-title" className="section-title">Mobile App &amp; Web Development Services</h2>
               <p className="section-subtitle">From design to deployment — built, shipped, and supported</p>
+              <p className="text-text-muted text-sm md:text-base max-w-2xl mx-auto mt-4">
+                Freelance development for <span className="text-text-secondary">Malaysian and international clients</span> — based in Kuala Lumpur, available remotely worldwide.
+              </p>
             </div>
 
             {/* Service Cards */}

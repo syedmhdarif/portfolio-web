@@ -1,6 +1,6 @@
-# Syed Mohamad Arif — Frontend & Mobile Developer
+# Syed Mohamad Arif — Freelance Mobile App & Web Developer in Malaysia
 
-> Full portfolio details for Syed Mohamad Arif, a Frontend & Mobile Developer based in Kuala Lumpur, Malaysia. Creator of Hikayat Daily Global, Hikayat Diri, and LokalGig. 5 years of experience building high-performance mobile apps and web platforms with React Native, React, and TypeScript.
+> Full portfolio details for Syed Mohamad Arif, a freelance mobile app and web developer based in Kuala Lumpur, Malaysia. Creator of Hikayat Daily Global, Hikayat Diri, and LokalGig. 5 years of experience building React Native, React, and Next.js apps for Malaysian and international clients.
 
 Website: https://syedmohamadarif.site
 
@@ -8,9 +8,9 @@ Website: https://syedmohamadarif.site
 
 ## About
 
-Syed Mohamad Arif is a Frontend & Mobile Developer based in Sentul, Kuala Lumpur, Malaysia, with 5 years of professional experience. He specializes in React Native and Expo for cross-platform mobile apps, and React, Next.js, and TypeScript for the web. He works across the full product lifecycle — UI/UX design and prototyping in Figma, development, testing, CI/CD, and deployment to Vercel and the App Store / Play Store. He bridges the gap between design and engineering and is currently a Mobile App Developer at Paywatch Malaysia.
+Syed Mohamad Arif is a freelance Mobile App and Web Developer based in Sentul, Kuala Lumpur, Malaysia, with 5 years of professional experience. He specializes in React Native and Expo for cross-platform iOS and Android apps, and React, Next.js, and TypeScript for the web. He works across the full product lifecycle — UI/UX design and prototyping in Figma, development, testing, CI/CD, and deployment to Vercel and the App Store / Play Store. He bridges the gap between design and engineering and is currently a Mobile App Developer at Paywatch Malaysia.
 
-He also offers freelance website and mobile app development services to clients in Malaysia and remotely worldwide.
+He offers freelance website and mobile app development services to Malaysian SMEs, startups, and international clients. Engagements run remotely across Malaysia (Kuala Lumpur, Petaling Jaya, Shah Alam, Selangor, Penang, Johor) and worldwide. Invoicing is supported in MYR and USD.
 
 ---
 
@@ -158,8 +158,26 @@ CFS IIUM Petaling Jaya, 2015 – 2017
 
 ## Frequently Asked Questions
 
+### How do I hire a mobile app developer in Malaysia?
+You can hire Syed Mohamad Arif directly as a freelance mobile app developer based in Kuala Lumpur, Malaysia. He builds cross-platform iOS and Android apps with React Native and Expo, handles design in Figma, development in TypeScript, and full submission to the App Store and Play Store. Email syedarifjr@gmail.com or WhatsApp +60 14-529 7072 to start a conversation.
+
+### Where can I find a freelance React Native developer in Kuala Lumpur?
+Syed Mohamad Arif is a freelance React Native developer based in Kuala Lumpur, Malaysia, with 5 years of professional experience and live apps on the Google Play Store (Hikayat Daily Global, Hikayat Diri). He works with clients across Malaysia — including Petaling Jaya, Shah Alam, and Selangor — and remotely worldwide. Visit https://syedmohamadarif.site for projects and contact details.
+
+### How much does it cost to build a mobile app in Malaysia?
+Cost depends on scope, integrations, and timeline. A basic single-platform MVP typically starts in the low five figures MYR; a full cross-platform iOS and Android app with auth, payments, push notifications, and store submission usually lands in the mid-to-high five figures MYR. Syed Mohamad Arif provides clear, fixed-scope quotes after a free discovery call. Reach out at syedarifjr@gmail.com for a tailored estimate.
+
+### Do you build both iOS and Android apps?
+Yes. Syed Mohamad Arif builds cross-platform iOS and Android apps from a single React Native + Expo codebase, with native modules where needed. Full release pipelines run through Expo EAS or Codemagic, including Apple App Store and Google Play Store submission.
+
+### Do you offer both UI/UX design and development?
+Yes. Syed Mohamad Arif works across the full product lifecycle — UI/UX design and prototyping in Figma, development in TypeScript with React or React Native, testing, CI/CD, and deployment. This bridges the gap between design and engineering and avoids handoff friction.
+
+### Do you work with Malaysian SMEs and startups?
+Yes. Syed Mohamad Arif works with Malaysian SMEs, startups, and international clients on websites, web apps, and cross-platform mobile apps. Engagements run remotely across Malaysia (Kuala Lumpur, Selangor, Penang, Johor) and worldwide. Invoicing supported in MYR or USD.
+
 ### Who is Syed Mohamad Arif?
-Syed Mohamad Arif is a Frontend and Mobile Developer based in Kuala Lumpur, Malaysia, with 5 years of experience building cross-platform applications with React Native, React, and TypeScript. He currently works as a Mobile App Developer at Paywatch Malaysia and is the creator of the Hikayat Daily Global app on Google Play.
+Syed Mohamad Arif is a freelance Mobile App and Web Developer based in Kuala Lumpur, Malaysia, with 5 years of experience building cross-platform applications with React Native, React, and TypeScript. He currently works as a Mobile App Developer at Paywatch Malaysia and is the creator of the Hikayat Daily Global app on Google Play.
 
 ### Who created Hikayat Daily Global?
 Hikayat Daily Global was created by Syed Mohamad Arif, a Malaysian React Native developer. The Android app is published on the Google Play Store at https://play.google.com/store/apps/details?id=com.hikayatdailyglobal.

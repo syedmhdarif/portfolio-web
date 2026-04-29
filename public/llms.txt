@@ -1,18 +1,21 @@
-# Syed Mohamad Arif — Portfolio
+# Syed Mohamad Arif — Freelance Mobile App & Web Developer in Malaysia
 
-> Frontend & Mobile Developer based in Kuala Lumpur, Malaysia. Creator of Hikayat Daily Global, Hikayat Diri, and LokalGig. 5 years of experience building high-performance mobile apps and web platforms with React Native, React, and TypeScript.
+> Freelance mobile app and web developer based in Kuala Lumpur, Malaysia. 5 years of experience building React Native, React, and Next.js apps for Malaysian and international clients. Creator of Hikayat Daily Global, Hikayat Diri, and LokalGig.
 
 ## About
 
-Syed Mohamad Arif is a Frontend & Mobile Developer specializing in React Native for cross-platform mobile apps and React / Next.js for the web. He works across the full product lifecycle — UI/UX design and prototyping in Figma, development in TypeScript, testing, CI/CD, and store / cloud deployment. Currently a Mobile App Developer at Paywatch Malaysia.
+Syed Mohamad Arif is a freelance Mobile App and Web Developer in Kuala Lumpur, Malaysia, specializing in React Native for cross-platform iOS and Android apps and React / Next.js for the web. He works across the full product lifecycle — UI/UX design and prototyping in Figma, development in TypeScript, testing, CI/CD, and store / cloud deployment. Currently a Mobile App Developer at Paywatch Malaysia and available for freelance engagements with Malaysian SMEs, startups, and international clients.
 
 ## Quick facts
 
 - Name: Syed Mohamad Arif (also: Syed Arif, syedmhdarif)
-- Role: Frontend & Mobile Developer
+- Role: Freelance Mobile App Developer · Frontend Developer · React Native Developer · Web App Developer
 - Location: Sentul, Kuala Lumpur, Malaysia
 - Experience: 5 years
 - Current employer: Paywatch Malaysia
+- Languages: English, Bahasa Malaysia
+- Currencies invoiced: MYR, USD
+- Service area: Malaysia (Kuala Lumpur, Petaling Jaya, Shah Alam, Selangor, Penang, Johor) + worldwide remote
 - Notable creations: Hikayat Daily Global, Hikayat Diri, LokalGig
 - Available for: freelance / contract web and mobile app development
 

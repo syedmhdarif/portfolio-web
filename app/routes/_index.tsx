@@ -1,9 +1,10 @@
 import type { Route } from "./+types/_index";
 import { Portfolio } from "../components/Portfolio";
 
-const TITLE = "Syed Mohamad Arif – Frontend & Mobile Developer | Creator of Hikayat Daily";
+const TITLE = "Freelance Mobile App Developer Malaysia | Syed Mohamad Arif";
 const DESCRIPTION =
-  "Syed Mohamad Arif is a Frontend & React Native developer based in Kuala Lumpur, Malaysia. Creator of Hikayat Daily Global, Hikayat Diri, and LokalGig. 5 years of experience building high-performance mobile apps and web platforms with React Native, React, and TypeScript.";
+  "Hire Syed Mohamad Arif — a freelance mobile app and web developer in Kuala Lumpur, Malaysia. 5 years building React Native, React, and Next.js apps for Malaysian and international clients. Creator of Hikayat Daily Global, Hikayat Diri, and LokalGig.";
+const OG_TITLE = "Syed Mohamad Arif – Mobile App & Web Developer in Malaysia";
 const URL = "https://syedmohamadarif.site/";
 const OG_IMAGE = "https://syedmohamadarif.site/og-image.png";
 
@@ -12,7 +13,7 @@ export function meta(_: Route.MetaArgs) {
     { title: TITLE },
     { name: "description", content: DESCRIPTION },
     { tagName: "link", rel: "canonical", href: URL },
-    { property: "og:title", content: TITLE },
+    { property: "og:title", content: OG_TITLE },
     { property: "og:description", content: DESCRIPTION },
     { property: "og:type", content: "profile" },
     { property: "og:url", content: URL },
@@ -23,7 +24,7 @@ export function meta(_: Route.MetaArgs) {
     { property: "profile:username", content: "syedmhdarif" },
     { name: "twitter:card", content: "summary_large_image" },
     { name: "twitter:image", content: OG_IMAGE },
-    { name: "twitter:title", content: TITLE },
+    { name: "twitter:title", content: OG_TITLE },
     { name: "twitter:description", content: DESCRIPTION },
   ];
 }
