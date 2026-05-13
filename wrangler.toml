@@ -2,3 +2,20 @@ name = "syed-arif-portfolio-web-worker"
 compatibility_date = "2024-12-30"
 compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = "./build/client"
+
+# Security and trust headers (P2 — SEO audit)
+# These strengthen trust, especially because the site presents security learning content.
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=()"
+    X-Frame-Options = "DENY"
+
+# Long cache for hashed assets (Vite fingerprints these)
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

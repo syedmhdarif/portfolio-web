@@ -164,3 +164,32 @@ body {
 .article-content .glass-card + .glass-card {
   margin-top: 1.5rem;
 }
+
+/* FAQ accordion — hide native marker */
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Reduced motion — respects user preference for less animation */
+@media (prefers-reduced-motion: reduce) {
+  .float,
+  .float-delayed {
+    animation: none;
+  }
+
+  .pulse-dot {
+    animation: none;
+  }
+
+  .hover-lift:hover {
+    transform: none;
+  }
+
+  .animate-bounce {
+    animation: none;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}

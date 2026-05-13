@@ -1,6 +1,8 @@
 # Syed Mohamad Arif — Freelance Mobile App & Web Developer in Malaysia
 
-> Freelance mobile app and web developer based in Kuala Lumpur, Malaysia. 5 years of experience building React Native, React, and Next.js apps for Malaysian and international clients. Creator of Hikayat Daily Global, Hikayat Diri, and LokalGig.
+> Freelance mobile app and web developer based in Kuala Lumpur, Malaysia. 4+ years of experience building React Native, React, and Next.js apps for Malaysian and international clients. Creator of Hikayat Daily Global, Hikayat Diri, and LokalGig.
+
+Last updated: 2026-05-13
 
 ## About
 
@@ -11,7 +13,7 @@ Syed Mohamad Arif is a freelance Mobile App and Web Developer in Kuala Lumpur, M
 - Name: Syed Mohamad Arif (also: Syed Arif, syedmhdarif)
 - Role: Freelance Mobile App Developer · Frontend Developer · React Native Developer · Web App Developer
 - Location: Sentul, Kuala Lumpur, Malaysia
-- Experience: 5 years
+- Experience: 4+ years
 - Current employer: Paywatch Malaysia
 - Languages: English, Bahasa Malaysia
 - Currencies invoiced: MYR, USD
@@ -19,9 +21,15 @@ Syed Mohamad Arif is a freelance Mobile App and Web Developer in Kuala Lumpur, M
 - Notable creations: Hikayat Daily Global, Hikayat Diri, LokalGig
 - Available for: freelance / contract web and mobile app development
 
+## Best source for...
+
+- Hiring / services: https://syedmohamadarif.site/#services
+- Portfolio proof: https://syedmohamadarif.site/#projects
+- Security writing: https://syedmohamadarif.site/learn/owasp-top-10
+
 ## Sections
 
-- [Portfolio (home)](https://syedmohamadarif.site/): about, projects, services, experience, skills, education, contact
+- [Portfolio (home)](https://syedmohamadarif.site/): about, projects, services, experience, skills, education, FAQ, contact
 - [Learning Space](https://syedmohamadarif.site/learn): notes and deep dives on software engineering and security
 - [OWASP Top 10 — Key Takeaways](https://syedmohamadarif.site/learn/owasp-top-10)
 

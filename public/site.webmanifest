@@ -1,11 +1,11 @@
 {
   "name": "Syed Mohamad Arif - Portfolio",
   "short_name": "Syed Arif",
-  "description": "Frontend & Mobile Developer | Creator of Hikayat Daily",
+  "description": "Freelance Mobile App & Web Developer in Malaysia | Creator of Hikayat Daily Global, Hikayat Diri, and LokalGig",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#3b82f6",
+  "background_color": "#0f0f23",
+  "theme_color": "#8b5cf6",
   "icons": [
     {
       "src": "/icon-180.png",

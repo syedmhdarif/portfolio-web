@@ -8,7 +8,7 @@
   <!-- Home / Portfolio -->
   <url>
     <loc>https://syedmohamadarif.site/</loc>
-    <lastmod>2026-04-29</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -27,6 +27,22 @@
     <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+
+  <!-- LLMs.txt — AI-readable site content -->
+  <url>
+    <loc>https://syedmohamadarif.site/llms.txt</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- LLMs-full.txt — comprehensive AI-readable details -->
+  <url>
+    <loc>https://syedmohamadarif.site/llms-full.txt</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
   </url>
 
 </urlset>

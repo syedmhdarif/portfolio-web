@@ -1,12 +1,20 @@
-import { Phone, Mail, MapPin, Linkedin, Github, PlayStore, Code, Briefcase, GraduationCap, Sparkles, ExternalLink, BookOpen } from "./icons";
+import { Phone, Mail, MapPin, Linkedin, Github, PlayStore, Code, Briefcase, GraduationCap, Sparkles, ExternalLink, BookOpen, ChevronRight } from "./icons";
 import { Link } from "react-router";
 import { MobileNav } from "./MobileNav";
-import profileImage from "../assets/syedArif.png";
+import profileImage from "../assets/syedArif.webp";
 import hikayatAppIcon from "../assets/hikayatDailyWhiteBg.png";
 import citysageImage from "../assets/citysage.png";
 import interactiveRoomImage from "../assets/Interactive-room.png";
 import hikayatDiriImage from "../assets/Hikayat-diri-logo.png";
 import lokalgigIcon from "../assets/Lokalgig-icon.png";
+import {
+  EXPERIENCE_YEARS,
+  EXPERIENCE_YEARS_LONG,
+  LOCATION_SHORT,
+  CURRENT_ROLE,
+  CURRENT_EMPLOYER,
+  HOMEPAGE_FAQ,
+} from "../content/site";
 
 export function Portfolio() {
   return (
@@ -82,12 +90,15 @@ export function Portfolio() {
                     alt="Syed Mohamad Arif - Mobile & Frontend Developer"
                     className="w-full h-full object-cover"
                     loading="eager"
+                    fetchPriority="high"
+                    width={800}
+                    height={861}
                   />
                 </div>
                 {/* Floating badges - positioned safely inside on mobile */}
                 <div className="absolute right-0 sm:-right-4 top-2 sm:top-1/4 glass-card px-3 py-1.5 sm:px-4 sm:py-2 flex items-center gap-1.5 sm:gap-2 float">
                   <span className="text-lg sm:text-2xl">🚀</span>
-                  <span className="text-xs sm:text-sm font-medium">4+ Years</span>
+                  <span className="text-xs sm:text-sm font-medium">{EXPERIENCE_YEARS} Years</span>
                 </div>
                 <div className="absolute left-0 sm:-left-4 bottom-2 sm:bottom-1/4 glass-card px-3 py-1.5 sm:px-4 sm:py-2 flex items-center gap-1.5 sm:gap-2 float-delayed">
                   <span className="text-lg sm:text-2xl">📱</span>
@@ -105,13 +116,16 @@ export function Portfolio() {
 
               <div className="space-y-3 md:space-y-4">
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1]">
-                  Hi, I'm{" "}
-                  <span className="gradient-text">Syed Arif</span>
+                  <span className="gradient-text">Syed Mohamad Arif</span>
                 </h1>
                 <p className="text-base sm:text-lg md:text-2xl text-text-secondary leading-relaxed max-w-xl mx-auto lg:mx-0">
-                  Mobile & Frontend Developer crafting beautiful, performant applications with{" "}
-                  <span className="text-accent">React Native</span> &{" "}
-                  <span className="text-gradient-mid">React</span>
+                  Freelance Mobile App & Web Developer in{" "}
+                  <span className="text-accent">Malaysia</span>
+                </p>
+                <p className="text-sm sm:text-base text-text-muted leading-relaxed max-w-xl mx-auto lg:mx-0">
+                  Crafting beautiful, performant applications with{" "}
+                  <span className="text-text-secondary">React Native</span> &{" "}
+                  <span className="text-text-secondary">React</span>
                 </p>
               </div>
 
@@ -205,7 +219,7 @@ export function Portfolio() {
                 <meta itemProp="address" content="Kuala Lumpur, Malaysia" />
                 <p className="text-lg leading-relaxed text-text-secondary" itemProp="description">
                   I'm <span className="text-text-primary font-medium">Syed Mohamad Arif</span>, a dedicated Frontend Developer based in{" "}
-                  <span className="text-accent">Kuala Lumpur, Malaysia</span> with 4+ years of experience specializing in{" "}
+                  <span className="text-accent">{LOCATION_SHORT}</span> with {EXPERIENCE_YEARS_LONG} of experience specializing in{" "}
                   <span className="text-text-primary font-medium">React Native</span> for mobile apps and{" "}
                   <span className="text-text-primary font-medium">React</span> for web platforms.
                 </p>
@@ -225,7 +239,7 @@ export function Portfolio() {
                       <Briefcase className="w-6 h-6 text-accent" />
                     </div>
                     <div>
-                      <p className="text-3xl font-bold text-text-primary">4+</p>
+                      <p className="text-3xl font-bold text-text-primary">{EXPERIENCE_YEARS}</p>
                       <p className="text-text-muted text-sm">Years Experience</p>
                     </div>
                   </div>
@@ -857,6 +871,33 @@ export function Portfolio() {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section — visible content matching homepage FAQPage JSON-LD */}
+        <section id="faq" className="py-16 md:py-24 scroll-mt-20" aria-labelledby="faq-title">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
+            <div className="text-center mb-10 md:mb-16">
+              <h2 id="faq-title" className="section-title">Frequently Asked Questions</h2>
+              <p className="section-subtitle">Common questions about my services</p>
+            </div>
+
+            <div className="max-w-3xl mx-auto space-y-4">
+              {HOMEPAGE_FAQ.map((qa, index) => (
+                <details
+                  key={index}
+                  className="glass-card group"
+                >
+                  <summary className="flex items-center justify-between cursor-pointer p-6 text-text-primary font-medium text-lg hover:text-accent transition-colors list-none">
+                    <span>{qa.question}</span>
+                    <ChevronRight className="w-5 h-5 text-text-muted group-open:rotate-90 transition-transform duration-200 shrink-0 ml-4" />
+                  </summary>
+                  <div className="px-6 pb-6 pt-0">
+                    <p className="text-text-secondary leading-relaxed">{qa.answer}</p>
+                  </div>
+                </details>
+              ))}
             </div>
           </div>
         </section>
