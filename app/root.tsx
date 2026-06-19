@@ -9,6 +9,9 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
+import { Header } from "./components/Header";
+import { Footer } from "./components/Footer";
+import { PageTransition } from "./components/motion/PageTransition";
 
 export const links: Route.LinksFunction = () => [
   { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32.png" },
@@ -22,9 +25,13 @@ export const links: Route.LinksFunction = () => [
   },
   {
     rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
+    href: "https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400..900;1,400..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Sacramento&display=swap",
   },
 ];
+
+// Set the colour theme before first paint to avoid a flash of the wrong theme.
+// Reads an explicit user choice from localStorage, else falls back to the OS preference.
+const NO_FLASH_THEME = `(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light'){document.documentElement.setAttribute('data-theme',t);}else if(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();`;
 
 // In React Router v7, a child route's meta() REPLACES the parent's meta (it does not merge by default).
 // Site-wide static tags are therefore rendered directly in <head> below so they appear on every route.
@@ -38,6 +45,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
+        <script dangerouslySetInnerHTML={{ __html: NO_FLASH_THEME }} />
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         {/* Site-wide static meta — render here so they appear on every route (root.tsx meta() export is overridden by child routes in RR v7) */}
@@ -166,7 +174,15 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <>
+      <Header />
+      <PageTransition>
+        <Outlet />
+      </PageTransition>
+      <Footer />
+    </>
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {

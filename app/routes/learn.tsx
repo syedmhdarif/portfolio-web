@@ -1,6 +1,9 @@
+import { useState } from "react";
 import type { Route } from "./+types/learn";
 import { Link } from "react-router";
-import { ArrowLeft, BookOpen, Shield, Clock, ChevronRight } from "../components/icons";
+import { Shield, Clock, ArrowUpRight } from "../components/icons";
+import { Reveal, Stagger, StaggerItem } from "../components/motion";
+import { SectionHeading } from "../components/SectionHeading";
 
 const PAGE_TITLE = "Learning Space – Notes on Software Engineering & Security | Syed Mohamad Arif";
 const PAGE_DESCRIPTION =
@@ -79,149 +82,124 @@ const topics = [
   },
 ];
 
+const [featured, ...rest] = topics;
+const CATEGORIES = ["All", ...Array.from(new Set(topics.map((t) => t.category)))];
+
 export default function LearnPage() {
+  const [filter, setFilter] = useState("All");
+  const visible = filter === "All" ? rest : rest.filter((t) => t.category === filter);
+
   return (
-    <div className="min-h-screen bg-surface">
-      {/* Navigation */}
-      <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50">
-        <div className="glass-card px-2 py-2 flex items-center gap-1">
-          <Link
-            to="/"
-            className="px-4 py-2 text-sm font-medium text-text-secondary hover:text-accent transition-colors"
-          >
-            Home
-          </Link>
-          <Link
-            to="/learn"
-            className="px-4 py-2 text-sm font-medium text-text-primary"
-          >
-            Learn
-          </Link>
-        </div>
-      </nav>
+    <main>
+      {/* Hero */}
+      <section className="wrap pt-28 pb-4 md:pt-36" aria-label="Learning space intro">
+        <Reveal>
+          <span className="eyebrow">Learning space</span>
+          <h1 className="display mt-4 text-5xl sm:text-6xl">
+            Notes &amp; deep dives.
+          </h1>
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-2">
+            Takeaways from topics I've been exploring across software
+            engineering and security — because the best way to learn is to
+            teach.
+          </p>
+        </Reveal>
+      </section>
 
-      {/* Hero Header */}
-      <header className="mesh-gradient pt-32 pb-20 relative overflow-hidden">
-        <div className="max-w-5xl mx-auto px-6">
+      {/* Featured */}
+      <section className="wrap section" aria-label="Featured article">
+        <Reveal>
           <Link
-            to="/"
-            className="inline-flex items-center gap-2 text-text-muted hover:text-accent transition-colors mb-8"
+            to={`/learn/${featured.slug}`}
+            className="card group block overflow-hidden md:grid md:grid-cols-12"
           >
-            <ArrowLeft className="w-4 h-4" />
-            <span className="text-sm">Back to Portfolio</span>
-          </Link>
-
-          <div className="space-y-4">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20">
-              <BookOpen className="w-4 h-4 text-accent" />
-              <span className="text-sm text-text-secondary">
-                Continuous Learning
+            <div className="grid place-items-center bg-paper-3 p-12 md:col-span-4">
+              <featured.icon className="h-16 w-16 text-amber-text transition-transform duration-500 group-hover:scale-110" />
+            </div>
+            <div className="p-7 md:col-span-8 md:p-10">
+              <div className="flex items-center gap-3">
+                <span className="tag text-xs">{featured.category}</span>
+                <span className="flex items-center gap-1.5 text-sm text-ink-3">
+                  <Clock className="h-4 w-4" />
+                  {featured.readTime}
+                </span>
+                <span className="eyebrow text-amber-text">Featured</span>
+              </div>
+              <h2 className="display mt-4 text-3xl transition-colors group-hover:text-amber-text sm:text-4xl">
+                {featured.title}
+              </h2>
+              <p className="mt-4 leading-relaxed text-ink-2">{featured.description}</p>
+              <span className="mt-6 inline-flex items-center gap-2 font-medium text-ink">
+                Read the notes
+                <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </span>
             </div>
+          </Link>
+        </Reveal>
+      </section>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-              My{" "}
-              <span className="gradient-text">Learning Space</span>
-            </h1>
-            <p className="text-lg md:text-xl text-text-secondary max-w-2xl leading-relaxed">
-              Notes, takeaways, and deep dives from topics I've been exploring.
-              Because the best way to learn is to teach.
-            </p>
-          </div>
-        </div>
-      </header>
+      {/* Index */}
+      <section className="wrap section pt-0" aria-label="All topics">
+        <SectionHeading
+          eyebrow="All topics"
+          title="Browse the library."
+          className="mb-8"
+        />
 
-      {/* Topics Grid */}
-      <main className="max-w-5xl mx-auto px-6 py-16">
-        <div className="flex items-center justify-between mb-10">
-          <div>
-            <h2 className="text-2xl font-bold text-text-primary">Topics</h2>
-            <p className="text-text-muted text-sm mt-1">
-              {topics.length} {topics.length === 1 ? "article" : "articles"} so
-              far
-            </p>
-          </div>
-        </div>
-
-        <div className="grid gap-6">
-          {topics.map((topic) => {
-            const Icon = topic.icon;
-            return (
-              <Link
-                key={topic.slug}
-                to={`/learn/${topic.slug}`}
-                className="glass-card p-6 md:p-8 hover-lift group block"
-              >
-                <div className="flex flex-col md:flex-row md:items-start gap-6">
-                  {/* Icon */}
-                  <div className="w-14 h-14 rounded-2xl bg-accent/20 flex items-center justify-center shrink-0 group-hover:bg-accent/30 transition-colors">
-                    <Icon className="w-7 h-7 text-accent" />
-                  </div>
-
-                  {/* Content */}
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-3 mb-2">
-                      <span className="inline-flex px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-medium">
-                        {topic.category}
-                      </span>
-                      <span className="flex items-center gap-1 text-text-muted text-xs">
-                        <Clock className="w-3.5 h-3.5" />
-                        {topic.readTime}
-                      </span>
-                    </div>
-
-                    <h3 className="text-xl md:text-2xl font-bold text-text-primary mb-2 group-hover:text-accent transition-colors">
-                      {topic.title}
-                    </h3>
-
-                    <p className="text-text-secondary leading-relaxed mb-4">
-                      {topic.description}
-                    </p>
-
-                    <div className="flex flex-wrap items-center gap-2">
-                      {topic.tags.map((tag) => (
-                        <span key={tag} className="skill-badge text-xs">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Arrow */}
-                  <div className="hidden md:flex items-center self-center">
-                    <ChevronRight className="w-5 h-5 text-text-muted group-hover:text-accent group-hover:translate-x-1 transition-all" />
-                  </div>
-                </div>
-              </Link>
-            );
-          })}
-        </div>
-
-        {/* Coming Soon Placeholder */}
-        <div className="mt-8 glass-card p-8 border-dashed text-center">
-          <p className="text-text-muted text-lg">More topics coming soon...</p>
-          <p className="text-text-muted text-sm mt-2">
-            I'm always learning something new. Stay tuned!
-          </p>
-        </div>
-      </main>
-
-      {/* Footer */}
-      <footer className="py-8 border-t border-border">
-        <div className="max-w-5xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-text-muted text-sm">
-              &copy; 2025 Syed Mohamad Arif. All rights reserved.
-            </p>
-            <Link
-              to="/"
-              className="text-text-muted text-sm hover:text-accent transition-colors"
+        {/* Category filter */}
+        <div className="mb-10 flex flex-wrap gap-2" role="tablist" aria-label="Filter by category">
+          {CATEGORIES.map((c) => (
+            <button
+              key={c}
+              type="button"
+              role="tab"
+              aria-selected={filter === c}
+              onClick={() => setFilter(c)}
+              className={`rounded-full border px-4 py-2 text-sm font-medium transition-colors ${
+                filter === c
+                  ? "border-ink bg-ink text-paper"
+                  : "border-line text-ink-2 hover:border-ink-3 hover:text-ink"
+              }`}
             >
-              Back to Portfolio
-            </Link>
-          </div>
+              {c}
+            </button>
+          ))}
         </div>
-      </footer>
-    </div>
+
+        {visible.length > 0 ? (
+          <Stagger className="grid gap-6 md:grid-cols-2" stagger={0.08}>
+            {visible.map((topic) => (
+              <StaggerItem
+                as="article"
+                key={topic.slug}
+                className="card group flex flex-col p-7"
+              >
+                <Link to={`/learn/${topic.slug}`} className="flex h-full flex-col">
+                  <div className="flex items-center gap-3">
+                    <topic.icon className="h-6 w-6 text-amber-text" />
+                    <span className="tag text-xs">{topic.category}</span>
+                  </div>
+                  <h3 className="mt-4 text-xl font-bold text-ink group-hover:text-amber-text">
+                    {topic.title}
+                  </h3>
+                  <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-2">
+                    {topic.description}
+                  </p>
+                </Link>
+              </StaggerItem>
+            ))}
+          </Stagger>
+        ) : (
+          <Reveal>
+            <div className="rounded-lg border border-dashed border-line p-10 text-center">
+              <p className="text-lg text-ink-2">More topics coming soon.</p>
+              <p className="mt-2 text-sm text-ink-3">
+                I'm always learning something new — check back later.
+              </p>
+            </div>
+          </Reveal>
+        )}
+      </section>
+    </main>
   );
 }

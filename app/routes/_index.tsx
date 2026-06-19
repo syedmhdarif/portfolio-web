@@ -1,5 +1,10 @@
 import type { Route } from "./+types/_index";
-import { Portfolio } from "../components/Portfolio";
+import { Hero } from "../components/home/Hero";
+import { About } from "../components/home/About";
+import { Work } from "../components/home/Work";
+import { Services } from "../components/home/Services";
+import { Contact } from "../components/home/Contact";
+import { Faq } from "../components/home/Faq";
 import {
   SITE_URL,
   OG_IMAGE_URL,
@@ -205,5 +210,14 @@ export function meta(_: Route.MetaArgs) {
 }
 
 export default function Home() {
-  return <Portfolio />;
+  return (
+    <main>
+      <Hero />
+      <About />
+      <Work />
+      <Services />
+      <Contact />
+      <Faq />
+    </main>
+  );
 }

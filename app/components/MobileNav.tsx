@@ -1,26 +1,21 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router";
-import { Mail, Menu, X } from "./icons";
+import { Menu, X } from "./icons";
+import { ThemeToggle } from "./ThemeToggle";
+import { NAV_ITEMS } from "./nav-items";
+import { LOCATION_SHORT } from "../content/site";
 
-type NavLink = {
-  label: string;
-  href?: string;
-  to?: string;
-};
-
-const NAV_LINKS: NavLink[] = [
-  { label: "Home", href: "#" },
-  { label: "About", href: "#about" },
-  { label: "Projects", href: "#projects" },
-  { label: "Services", href: "#services" },
-  { label: "Experience", href: "#experience" },
-  { label: "Skills", href: "#skills" },
-  { label: "Learn", to: "/learn" },
-];
-
+/**
+ * Mobile navigation: hamburger trigger + full-height drawer.
+ * Accessibility: focus trap, Escape to close, body scroll lock, focus restore.
+ * Only rendered on small screens (md:hidden); the desktop nav lives in Header.
+ */
 export function MobileNav() {
   const [open, setOpen] = useState(false);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const drawerRef = useRef<HTMLDivElement>(null);
 
+  // Lock body scroll while open
   useEffect(() => {
     if (!open) return;
     const original = document.body.style.overflow;
@@ -30,88 +25,103 @@ export function MobileNav() {
     };
   }, [open]);
 
+  // Escape to close + focus trap
   useEffect(() => {
     if (!open) return;
+    const drawer = drawerRef.current;
+    const focusables = drawer?.querySelectorAll<HTMLElement>(
+      'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+    );
+    focusables?.[0]?.focus();
+
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
+      if (e.key === "Escape") {
+        setOpen(false);
+        return;
+      }
+      if (e.key === "Tab" && focusables && focusables.length > 0) {
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
     };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [open]);
+
+  // Restore focus to trigger on close
+  useEffect(() => {
+    if (!open) triggerRef.current?.focus({ preventScroll: true });
   }, [open]);
 
   return (
-    <>
-      <div className="md:hidden fixed top-4 left-4 right-4 z-50 flex items-center justify-between glass-card px-4 py-3">
-        <a href="#" className="font-bold text-text-primary" aria-label="Home">
-          <span className="gradient-text text-lg">Syed Arif</span>
-        </a>
-        <button
-          type="button"
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-          aria-controls="mobile-nav-drawer"
-          onClick={() => setOpen((v) => !v)}
-          className="w-11 h-11 -mr-2 flex items-center justify-center text-text-primary hover:text-accent transition-colors"
-        >
-          {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
-      </div>
+    <div className="md:hidden">
+      <button
+        ref={triggerRef}
+        type="button"
+        aria-label={open ? "Close menu" : "Open menu"}
+        aria-expanded={open}
+        aria-controls="mobile-nav-drawer"
+        onClick={() => setOpen((v) => !v)}
+        className="grid h-10 w-10 place-items-center rounded-full border border-line text-ink transition-colors hover:border-ink-3"
+      >
+        {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+      </button>
 
       <div
         id="mobile-nav-drawer"
         role="dialog"
         aria-modal="true"
         aria-label="Site navigation"
-        className={`md:hidden fixed inset-0 z-40 transition-opacity duration-300 ${
-          open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        className={`fixed inset-0 z-40 transition-opacity duration-300 ${
+          open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
         }`}
       >
-        <div
-          className="absolute inset-0 bg-surface/80 backdrop-blur-md"
+        <button
+          type="button"
+          tabIndex={-1}
+          aria-hidden="true"
+          className="absolute inset-0 h-full w-full cursor-default bg-ink/40 backdrop-blur-sm"
           onClick={() => setOpen(false)}
         />
-        <nav
-          className={`absolute top-0 left-0 right-0 pt-24 pb-8 px-6 bg-surface-light border-b border-border transition-transform duration-300 ${
-            open ? "translate-y-0" : "-translate-y-full"
+        <div
+          ref={drawerRef}
+          className={`absolute inset-y-0 right-0 flex w-[86%] max-w-sm flex-col bg-paper px-6 pb-10 pt-24 shadow-lg transition-transform duration-300 ${
+            open ? "translate-x-0" : "translate-x-full"
           }`}
         >
-          <ul className="flex flex-col gap-1">
-            {NAV_LINKS.map((link) =>
-              link.to ? (
-                <li key={link.label}>
+          <nav aria-label="Mobile">
+            <ul className="flex flex-col">
+              {NAV_ITEMS.map((item, i) => (
+                <li key={item.label} className="border-b border-line">
                   <Link
-                    to={link.to}
+                    to={item.to}
                     onClick={() => setOpen(false)}
-                    className="block px-4 py-3 rounded-xl text-base font-medium text-text-secondary hover:text-accent hover:bg-surface-elevated transition-colors"
+                    className="display block py-4 text-4xl text-ink transition-colors hover:text-amber-text"
+                    style={{ transitionDelay: open ? `${i * 30}ms` : "0ms" }}
                   >
-                    {link.label}
+                    {item.label}
                   </Link>
                 </li>
-              ) : (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    onClick={() => setOpen(false)}
-                    className="block px-4 py-3 rounded-xl text-base font-medium text-text-secondary hover:text-accent hover:bg-surface-elevated transition-colors"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              )
-            )}
-            <li className="mt-3">
-              <a
-                href="#contact"
-                onClick={() => setOpen(false)}
-                className="flex items-center justify-center gap-2 px-4 py-3 bg-accent hover:bg-accent-dark text-white font-medium rounded-xl transition-colors"
-              >
-                <Mail className="w-5 h-5" />
-                Contact
-              </a>
-            </li>
-          </ul>
-        </nav>
+              ))}
+            </ul>
+          </nav>
+
+          <div className="mt-auto flex items-center justify-between pt-8">
+            <span className="chip">
+              <span className="chip-dot" aria-hidden="true" />
+              Open to work · {LOCATION_SHORT.split(",")[0]}
+            </span>
+            <ThemeToggle />
+          </div>
+        </div>
       </div>
-    </>
+    </div>
   );
 }

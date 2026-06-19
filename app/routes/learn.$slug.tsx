@@ -1,6 +1,7 @@
 import type { Route } from "./+types/learn.$slug";
 import { Link, useParams } from "react-router";
-import { ArrowLeft, BookOpen, Shield, Clock } from "../components/icons";
+import { ArrowLeft, ArrowUpRight, Shield, Clock } from "../components/icons";
+import { Reveal } from "../components/motion";
 
 type ArticleMeta = {
   title: string;
@@ -188,155 +189,101 @@ export default function ArticlePage() {
 
   if (!article) {
     return (
-      <div className="min-h-screen bg-surface flex items-center justify-center">
-        <div className="text-center space-y-4">
-          <h1 className="text-4xl font-bold text-text-primary">
-            Article not found
-          </h1>
-          <Link
-            to="/learn"
-            className="inline-flex items-center gap-2 text-accent hover:text-accent-light transition-colors"
-          >
-            <ArrowLeft className="w-4 h-4" />
+      <main className="wrap grid min-h-[60vh] place-items-center">
+        <div className="space-y-4 text-center">
+          <h1 className="display text-5xl">Article not found</h1>
+          <Link to="/learn" className="link-underline inline-flex items-center gap-2 font-medium">
+            <ArrowLeft className="h-4 w-4" />
             Back to Learning Space
           </Link>
         </div>
-      </div>
+      </main>
     );
   }
 
   const Content = article.content;
 
   return (
-    <div className="min-h-screen bg-surface">
-      {/* Navigation */}
-      <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50">
-        <div className="glass-card px-2 py-2 flex items-center gap-1">
-          <Link
-            to="/"
-            className="px-4 py-2 text-sm font-medium text-text-secondary hover:text-accent transition-colors"
-          >
-            Home
-          </Link>
-          <Link
-            to="/learn"
-            className="px-4 py-2 text-sm font-medium text-text-secondary hover:text-accent transition-colors"
-          >
-            Learn
-          </Link>
-        </div>
-      </nav>
+    <main>
+      {/* Article header */}
+      <header className="wrap pt-28 md:pt-36">
+        <Reveal>
+          <nav aria-label="Breadcrumb" className="mb-8 flex items-center gap-2 text-sm text-ink-3">
+            <Link to="/learn" className="transition-colors hover:text-ink">
+              Learn
+            </Link>
+            <span aria-hidden="true">/</span>
+            <span className="text-ink-2">{article.category}</span>
+          </nav>
 
-      {/* Article Header */}
-      <header className="mesh-gradient pt-32 pb-16 relative overflow-hidden">
-        <div className="max-w-4xl mx-auto px-6">
-          <Link
-            to="/learn"
-            className="inline-flex items-center gap-2 text-text-muted hover:text-accent transition-colors mb-8"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span className="text-sm">Back to Learning Space</span>
-          </Link>
-
-          <div className="space-y-4">
-            <div className="flex flex-wrap items-center gap-3">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent text-sm font-medium">
-                <Shield className="w-3.5 h-3.5" />
-                {article.category}
-              </span>
-              <span className="flex items-center gap-1.5 text-text-muted text-sm">
-                <Clock className="w-3.5 h-3.5" />
-                {article.readTime}
-              </span>
-            </div>
-
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-text-primary">
-              {article.title}
-            </h1>
-            <p className="text-lg text-text-secondary max-w-2xl leading-relaxed">
-              {article.description}
-            </p>
+          <div className="flex flex-wrap items-center gap-3">
+            <span className="tag inline-flex items-center gap-1.5 text-xs">
+              <Shield className="h-3.5 w-3.5" />
+              {article.category}
+            </span>
+            <span className="flex items-center gap-1.5 text-sm text-ink-3">
+              <Clock className="h-3.5 w-3.5" />
+              {article.readTime}
+            </span>
           </div>
-        </div>
+
+          <h1 className="display mt-5 max-w-3xl text-4xl sm:text-5xl">{article.title}</h1>
+          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ink-2">
+            {article.description}
+          </p>
+        </Reveal>
       </header>
 
-      {/* Article Content */}
-      <main className="max-w-4xl mx-auto px-6 py-16">
-        <article className="article-content">
+      {/* Article content */}
+      <div className="wrap pb-8 pt-12 md:pt-16">
+        <article className="article-content mx-auto max-w-3xl">
           <Content />
         </article>
 
-        {/* Bottom Navigation */}
-        <div className="mt-16 pt-8 border-t border-border flex items-center justify-between">
-          <Link
-            to="/learn"
-            className="inline-flex items-center gap-2 text-text-muted hover:text-accent transition-colors"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span>All Topics</span>
+        {/* Bottom navigation */}
+        <div className="mx-auto mt-16 flex max-w-3xl items-center justify-between border-t border-line pt-8">
+          <Link to="/learn" className="inline-flex items-center gap-2 text-ink-2 transition-colors hover:text-ink">
+            <ArrowLeft className="h-4 w-4" />
+            <span>All topics</span>
           </Link>
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-surface-elevated border border-border hover:border-accent text-text-primary font-medium rounded-xl transition-all hover:scale-105"
-          >
-            <BookOpen className="w-4 h-4" />
+          <Link to="/" className="btn btn-ghost">
             Portfolio
+            <ArrowUpRight className="h-4 w-4" />
           </Link>
         </div>
-      </main>
-
-      {/* Footer */}
-      <footer className="py-8 border-t border-border">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-text-muted text-sm">
-              &copy; 2025 Syed Mohamad Arif. All rights reserved.
-            </p>
-            <Link
-              to="/"
-              className="text-text-muted text-sm hover:text-accent transition-colors"
-            >
-              Back to Portfolio
-            </Link>
-          </div>
-        </div>
-      </footer>
-    </div>
+      </div>
+    </main>
   );
 }
 
 /* ─── OWASP Article Content ─── */
 
 function SectionCard({ children }: { children: React.ReactNode }) {
-  return <div className="glass-card p-6 md:p-8 mb-8">{children}</div>;
+  return (
+    <Reveal>
+      <div className="card mb-8 p-6 md:p-8">{children}</div>
+    </Reveal>
+  );
 }
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
-  return (
-    <h2 className="text-2xl md:text-3xl font-bold text-text-primary mb-4">
-      {children}
-    </h2>
-  );
+  return <h2 className="display mb-4 text-2xl md:text-3xl">{children}</h2>;
 }
 
 function SubTitle({ children }: { children: React.ReactNode }) {
-  return (
-    <h3 className="text-xl font-bold text-text-primary mb-3">{children}</h3>
-  );
+  return <h3 className="mb-3 mt-6 text-xl font-bold text-ink">{children}</h3>;
 }
 
 function Paragraph({ children }: { children: React.ReactNode }) {
-  return (
-    <p className="text-text-secondary leading-relaxed mb-4">{children}</p>
-  );
+  return <p className="mb-4 leading-relaxed text-ink-2">{children}</p>;
 }
 
 function Highlight({ children }: { children: React.ReactNode }) {
-  return <span className="text-accent font-medium">{children}</span>;
+  return <span className="font-medium text-amber-text">{children}</span>;
 }
 
 function Bold({ children }: { children: React.ReactNode }) {
-  return <span className="text-text-primary font-medium">{children}</span>;
+  return <span className="font-semibold text-ink">{children}</span>;
 }
 
 function InfoTable({
@@ -347,15 +294,12 @@ function InfoTable({
   rows: string[][];
 }) {
   return (
-    <div className="overflow-x-auto mb-4">
+    <div className="mb-4 overflow-x-auto rounded-lg border border-line">
       <table className="w-full text-sm">
         <thead>
-          <tr className="border-b border-border">
+          <tr className="border-b border-line bg-paper-3">
             {headers.map((h) => (
-              <th
-                key={h}
-                className="text-left py-3 px-4 text-text-primary font-semibold"
-              >
+              <th key={h} className="px-4 py-3 text-left font-semibold text-ink">
                 {h}
               </th>
             ))}
@@ -363,12 +307,9 @@ function InfoTable({
         </thead>
         <tbody>
           {rows.map((row, i) => (
-            <tr
-              key={i}
-              className="border-b border-border/50 hover:bg-surface-elevated/50 transition-colors"
-            >
+            <tr key={i} className="border-b border-line last:border-b-0">
               {row.map((cell, j) => (
-                <td key={j} className="py-3 px-4 text-text-secondary">
+                <td key={j} className="px-4 py-3 text-ink-2">
                   {cell}
                 </td>
               ))}
@@ -382,16 +323,16 @@ function InfoTable({
 
 function CodeBlock({ children }: { children: React.ReactNode }) {
   return (
-    <pre className="bg-surface-elevated border border-border rounded-xl p-4 mb-4 overflow-x-auto">
-      <code className="text-sm text-text-secondary font-mono">{children}</code>
+    <pre className="mb-4 overflow-x-auto rounded-lg border border-line bg-paper-3 p-4">
+      <code className="font-mono text-sm text-ink-2">{children}</code>
     </pre>
   );
 }
 
 function Callout({ children }: { children: React.ReactNode }) {
   return (
-    <blockquote className="border-l-4 border-accent pl-4 py-2 mb-4 bg-accent/5 rounded-r-lg">
-      <p className="text-text-secondary leading-relaxed italic">{children}</p>
+    <blockquote className="mb-4 rounded-r-lg border-l-2 border-amber bg-paper-3 py-3 pl-4 pr-3">
+      <p className="leading-relaxed text-ink-2">{children}</p>
     </blockquote>
   );
 }
@@ -439,8 +380,8 @@ function OWASPContent() {
             "2 of 10 derived from security practitioner surveys",
             "Focus shifted to root causes (e.g. bad cryptography) over symptoms (e.g. exposed credit card data)",
           ].map((item, i) => (
-            <li key={i} className="flex gap-3 text-text-secondary">
-              <span className="text-accent mt-1 shrink-0">•</span>
+            <li key={i} className="flex gap-3 text-ink-2">
+              <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-amber" aria-hidden="true" />
               <span>{item}</span>
             </li>
           ))}
@@ -594,8 +535,8 @@ Authorization   →  WHAT can you do? (Your permissions)`}
             "CORS misconfiguration exposing APIs to unintended origins",
             "Using unauthorized HTTP methods (e.g. DELETE) on API endpoints",
           ].map((item, i) => (
-            <li key={i} className="flex gap-3 text-text-secondary">
-              <span className="text-accent mt-1 shrink-0">•</span>
+            <li key={i} className="flex gap-3 text-ink-2">
+              <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-amber" aria-hidden="true" />
               <span>{item}</span>
             </li>
           ))}
@@ -672,7 +613,7 @@ Authorization   →  WHAT can you do? (Your permissions)`}
           </Callout>
         </div>
 
-        <p className="text-text-muted text-sm mt-6 italic">
+        <p className="mt-6 text-sm italic text-ink-3">
           Based on the OWASP Top 10 (2021) — InfoSec Skills Learning Path by
           John Wagnon (F5 Networks)
         </p>
