@@ -13,6 +13,14 @@
     <priority>1.0</priority>
   </url>
 
+  <!-- Background — experience, education, skills -->
+  <url>
+    <loc>https://syedmohamadarif.site/background</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Learning Space (index) -->
   <url>
     <loc>https://syedmohamadarif.site/learn</loc>

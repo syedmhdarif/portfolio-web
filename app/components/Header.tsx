@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router";
-import { Monogram } from "./Monogram";
 import { ThemeToggle } from "./ThemeToggle";
 import { MobileNav } from "./MobileNav";
 import { NAV_ITEMS, HOME_SECTION_IDS } from "./nav-items";
@@ -56,19 +55,17 @@ export function Header() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "border-b border-line bg-paper/85 backdrop-blur-md"
-          : "border-b border-transparent"
+      className={`fixed inset-x-0 top-0 z-50 border-b border-line transition-all duration-300 ${
+        scrolled ? "bg-paper/85 backdrop-blur-md" : "bg-transparent"
       }`}
     >
       <div className="wrap flex h-16 items-center justify-between gap-4 md:h-20">
         <Link
           to="/"
           aria-label="Home — Syed Arif"
-          className="text-ink transition-colors hover:text-amber-text"
+          className="display text-xl leading-none text-ink transition-colors hover:text-amber-text md:text-2xl"
         >
-          <Monogram className="h-10 w-10 md:h-11 md:w-11" />
+          Syed Arif<span className="text-amber">.</span>
         </Link>
 
         <nav aria-label="Primary" className="hidden items-center gap-1 md:flex">

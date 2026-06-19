@@ -11,6 +11,7 @@ import type { Route } from "./+types/root";
 import "./app.css";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
+import { Splash } from "./components/Splash";
 import { PageTransition } from "./components/motion/PageTransition";
 
 export const links: Route.LinksFunction = () => [
@@ -176,6 +177,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 export default function App() {
   return (
     <>
+      <Splash />
       <Header />
       <PageTransition>
         <Outlet />

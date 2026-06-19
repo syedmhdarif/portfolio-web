@@ -3,6 +3,13 @@ import { SectionHeading } from "../SectionHeading";
 import { ArrowUpRight } from "../icons";
 import { FEATURED_PROJECT, GRID_PROJECTS, type Project } from "../../content/projects";
 
+/** Tracks the cursor for the glowing-effect border. */
+function onGlowMove(e: React.MouseEvent<HTMLElement>) {
+  const r = e.currentTarget.getBoundingClientRect();
+  e.currentTarget.style.setProperty("--glow-x", `${e.clientX - r.left}px`);
+  e.currentTarget.style.setProperty("--glow-y", `${e.clientY - r.top}px`);
+}
+
 function StatusTag({ project }: { project: Project }) {
   if (!project.statusLabel) return null;
   return (
@@ -127,7 +134,8 @@ function FeaturedProject({ project }: { project: Project }) {
   return (
     <Reveal>
       <article
-        className="card group grid overflow-hidden md:grid-cols-2"
+        onMouseMove={onGlowMove}
+        className="card glow-card group grid overflow-hidden md:grid-cols-2"
         itemScope
         itemType={`https://schema.org/${project.schemaType}`}
       >
@@ -176,7 +184,8 @@ function ProjectCard({ project }: { project: Project }) {
         href={project.href}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex h-full flex-col"
+        onMouseMove={onGlowMove}
+        className="glow-card flex h-full flex-col rounded-lg"
         itemScope
         itemType={`https://schema.org/${project.schemaType}`}
       >
