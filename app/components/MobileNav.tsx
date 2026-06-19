@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { Link } from "react-router";
 import { Menu, X } from "./icons";
 import { ThemeToggle } from "./ThemeToggle";
@@ -12,8 +13,11 @@ import { LOCATION_SHORT } from "../content/site";
  */
 export function MobileNav() {
   const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const drawerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => setMounted(true), []);
 
   // Lock body scroll while open
   useEffect(() => {
@@ -74,15 +78,17 @@ export function MobileNav() {
         {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
       </button>
 
-      <div
-        id="mobile-nav-drawer"
-        role="dialog"
-        aria-modal="true"
-        aria-label="Site navigation"
-        className={`fixed inset-0 z-40 transition-opacity duration-300 ${
-          open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
-        }`}
-      >
+      {mounted &&
+        createPortal(
+          <div
+            id="mobile-nav-drawer"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Site navigation"
+            className={`fixed inset-0 z-[60] transition-opacity duration-300 ${
+              open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
+            }`}
+          >
         <button
           type="button"
           tabIndex={-1}
@@ -121,7 +127,9 @@ export function MobileNav() {
             <ThemeToggle />
           </div>
         </div>
-      </div>
+          </div>,
+          document.body,
+        )}
     </div>
   );
 }

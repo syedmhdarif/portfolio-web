@@ -37,7 +37,7 @@ export function Stagger({
   const triggerProps =
     trigger === "mount"
       ? { animate: "show" }
-      : { whileInView: "show", viewport: { once: true, margin: "0px 0px -10% 0px" } };
+      : { whileInView: "show", viewport: { once: true, amount: 0.2 } };
 
   return (
     <MotionTag

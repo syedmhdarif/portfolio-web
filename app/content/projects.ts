@@ -1,7 +1,5 @@
-import lokalgigIcon from "../assets/Lokalgig-icon.png";
 import hikayatAppIcon from "../assets/hikayatDailyWhiteBg.png";
 import hikayatDiriImage from "../assets/Hikayat-diri-logo.png";
-import citysageImage from "../assets/citysage.png";
 import interactiveRoomImage from "../assets/Interactive-room.png";
 
 export type ProjectStatus = "web" | "playstore" | null;
@@ -38,8 +36,8 @@ export const PROJECTS: Project[] = [
     tech: ["React", "TypeScript", "Tailwind", "Supabase", "Vercel"],
     href: "https://lokalgig.my/",
     hrefLabel: "Visit lokalgig.my",
-    image: lokalgigIcon,
-    fit: "contain",
+    image: "/lokalgig-thumbnail.png",
+    fit: "cover",
     featured: true,
   },
   {
@@ -75,20 +73,6 @@ export const PROJECTS: Project[] = [
     fit: "contain",
   },
   {
-    id: "hikayat-diri-web",
-    name: "Hikayat Diri (Web)",
-    category: "Web Application",
-    schemaType: "WebApplication",
-    status: "web",
-    description:
-      "A personal storytelling web app that brings narratives to life with a clean, elegant reading experience.",
-    tech: ["React", "TypeScript", "Vercel"],
-    href: "https://hikayat-diri-web.vercel.app/",
-    hrefLabel: "View live",
-    image: hikayatDiriImage,
-    fit: "contain",
-  },
-  {
     id: "citysage",
     name: "CitySage",
     category: "Web Application",
@@ -99,8 +83,8 @@ export const PROJECTS: Project[] = [
     tech: ["React", "TypeScript", "Tailwind CSS"],
     href: "https://syedmhdarif.github.io/citysage-web-project/",
     hrefLabel: "View live",
-    image: citysageImage,
-    fit: "contain",
+    image: "/citysage-thumbnail.png",
+    fit: "cover",
   },
   {
     id: "interactive-room",

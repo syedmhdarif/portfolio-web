@@ -25,6 +25,104 @@ function TechTags({ tech }: { tech: string[] }) {
   );
 }
 
+function domainOf(href: string) {
+  try {
+    return new URL(href).hostname.replace(/^www\./, "");
+  } catch {
+    return href;
+  }
+}
+
+/** Desktop browser-window mockup for web projects. */
+function BrowserFrame({
+  domain,
+  children,
+}: {
+  domain: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="w-full overflow-hidden rounded-xl border border-line bg-paper shadow-sm">
+      <div className="flex items-center gap-2 border-b border-line bg-paper-2 px-3 py-2">
+        <span className="flex gap-1.5" aria-hidden="true">
+          <span className="h-2.5 w-2.5 rounded-full bg-ink-3/40" />
+          <span className="h-2.5 w-2.5 rounded-full bg-ink-3/40" />
+          <span className="h-2.5 w-2.5 rounded-full bg-ink-3/40" />
+        </span>
+        <span className="ml-1 flex-1 truncate rounded-full bg-paper-3 px-3 py-1 text-center text-xs text-ink-3">
+          {domain}
+        </span>
+      </div>
+      <div className="flex items-center justify-center bg-paper-3">{children}</div>
+    </div>
+  );
+}
+
+/** Phone mockup for mobile projects. */
+function PhoneFrame({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="mx-auto rounded-[1.6rem] border border-line bg-paper p-1.5 shadow-sm">
+      <div className="relative overflow-hidden rounded-[1.2rem] bg-paper-3">
+        <span
+          className="absolute left-1/2 top-2 z-10 h-1.5 w-12 -translate-x-1/2 rounded-full bg-ink-3/30"
+          aria-hidden="true"
+        />
+        <div className="flex items-center justify-center px-6 pb-6 pt-8">{children}</div>
+      </div>
+    </div>
+  );
+}
+
+/** Picks a browser or phone mockup based on the project type. */
+function ProjectMedia({
+  project,
+  variant,
+}: {
+  project: Project;
+  variant: "featured" | "card";
+}) {
+  const isMobile = project.schemaType === "MobileApplication";
+  const featured = variant === "featured";
+
+  if (isMobile) {
+    return (
+      <div className={featured ? "w-40" : "w-32"}>
+        <PhoneFrame>
+          <img
+            src={project.image}
+            alt={`${project.name} — ${project.category}`}
+            className={`${featured ? "h-24 w-24" : "h-16 w-16"} object-contain transition-transform duration-500 group-hover:scale-110`}
+            loading="lazy"
+            itemProp="image"
+          />
+        </PhoneFrame>
+      </div>
+    );
+  }
+
+  return (
+    <BrowserFrame domain={domainOf(project.href)}>
+      {project.fit === "cover" ? (
+        <img
+          src={project.image}
+          alt={`${project.name} — ${project.category}`}
+          className={`${featured ? "aspect-[16/10]" : "aspect-video"} w-full object-cover object-top transition-[object-position] duration-[1500ms] ease-linear group-hover:object-bottom`}
+          loading="lazy"
+          itemProp="image"
+        />
+      ) : (
+        <img
+          src={project.image}
+          alt={`${project.name} — ${project.category}`}
+          className={`${featured ? "h-28 py-10" : "h-16 py-8"} w-auto object-contain transition-transform duration-500 group-hover:scale-105`}
+          loading="lazy"
+          itemProp="image"
+        />
+      )}
+    </BrowserFrame>
+  );
+}
+
 function FeaturedProject({ project }: { project: Project }) {
   return (
     <Reveal>
@@ -33,14 +131,8 @@ function FeaturedProject({ project }: { project: Project }) {
         itemScope
         itemType={`https://schema.org/${project.schemaType}`}
       >
-        <div className="relative grid min-h-64 place-items-center bg-paper-3 p-10 md:order-2">
-          <img
-            src={project.image}
-            alt={`${project.name} — ${project.category}`}
-            className="max-h-56 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
-            loading="lazy"
-            itemProp="image"
-          />
+        <div className="relative flex min-h-64 items-center justify-center bg-paper-2 p-8 md:order-2 md:p-10">
+          <ProjectMedia project={project} variant="featured" />
         </div>
         <div className="flex flex-col p-7 md:order-1 md:p-10">
           <StatusTag project={project} />
@@ -88,18 +180,8 @@ function ProjectCard({ project }: { project: Project }) {
         itemScope
         itemType={`https://schema.org/${project.schemaType}`}
       >
-        <div className="relative grid h-44 place-items-center overflow-hidden bg-paper-3">
-          <img
-            src={project.image}
-            alt={`${project.name} — ${project.category}`}
-            className={
-              project.fit === "cover"
-                ? "h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                : "h-20 w-20 object-contain transition-transform duration-500 group-hover:scale-110"
-            }
-            loading="lazy"
-            itemProp="image"
-          />
+        <div className="relative flex h-52 items-center justify-center overflow-hidden bg-paper-2 p-5">
+          <ProjectMedia project={project} variant="card" />
           <span className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full bg-paper/80 text-ink opacity-0 backdrop-blur transition-opacity duration-300 group-hover:opacity-100">
             <ArrowUpRight className="h-4 w-4" />
           </span>

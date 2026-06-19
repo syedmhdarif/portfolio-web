@@ -22,7 +22,7 @@ export function Reveal({
   children,
   from = "up",
   delay = 0,
-  distance = 28,
+  distance = 36,
   className,
   as = "div",
 }: RevealProps) {
@@ -47,7 +47,7 @@ export function Reveal({
       className={className}
       initial={{ opacity: 0, ...offset }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once: true, margin: "0px 0px -12% 0px" }}
+      viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: MOTION.dur.slow, ease: MOTION.easeOut, delay }}
     >
       {children}
