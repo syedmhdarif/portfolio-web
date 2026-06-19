@@ -105,12 +105,17 @@ export function MobileNav() {
           <nav aria-label="Mobile">
             <ul className="flex flex-col">
               {NAV_ITEMS.map((item, i) => (
-                <li key={item.label} className="border-b border-line">
+                <li
+                  key={item.label}
+                  className={`border-b border-line transition-[opacity,transform] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                    open ? "translate-x-0 opacity-100" : "translate-x-4 opacity-0"
+                  }`}
+                  style={{ transitionDelay: open ? `${i * 45}ms` : "0ms" }}
+                >
                   <Link
                     to={item.to}
                     onClick={() => setOpen(false)}
                     className="display block py-4 text-4xl text-ink transition-colors hover:text-amber-text"
-                    style={{ transitionDelay: open ? `${i * 30}ms` : "0ms" }}
                   >
                     {item.label}
                   </Link>

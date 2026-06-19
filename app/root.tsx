@@ -34,6 +34,14 @@ export const links: Route.LinksFunction = () => [
 // Reads an explicit user choice from localStorage, else falls back to the OS preference.
 const NO_FLASH_THEME = `(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light'){document.documentElement.setAttribute('data-theme',t);}else if(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();`;
 
+// Decide the splash BEFORE first paint so the visitor never glimpses the real
+// page first. When motion is allowed and the splash hasn't been seen this
+// session, flag <html data-splash="active"> — CSS then paints #splash-cover over
+// everything and locks scroll immediately. The React <Splash/> reads this flag,
+// plays the boot sequence, then clears it. The timeout is a failsafe so a JS or
+// hydration failure can never strand the page behind the cover.
+const SPLASH_INIT = `(function(){try{var m=window.matchMedia;var reduce=m&&m('(prefers-reduced-motion: reduce)').matches;var seen;try{seen=sessionStorage.getItem('splashSeen')==='1';}catch(e){seen=false;}if(!reduce&&!seen){var d=document.documentElement;d.setAttribute('data-splash','active');setTimeout(function(){d.removeAttribute('data-splash');},6000);}}catch(e){}})();`;
+
 // In React Router v7, a child route's meta() REPLACES the parent's meta (it does not merge by default).
 // Site-wide static tags are therefore rendered directly in <head> below so they appear on every route.
 
@@ -47,6 +55,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
     <html lang="en">
       <head>
         <script dangerouslySetInnerHTML={{ __html: NO_FLASH_THEME }} />
+        <script dangerouslySetInnerHTML={{ __html: SPLASH_INIT }} />
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         {/* Site-wide static meta — render here so they appear on every route (root.tsx meta() export is overridden by child routes in RR v7) */}
@@ -166,6 +175,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
         />
       </head>
       <body>
+        {/* Painted before first paint via html[data-splash="active"] (see SPLASH_INIT)
+            so the real page is never glimpsed before the splash. Sits below the
+            animated <Splash/> overlay; cleared when the splash finishes. */}
+        <div id="splash-cover" aria-hidden="true" />
         {children}
         <ScrollRestoration />
         <Scripts />

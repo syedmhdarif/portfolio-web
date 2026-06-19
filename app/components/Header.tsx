@@ -55,8 +55,10 @@ export function Header() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 border-b border-line transition-all duration-300 ${
-        scrolled ? "bg-paper/85 backdrop-blur-md" : "bg-transparent"
+      className={`fixed inset-x-0 top-0 z-50 border-b transition-[background-color,border-color,box-shadow] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        scrolled
+          ? "border-line bg-paper/85 shadow-sm backdrop-blur-md"
+          : "border-transparent bg-transparent"
       }`}
     >
       <div className="wrap flex h-16 items-center justify-between gap-4 md:h-20">

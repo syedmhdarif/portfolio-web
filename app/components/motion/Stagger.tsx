@@ -11,6 +11,12 @@ type StaggerProps = {
   delay?: number;
   /** Animate on mount (hero) or when scrolled into view (sections). */
   trigger?: "mount" | "inView";
+  /**
+   * For trigger="mount" only: hold in the hidden state until `play` is true.
+   * Lets the hero wait for the splash screen to finish before animating in,
+   * so the entrance isn't wasted behind the splash overlay. Defaults to true.
+   */
+  play?: boolean;
   as?: "div" | "ul" | "section";
 };
 
@@ -21,9 +27,10 @@ type StaggerProps = {
 export function Stagger({
   children,
   className,
-  stagger = 0.08,
+  stagger = 0.07,
   delay = 0,
   trigger = "inView",
+  play = true,
   as = "div",
 }: StaggerProps) {
   const reduce = useReducedMotion();
@@ -36,8 +43,8 @@ export function Stagger({
 
   const triggerProps =
     trigger === "mount"
-      ? { animate: "show" }
-      : { whileInView: "show", viewport: { once: true, amount: 0.2 } };
+      ? { animate: play ? "show" : "hidden" }
+      : { whileInView: "show", viewport: { once: true, amount: 0.2, margin: "0px 0px -8% 0px" } };
 
   return (
     <MotionTag
@@ -59,6 +66,8 @@ type StaggerItemProps = {
   className?: string;
   from?: "up" | "down" | "left" | "right" | "none";
   distance?: number;
+  /** Add a subtle blur-in alongside the slide. */
+  blur?: boolean;
   as?: "div" | "li" | "span" | "article";
 };
 
@@ -66,7 +75,8 @@ export function StaggerItem({
   children,
   className,
   from = "up",
-  distance = 24,
+  distance = 20,
+  blur = false,
   as = "div",
 }: StaggerItemProps) {
   const reduce = useReducedMotion();
@@ -88,12 +98,14 @@ export function StaggerItem({
   return (
     <MotionTag
       className={className}
+      style={{ willChange: "transform, opacity" }}
       variants={{
-        hidden: { opacity: 0, ...offset },
+        hidden: { opacity: 0, ...offset, ...(blur ? { filter: `blur(${MOTION.blur}px)` } : {}) },
         show: {
           opacity: 1,
           x: 0,
           y: 0,
+          ...(blur ? { filter: "blur(0px)" } : {}),
           transition: { duration: MOTION.dur.slow, ease: MOTION.easeOut },
         },
       }}

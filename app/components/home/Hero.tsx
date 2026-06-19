@@ -1,11 +1,11 @@
-import { useRef, type ComponentType } from "react";
+import { useEffect, useRef, useState, type ComponentType } from "react";
 import { Link } from "react-router";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import profileImage from "../../assets/syedArif.png";
 import lokalgigIcon from "../../assets/lokalgig-logo-placeholder.png";
 import hikayatdailyIcon from "../../assets/hikayatdaily-logo-placeholder.png";
 import { ArrowUpRight, Github, Linkedin, Mail, WhatsApp } from "../icons";
-import { Stagger, StaggerItem, CountUp, Tilt3D } from "../motion";
+import { Stagger, StaggerItem, CountUp, Tilt3D, TextReveal, useAfterSplash } from "../motion";
 import { HERO_STATS, SOCIAL_PILLS } from "../../content/hero";
 import { PERSON_NAME, GITHUB_URL } from "../../content/site";
 
@@ -45,12 +45,28 @@ function SocialIcons() {
 
 export function Hero() {
   const reduce = useReducedMotion();
+  // Hold the entrance until the splash finishes, so it doesn't play behind it.
+  const ready = useAfterSplash();
   const cardRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: cardRef,
     offset: ["start start", "end start"],
   });
   const parallaxY = useTransform(scrollYProgress, [0, 1], [0, -60]);
+
+  // Parallax only on large, fine-pointer screens — on touch/mobile a scroll-
+  // linked transform is the main source of scroll jank, so we drop it there.
+  const [parallax, setParallax] = useState(false);
+  useEffect(() => {
+    if (reduce) return;
+    const mq = window.matchMedia(
+      "(min-width: 64rem) and (hover: hover) and (pointer: fine)"
+    );
+    const update = () => setParallax(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, [reduce]);
 
   return (
     <section
@@ -63,6 +79,7 @@ export function Hero() {
         <Stagger
           as="div"
           trigger="mount"
+          play={ready}
           stagger={0.08}
           className="order-2 lg:order-1 lg:col-span-5"
         >
@@ -73,13 +90,14 @@ export function Hero() {
             </span>
           </StaggerItem>
 
+          {/* Masked clip-rise on the display headline — the signature entrance. */}
           <h1 className="display mt-5 text-[clamp(3rem,7vw,5.5rem)] leading-[0.9]">
-            <StaggerItem as="span" className="block">
-              Syed
-            </StaggerItem>
-            <StaggerItem as="span" className="block">
-              Arif<span className="text-amber">.</span>
-            </StaggerItem>
+            <TextReveal trigger="mount" play={ready} delay={0.12} className="block">
+              Frontend
+            </TextReveal>
+            <TextReveal trigger="mount" play={ready} delay={0.22} className="block">
+              Developer<span className="text-amber">.</span>
+            </TextReveal>
           </h1>
 
           <StaggerItem>
@@ -122,9 +140,11 @@ export function Hero() {
           ref={cardRef}
           className="order-1 lg:order-2 md:col-span-7"
           initial={reduce ? false : { opacity: 0, scale: 0.96 }}
-          animate={reduce ? undefined : { opacity: 1, scale: 1 }}
+          animate={
+            reduce ? undefined : ready ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.96 }
+          }
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
-          style={reduce ? undefined : { y: parallaxY }}
+          style={parallax ? { y: parallaxY } : undefined}
         >
           <Tilt3D className="relative mx-auto w-full max-w-[38rem] lg:mr-0 lg:ml-auto">
             <div className="relative" style={{ aspectRatio: "358 / 371" }}>

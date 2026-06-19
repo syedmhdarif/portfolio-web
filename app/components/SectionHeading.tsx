@@ -25,7 +25,7 @@ export function SectionHeading({
 }: SectionHeadingProps) {
   const alignment = align === "center" ? "items-center text-center mx-auto" : "items-start";
   return (
-    <Reveal className={`flex max-w-3xl flex-col ${alignment} ${className}`}>
+    <Reveal blur className={`flex max-w-3xl flex-col ${alignment} ${className}`}>
       {eyebrow && (
         <span className="eyebrow flex items-center gap-2">
           {index && <span className="text-amber-text">{index}</span>}

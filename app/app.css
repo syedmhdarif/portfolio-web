@@ -192,6 +192,22 @@ body {
   border-radius: var(--radius-sm);
 }
 
+/* Splash cover — painted before first paint when html[data-splash="active"]
+   (set by SPLASH_INIT in root.tsx) so the real page is never glimpsed before
+   the splash. Sits just below the animated <Splash/> overlay (z-100) and is
+   removed when the splash finishes. The attribute also locks scroll. Under
+   prefers-reduced-motion the head script never sets it, so this never shows. */
+#splash-cover { display: none; }
+html[data-splash="active"] #splash-cover {
+  display: block;
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: #0f0e0c;
+}
+html[data-splash="active"],
+html[data-splash="active"] body { overflow: hidden; }
+
 /* ---------------------------------------------------------------------------
    4. EDITORIAL HELPERS
    --------------------------------------------------------------------------- */

@@ -3,11 +3,23 @@ import { SectionHeading } from "../SectionHeading";
 import { ArrowUpRight } from "../icons";
 import { FEATURED_PROJECT, GRID_PROJECTS, type Project } from "../../content/projects";
 
-/** Tracks the cursor for the glowing-effect border. */
+/**
+ * Tracks the cursor for the glowing-effect border. rAF-throttled so a fast
+ * mousemove can't trigger more than one CSS-var write (and repaint) per frame,
+ * keeping scroll and hover smooth.
+ */
+let glowFrame = 0;
 function onGlowMove(e: React.MouseEvent<HTMLElement>) {
-  const r = e.currentTarget.getBoundingClientRect();
-  e.currentTarget.style.setProperty("--glow-x", `${e.clientX - r.left}px`);
-  e.currentTarget.style.setProperty("--glow-y", `${e.clientY - r.top}px`);
+  const el = e.currentTarget;
+  const r = el.getBoundingClientRect();
+  const x = e.clientX - r.left;
+  const y = e.clientY - r.top;
+  if (glowFrame) return;
+  glowFrame = requestAnimationFrame(() => {
+    glowFrame = 0;
+    el.style.setProperty("--glow-x", `${x}px`);
+    el.style.setProperty("--glow-y", `${y}px`);
+  });
 }
 
 function StatusTag({ project }: { project: Project }) {

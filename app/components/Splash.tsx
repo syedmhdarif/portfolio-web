@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 const LINES = [
   { cmd: "whoami", out: "Syed Mohamad Arif — Mobile & Web Developer" },
@@ -11,51 +11,63 @@ const PER_LINE = 620; // ms between lines
 const HOLD = 520; // ms after last line before exit
 
 /**
+ * Fires the entrance-animation gate and clears the pre-paint cover/scroll lock.
+ * Both the cover (#splash-cover) and the scroll lock are driven by the
+ * `data-splash` attribute on <html>, set before first paint by the head script
+ * in root.tsx. Removing it here reveals the page; the `splash:done` event tells
+ * the hero (via useAfterSplash) it's safe to play its entrance.
+ */
+function endSplash() {
+  try {
+    document.documentElement.removeAttribute("data-splash");
+    window.dispatchEvent(new Event("splash:done"));
+  } catch {
+    /* ignore */
+  }
+}
+
+/**
  * Terminal-style splash screen (adapted from Aceternity's terminal).
- * Shows once per browser session as a boot sequence, then fades to reveal the
- * site. Skipped entirely under prefers-reduced-motion.
+ *
+ * Shown once per browser session as a boot sequence. The decision to show it is
+ * made *before paint* by the head script (which sets `html[data-splash=active]`
+ * and paints #splash-cover over the page), so the visitor never glimpses the
+ * real page first. This component reads that flag, plays the boot lines over the
+ * cover, then fades out and reveals the site. Skipped entirely under
+ * prefers-reduced-motion (the head script never sets the flag in that case).
  */
 export function Splash() {
-  const reduce = useReducedMotion();
   const [show, setShow] = useState(false);
   const [step, setStep] = useState(0);
 
   useEffect(() => {
-    if (reduce) return;
-    let seen = false;
-    try {
-      seen = sessionStorage.getItem("splashSeen") === "1";
-    } catch {
-      /* private mode */
-    }
-    if (seen) return;
+    if (document.documentElement.dataset.splash !== "active") return;
 
-    setShow(true);
     try {
       sessionStorage.setItem("splashSeen", "1");
     } catch {
-      /* ignore */
+      /* private mode */
     }
-    document.body.style.overflow = "hidden";
+
+    setShow(true);
 
     const timers = LINES.map((_, i) =>
       setTimeout(() => setStep(i + 1), i * PER_LINE + 350)
     );
-    const end = setTimeout(
-      () => setShow(false),
-      LINES.length * PER_LINE + HOLD + 350
-    );
+    const end = setTimeout(() => {
+      setShow(false);
+      endSplash();
+    }, LINES.length * PER_LINE + HOLD + 350);
 
     return () => {
       timers.forEach(clearTimeout);
       clearTimeout(end);
-      document.body.style.overflow = "";
     };
-  }, [reduce]);
+  }, []);
 
   function skip() {
     setShow(false);
-    document.body.style.overflow = "";
+    endSplash();
   }
 
   return (
@@ -67,9 +79,6 @@ export function Splash() {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          onAnimationComplete={() => {
-            document.body.style.overflow = "";
-          }}
         >
           <motion.div
             initial={{ y: 16, opacity: 0, scale: 0.98 }}
@@ -85,7 +94,7 @@ export function Splash() {
               <span className="ml-2 text-xs text-white/40">zsh — syed-portfolio</span>
             </div>
             <div className="space-y-2.5 p-5 leading-relaxed">
-              {LINES.slice(0, step).map((l, i) => (
+              {LINES.slice(0, step).map((l) => (
                 <motion.div
                   key={l.cmd}
                   initial={{ opacity: 0, y: 4 }}
