@@ -102,9 +102,12 @@ export function Hero() {
 
           <StaggerItem>
             <p className="mt-5 max-w-md leading-relaxed text-ink-2">
-              Mobile &amp; web developer in Kuala Lumpur. I ship cross-platform
-              apps &amp; fast websites across Malaysia, Singapore &amp; SEA —
-              from Figma to the app stores.
+              I'm <span className="font-medium text-ink">{PERSON_NAME}</span>, a
+              freelance mobile &amp; frontend developer in Kuala Lumpur,
+              Malaysia. I ship cross-platform apps and fast websites across
+              Malaysia, Singapore &amp; SEA — and I'm the creator of{" "}
+              <span className="text-amber-text">LokalGig</span> and{" "}
+              <span className="text-amber-text">Hikayat Daily</span>.
             </p>
           </StaggerItem>
 
