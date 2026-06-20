@@ -177,6 +177,11 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  /* Backstop against accidental horizontal scroll on mobile. `clip` (not
+     `hidden`) avoids creating a scroll container, so the fixed header and
+     anchor (`scroll-mt-*`) jumps keep working. Root causes are fixed at the
+     component level; this only catches future regressions. */
+  overflow-x: clip;
 }
 
 ::selection { background: var(--amber); color: var(--on-amber); }
@@ -285,7 +290,7 @@ html[data-splash="active"] body { overflow: hidden; }
 .chip {
   display: inline-flex; align-items: center; gap: 0.5rem;
   padding: 0.35rem 0.75rem;
-  font-size: var(--text-sm); font-weight: 500;
+  font-size: var(--text-xs); font-weight: 500;
   color: var(--ink-2);
   border: 1px solid var(--line);
   border-radius: var(--radius-full);

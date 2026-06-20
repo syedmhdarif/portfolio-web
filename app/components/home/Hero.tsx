@@ -91,7 +91,7 @@ export function Hero() {
           </StaggerItem>
 
           {/* Masked clip-rise on the display headline — the signature entrance. */}
-          <h1 className="display mt-5 text-[clamp(3rem,7vw,5.5rem)] leading-[0.9]">
+          <h1 className="display mt-5 text-[clamp(2.75rem,7vw,5.5rem)] leading-[0.9]">
             <TextReveal trigger="mount" play={ready} delay={0.12} className="block">
               Frontend
             </TextReveal>
@@ -126,7 +126,7 @@ export function Hero() {
           </StaggerItem>
 
           {/* Stats — on the left, in view with everything else */}
-          <StaggerItem className="mt-9 flex gap-10 border-t border-line pt-6">
+          <StaggerItem className="mt-9 flex flex-wrap gap-8 border-t border-line pt-6 sm:gap-10">
             {HERO_STATS.map((stat) => (
               <div key={stat.label}>
                 <p className="display text-3xl sm:text-4xl">

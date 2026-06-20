@@ -194,8 +194,8 @@ export default function Background() {
       <section className="wrap pt-28 pb-4 md:pt-36" aria-label="Background intro">
         <Reveal>
           <span className="eyebrow">Background</span>
-          <h1 className="display mt-4 text-5xl sm:text-6xl">
-            Experience, education<br />&amp; skills.
+          <h1 className="display mt-4 text-4xl sm:text-6xl">
+            Experience, education<br className="hidden sm:block" />&amp; skills.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-2">
             Four years across fintech, telco, and product teams in Malaysia —

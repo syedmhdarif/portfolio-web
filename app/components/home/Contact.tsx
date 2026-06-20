@@ -36,7 +36,7 @@ export function Contact() {
           <Reveal delay={0.1}>
             <a
               href={`mailto:${EMAIL}`}
-              className="signature mt-8 inline-block text-5xl text-amber-text transition-transform hover:-translate-y-0.5 sm:text-6xl"
+              className="signature mt-8 inline-block max-w-full break-words text-3xl text-amber-text transition-transform hover:-translate-y-0.5 sm:text-6xl"
             >
               {EMAIL}
             </a>

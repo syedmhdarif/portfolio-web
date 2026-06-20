@@ -45,7 +45,7 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
       onClick={toggle}
       aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
       aria-pressed={isDark}
-      className={`grid h-10 w-10 place-items-center rounded-full border border-line text-ink transition-colors hover:border-ink-3 ${className}`}
+      className={`grid h-11 w-11 place-items-center rounded-full border border-line text-ink transition-colors hover:border-ink-3 ${className}`}
     >
       {mounted && isDark ? (
         <Sun className="h-[18px] w-[18px]" />

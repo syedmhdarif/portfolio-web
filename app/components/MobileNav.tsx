@@ -73,7 +73,7 @@ export function MobileNav() {
         aria-expanded={open}
         aria-controls="mobile-nav-drawer"
         onClick={() => setOpen((v) => !v)}
-        className="grid h-10 w-10 place-items-center rounded-full border border-line text-ink transition-colors hover:border-ink-3"
+        className="grid h-11 w-11 place-items-center rounded-full border border-line text-ink transition-colors hover:border-ink-3"
       >
         {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
       </button>
@@ -115,7 +115,7 @@ export function MobileNav() {
                   <Link
                     to={item.to}
                     onClick={() => setOpen(false)}
-                    className="display block py-4 text-4xl text-ink transition-colors hover:text-amber-text"
+                    className="display block py-4 text-3xl text-ink transition-colors hover:text-amber-text sm:text-4xl"
                   >
                     {item.label}
                   </Link>
