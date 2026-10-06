@@ -29,13 +29,20 @@ Prerendered paths (`react-router.config.ts`): `/`, `/background`, `/learn`, `/le
 
 - Shell: `Header.tsx`, `Footer.tsx`, `MobileNav.tsx`, `Splash.tsx`, `ThemeToggle.tsx`, `Monogram.tsx`, `SectionHeading.tsx`, `icons.tsx`, `nav-items.ts` (`NAV_ITEMS`, `HOME_SECTION_IDS` for scroll-spy).
 - `home/`: `Hero`, `About`, `Work`, `Services`, `Contact`, `Faq` (one per home section; ids match `HOME_SECTION_IDS`).
-- `motion/` (framer-motion; barrel `index.ts`): `Reveal`, `Stagger`/`StaggerItem`, `TextReveal`, `PageTransition`, `CountUp`, `Tilt3D`, `useAfterSplash`, `MOTION` tokens (`tokens.ts`, mirrors CSS easing/duration).
-- `ui/` (third-party shadcn/Aceternity): **not present yet**; no `components.json`. See AGENTS.md Component conventions.
-- GSAP + ScrollTrigger: **being added**, not yet in `package.json`. Planned shared module `app/lib/gsap.ts`.
+- `motion/` (barrel `index.ts`). Framer Motion: `Reveal`, `Stagger`/`StaggerItem`, `TextReveal`, `PageTransition`, `CountUp`, `Tilt3D`, `useAfterSplash`, `MOTION` tokens (`tokens.ts`, mirrors CSS easing/duration). GSAP: `ParallaxLayer` (scrubbed `yPercent`, 8-12, decorative layers only: Services dark CTA, Contact signature email), `WordReveal` (manual word split, staggered rise, `start: "top 85%"`, once; used for every `SectionHeading` h2).
+- `ui/` (third-party shadcn/Aceternity): `hero-parallax.tsx` (hand-ported Aceternity Hero Parallax, `motion/react`, `products {title, link, thumbnail}`, rows = ceil(n/3)). `components.json` exists (new-york, css `app/app.css`, aliases `~/components`, `~/components/ui`, `~/lib/utils`, `~/lib`); `cn()` in `app/lib/utils.ts`.
+- `ui/tooltip.tsx`: shadcn-style Radix Tooltip mapped to `--ink/--paper` (keyframe `.tooltip-pop` in `app.css`). Used on the Hero card buttons.
+
+## Animation
+
+- **Engines:** Framer Motion for mount/hover/layout; GSAP + ScrollTrigger for scroll-linked and choreographed sequences. One engine per element, never both on the same node (a parent/child split is fine: `Reveal` owns opacity on a wrapper while `ParallaxLayer` owns `yPercent` on the child).
+- **Registration:** `app/lib/gsap.ts` is the only place plugins are registered (guarded by `typeof window`; the site prerenders). Exports `gsap`, `ScrollTrigger`, `useGSAP`, media strings `MOTION_OK` / `MOTION_REDUCED` / `FINE_POINTER`, and `refreshTriggersAfterFonts()` (one `ScrollTrigger.refresh()` after `document.fonts.ready`).
+- **Pattern:** `useGSAP(fn, { scope, dependencies: [ready], revertOnUpdate: true })` with `gsap.matchMedia()` inside. The `MOTION_REDUCED` branch sets the final visible state; the `MOTION_OK` branch sets the hidden state and plays once `useAfterSplash()` is true. Pointer-driven effects sit under `MOTION_OK and FINE_POINTER` (desktop, hover, fine pointer).
+- **Hero card (`home/Hero.tsx` -> `PortraitCard`):** one GSAP timeline gated on the splash: card fade/scale, amber notch shape 0.94->1, SVG mask wipe (`[data-hero-wipe]` rect height 0->380, 0.9s expo.out) reveals the photo inside the crisp `#heroShape` clipPath, gradient scrim fades in, script name rises with blur 6->0, buttons pop in. Desktop only: scroll parallax (`y: -60`, scrub), `gsap.quickTo` pointer drift of the portrait (+-6px), magnetic GitHub / arrow buttons (40px reach; the arrow rotates 45deg on hover via CSS). `.hero-card` is `opacity: 0` in CSS until the timeline runs (reduced motion gets `opacity: 1`). `Tilt3D` (Framer) stays on its own wrapper. Buttons are `min-w-11` so they stay >=44px on phones.
 
 ## Content (`app/content/`, typed data, all copy)
 
-`site.ts` (identity: name, alternate names, URLs, experience years, JSON-LD inputs), `hero.ts` (stats, social pills), `projects.ts` (`PROJECTS`, `FEATURED_PROJECT`, `GRID_PROJECTS`, counts), `services.ts` (services, process, project stack), `background.ts` (experience, education, skills, marquee).
+`site.ts` (identity: name, alternate names, URLs, experience years, JSON-LD inputs), `hero.ts` (stats, social pills), `projects.ts` (`PROJECTS` = 8 projects incl. Maahad Tahfiz Abu Bakar, Halim Suhor Architect, LokalGig Sitelog; `FEATURED_PROJECT`, `GRID_PROJECTS`, counts). Work section (`home/Work.tsx`): md+ renders `WorkParallax` (HeroParallax over all PROJECTS, every card `target=_blank`); below md renders the featured card + single-column card list. Thumbnails: `public/projects/*.jpeg` (1280x800 captures) plus `public/*-thumbnail.png` and `app/assets/`, `services.ts` (services, process, project stack), `background.ts` (experience, education, skills, marquee).
 
 ## Styles (`app/app.css`, 369 lines)
 

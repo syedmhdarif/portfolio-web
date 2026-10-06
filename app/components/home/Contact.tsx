@@ -1,4 +1,4 @@
-import { Reveal } from "../motion";
+import { Reveal, ParallaxLayer } from "../motion";
 import { SectionHeading } from "../SectionHeading";
 import { ArrowUpRight, Mail, Phone, WhatsApp, MapPin, Linkedin, Github } from "../icons";
 import {
@@ -34,12 +34,15 @@ export function Contact() {
             lead="Tell me a little about what you're building. I'm in MYT (UTC+8) and usually reply within a day."
           />
           <Reveal delay={0.1}>
-            <a
-              href={`mailto:${EMAIL}`}
-              className="signature mt-8 inline-block max-w-full break-words text-3xl text-amber-text transition-transform hover:-translate-y-0.5 sm:text-6xl"
-            >
-              {EMAIL}
-            </a>
+            {/* Signature drifts on scroll (GSAP); the hover lift lives on the inner link so the two transforms never share an element. */}
+            <ParallaxLayer amount={12} className="mt-8 inline-block max-w-full">
+              <a
+                href={`mailto:${EMAIL}`}
+                className="signature inline-block max-w-full break-words text-3xl text-amber-text transition-transform hover:-translate-y-0.5 sm:text-6xl"
+              >
+                {EMAIL}
+              </a>
+            </ParallaxLayer>
           </Reveal>
           <Reveal delay={0.15}>
             <div className="mt-8 flex items-center gap-3">

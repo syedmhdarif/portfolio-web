@@ -6,3 +6,6 @@ export { CountUp } from "./CountUp";
 export { Tilt3D } from "./Tilt3D";
 export { useAfterSplash } from "./useAfterSplash";
 export { MOTION } from "./tokens";
+// GSAP-driven primitives (scroll-linked). See AGENTS.md Animation conventions.
+export { ParallaxLayer } from "./ParallaxLayer";
+export { WordReveal } from "./WordReveal";

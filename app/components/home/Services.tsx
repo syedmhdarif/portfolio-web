@@ -1,4 +1,4 @@
-import { Reveal, Stagger, StaggerItem } from "../motion";
+import { Reveal, Stagger, StaggerItem, ParallaxLayer } from "../motion";
 import { SectionHeading } from "../SectionHeading";
 import { ArrowUpRight, Check } from "../icons";
 import { SERVICES, PROCESS, PROJECT_STACK } from "../../content/services";
@@ -121,8 +121,12 @@ export function Services() {
         </div>
 
         {/* CTA */}
+        {/* Reveal owns opacity on the wrapper; ParallaxLayer owns yPercent on the block. */}
         <Reveal className="mt-20">
-          <div className="flex flex-col items-start gap-6 rounded-2xl bg-ink p-8 md:flex-row md:items-center md:justify-between md:p-12">
+          <ParallaxLayer
+            amount={8}
+            className="flex flex-col items-start gap-6 rounded-2xl bg-ink p-8 md:flex-row md:items-center md:justify-between md:p-12"
+          >
             <div>
               <h3 className="display text-3xl text-paper sm:text-4xl">
                 Have a project in mind?
@@ -136,7 +140,7 @@ export function Services() {
               Have a chat
               <ArrowUpRight className="h-5 w-5" />
             </a>
-          </div>
+          </ParallaxLayer>
         </Reveal>
       </div>
     </section>

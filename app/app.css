@@ -352,6 +352,19 @@ html[data-splash="active"] body { overflow: hidden; }
   .glow-card::before { display: none; }
 }
 
+/* Radix tooltip surface (app/components/ui/tooltip.tsx) */
+@keyframes tooltip-pop {
+  from { opacity: 0; transform: translateY(2px) scale(0.96); }
+  to   { opacity: 1; transform: none; }
+}
+.tooltip-pop { animation: tooltip-pop var(--dur-fast) var(--ease-out) both; }
+.tooltip-pop[data-state="closed"] { animation: tooltip-pop var(--dur-fast) var(--ease-out) reverse both; }
+
+/* Hero portrait card: hidden until the GSAP entrance runs (see Hero.tsx).
+   Reduced-motion users get it straight away. */
+.hero-card { opacity: 0; }
+@media (prefers-reduced-motion: reduce) { .hero-card { opacity: 1; } }
+
 details summary::-webkit-details-marker { display: none; }
 details summary { list-style: none; }
 

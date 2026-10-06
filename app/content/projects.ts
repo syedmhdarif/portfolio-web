@@ -100,6 +100,51 @@ export const PROJECTS: Project[] = [
     image: interactiveRoomImage,
     fit: "cover",
   },
+  {
+    id: "maahad-tahfiz-abu-bakar",
+    name: "Maahad Tahfiz Abu Bakar",
+    category: "Website · Education",
+    schemaType: "WebApplication",
+    status: "web",
+    statusLabel: "Live on the web",
+    description:
+      "Website for a Quranic memorisation (tahfiz) school in Pasir Mas, Kelantan.",
+    tech: [],
+    href: "https://maahadtahfizabubakar.com",
+    hrefLabel: "Visit maahadtahfizabubakar.com",
+    image: "/projects/maahad-tahfiz-abu-bakar.jpeg",
+    fit: "cover",
+  },
+  {
+    id: "halim-suhor-architect",
+    name: "Halim Suhor Architect",
+    category: "Website · Architecture",
+    schemaType: "WebApplication",
+    status: "web",
+    statusLabel: "Live on the web",
+    description:
+      "Website for an architecture practice in Shah Alam, Selangor, established 2007, covering residential, interior and commercial work.",
+    tech: [],
+    href: "https://halimsuhor-architect.com/",
+    hrefLabel: "Visit halimsuhor-architect.com",
+    image: "/projects/halim-suhor-architect.jpeg",
+    fit: "cover",
+  },
+  {
+    id: "lokalgig-sitelog",
+    name: "LokalGig Sitelog",
+    category: "Web Application · Construction",
+    schemaType: "WebApplication",
+    status: "web",
+    statusLabel: "Live on the web",
+    description:
+      "A construction project-management dashboard that brings schedule, cost and project metrics into one view.",
+    tech: [],
+    href: "https://sitelog.lokalgig.my/",
+    hrefLabel: "Visit sitelog.lokalgig.my",
+    image: "/projects/lokalgig-sitelog.jpeg",
+    fit: "cover",
+  },
 ];
 
 export const FEATURED_PROJECT = PROJECTS.find((p) => p.featured)!;

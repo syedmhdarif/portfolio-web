@@ -1,7 +1,8 @@
 import { Reveal, Stagger, StaggerItem } from "../motion";
 import { SectionHeading } from "../SectionHeading";
 import { ArrowUpRight } from "../icons";
-import { FEATURED_PROJECT, GRID_PROJECTS, type Project } from "../../content/projects";
+import { FEATURED_PROJECT, GRID_PROJECTS, PROJECTS, type Project } from "../../content/projects";
+import { HeroParallax, type HeroParallaxProduct } from "~/components/ui/hero-parallax";
 
 /**
  * Tracks the cursor for the glowing-effect border. rAF-throttled so a fast
@@ -233,6 +234,17 @@ function ProjectCard({ project }: { project: Project }) {
   );
 }
 
+/** Desktop (md+) scroll-parallax wall of every project; each card opens the live site. */
+function WorkParallax() {
+  const products: HeroParallaxProduct[] = PROJECTS.map((p) => ({
+    title: p.name,
+    link: p.href,
+    thumbnail: p.image,
+    fit: p.fit,
+  }));
+  return <HeroParallax products={products} header={<div className="h-10" />} />;
+}
+
 export function Work() {
   return (
     <section id="work" className="wrap section scroll-mt-24" aria-labelledby="work-title">
@@ -244,9 +256,13 @@ export function Work() {
         className="mb-12"
       />
 
-      <div className="space-y-8">
+      <div className="hidden md:block">
+        <WorkParallax />
+      </div>
+
+      <div className="space-y-8 md:hidden">
         <FeaturedProject project={FEATURED_PROJECT} />
-        <Stagger className="grid gap-8 md:grid-cols-2 lg:grid-cols-3" stagger={0.07}>
+        <Stagger className="grid gap-8" stagger={0.07}>
           {GRID_PROJECTS.map((p) => (
             <ProjectCard key={p.id} project={p} />
           ))}
