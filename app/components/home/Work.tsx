@@ -242,12 +242,12 @@ function WorkParallax() {
     thumbnail: p.image,
     fit: p.fit,
   }));
-  return <HeroParallax products={products} header={<div className="h-10" />} />;
+  return <HeroParallax products={products} />;
 }
 
 export function Work() {
   return (
-    <section id="work" className="wrap section scroll-mt-24" aria-labelledby="work-title">
+    <section id="work" className="wrap section scroll-mt-24 overflow-x-clip" aria-labelledby="work-title">
       <SectionHeading
         index="02"
         eyebrow="Selected work"

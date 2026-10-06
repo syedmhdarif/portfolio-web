@@ -1,13 +1,6 @@
-"use client";
 import React from "react";
 import { cn } from "~/lib/utils";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useSpring,
-  type MotionValue,
-} from "motion/react";
+import { gsap, ScrollTrigger, useGSAP, MOTION_OK, refreshTriggersAfterFonts } from "~/lib/gsap";
 
 export type HeroParallaxProduct = {
   title: string;
@@ -17,106 +10,119 @@ export type HeroParallaxProduct = {
   fit?: "cover" | "contain";
 };
 
-export const HeroParallax = ({
-  products,
-  header,
-}: {
-  products: HeroParallaxProduct[];
-  header?: React.ReactNode;
-}) => {
-  const perRow = Math.ceil(products.length / 3);
-  const firstRow = products.slice(0, perRow);
-  const secondRow = products.slice(perRow, perRow * 2);
-  const thirdRow = products.slice(perRow * 2);
+const ROWS = 3;
+/** Horizontal travel of each row, each way: 7vw capped at 112px (the edge mask hides the gap). */
+const amplitude = () => Math.min(window.innerWidth * 0.07, 112);
+
+/**
+ * Hero-parallax wall, ported to GSAP ScrollTrigger after taleem-connect's
+ * `gallery-parallax.tsx`. Desktop + motion only: the plane un-tilts, rises and
+ * fades to full opacity while the stage enters (finished at "top 25%", so no
+ * lingering wash), and rows drift in alternating directions while the stage
+ * crosses the viewport. Scrubbed (0.6s smoothing), no pin, no extra scroll
+ * height. Reduced motion / no JS renders the static final state as a grid.
+ */
+export const HeroParallax = ({ products }: { products: HeroParallaxProduct[] }) => {
   const ref = React.useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
+  const perRow = Math.ceil(products.length / ROWS);
+  const rows = Array.from({ length: ROWS }, (_, r) =>
+    products.slice(r * perRow, (r + 1) * perRow),
+  ).filter((row) => row.length > 0);
 
-  const springConfig = { stiffness: 300, damping: 30, bounce: 100 };
+  useGSAP(
+    () => {
+      const mm = gsap.matchMedia();
+      mm.add(MOTION_OK, () => {
+        const stage = ref.current!;
+        const plane = stage.querySelector<HTMLElement>("[data-plane]");
+        const rowEls = gsap.utils.toArray<HTMLElement>("[data-row]", stage);
+        if (!plane) return;
 
-  const translateX = useSpring(
-    useTransform(scrollYProgress, [0, 1], [0, 1000]),
-    springConfig,
-  );
-  const translateXReverse = useSpring(
-    useTransform(scrollYProgress, [0, 1], [0, -1000]),
-    springConfig,
-  );
-  const rotateX = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [15, 0]),
-    springConfig,
-  );
-  const opacity = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [0.2, 1]),
-    springConfig,
-  );
-  const rotateZ = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [20, 0]),
-    springConfig,
-  );
-  const translateY = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [-700, 500]),
-    springConfig,
+        gsap.fromTo(
+          plane,
+          { rotateX: 12, rotateZ: 4, y: 120, opacity: 0.2 },
+          {
+            rotateX: 0,
+            rotateZ: 0,
+            y: 0,
+            opacity: 1,
+            ease: "none",
+            scrollTrigger: { trigger: stage, start: "top 90%", end: "top 25%", scrub: 0.6 },
+          },
+        );
+
+        rowEls.forEach((row, i) => {
+          const dir = i % 2 === 0 ? 1 : -1;
+          gsap.fromTo(
+            row,
+            { x: () => -dir * amplitude() },
+            {
+              x: () => dir * amplitude(),
+              ease: "none",
+              scrollTrigger: {
+                trigger: stage,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 0.6,
+                invalidateOnRefresh: true,
+              },
+            },
+          );
+        });
+      });
+      refreshTriggersAfterFonts();
+      // Content above (splash, lazy images, reveals) changes height after mount;
+      // stale start/end would leave the plane stuck part-faded. Re-measure on change.
+      let t = 0;
+      const ro = new ResizeObserver(() => {
+        clearTimeout(t);
+        t = window.setTimeout(() => ScrollTrigger.refresh(), 150);
+      });
+      ro.observe(document.body);
+      return () => {
+        clearTimeout(t);
+        ro.disconnect();
+        mm.revert();
+      };
+    },
+    { scope: ref },
   );
 
   return (
+    // Full bleed out of `.wrap`; the section clips overflow-x so the page never scrolls sideways.
     <div
       ref={ref}
-      className="relative flex h-[300vh] flex-col self-auto overflow-hidden py-40 antialiased [perspective:1000px] [transform-style:preserve-3d]"
+      className="mx-[calc(50%-50vw)] motion-safe:[mask-image:linear-gradient(to_right,transparent,black_7%,black_93%,transparent)] motion-safe:[perspective:1000px]"
     >
-      {header === undefined ? <Header /> : header}
-      <motion.div style={{ rotateX, rotateZ, translateY, opacity }}>
-        <motion.div className="mb-20 flex flex-row-reverse space-x-20 space-x-reverse">
-          {firstRow.map((product) => (
-            <ProductCard product={product} translate={translateX} key={product.title} />
-          ))}
-        </motion.div>
-        <motion.div className="mb-20 flex flex-row space-x-20">
-          {secondRow.map((product) => (
-            <ProductCard product={product} translate={translateXReverse} key={product.title} />
-          ))}
-        </motion.div>
-        <motion.div className="flex flex-row-reverse space-x-20 space-x-reverse">
-          {thirdRow.map((product) => (
-            <ProductCard product={product} translate={translateX} key={product.title} />
-          ))}
-        </motion.div>
-      </motion.div>
+      <div
+        data-plane
+        className="mx-auto grid max-w-[var(--wrap-page)] grid-cols-3 gap-6 px-10 motion-safe:flex motion-safe:max-w-none motion-safe:flex-col motion-safe:items-center motion-safe:px-0 motion-safe:will-change-transform"
+      >
+        {rows.map((row, r) => (
+          <div
+            key={r}
+            data-row
+            className="contents motion-safe:flex motion-safe:w-max motion-safe:gap-6 motion-safe:will-change-transform"
+          >
+            {row.map((p) => (
+              <ProductCard product={p} key={p.title} />
+            ))}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
 
-export const Header = () => (
-  <div className="relative left-0 top-0 mx-auto w-full max-w-7xl px-4 py-20 md:py-40">
-    <h2 className="text-2xl font-bold text-ink md:text-7xl">The Ultimate development studio</h2>
-    <p className="mt-8 max-w-2xl text-base text-ink-2 md:text-xl">
-      We build beautiful products with the latest technologies and frameworks.
-    </p>
-  </div>
-);
-
-export const ProductCard = ({
-  product,
-  translate,
-}: {
-  product: HeroParallaxProduct;
-  translate: MotionValue<number>;
-}) => (
-  <motion.div
-    style={{ x: translate }}
-    whileHover={{ y: -20 }}
-    key={product.title}
-    className="group/product relative h-96 w-[30rem] shrink-0"
-  >
+export const ProductCard = ({ product }: { product: HeroParallaxProduct }) => (
+  <div className="group/product relative aspect-[5/4] w-full shrink-0 motion-safe:aspect-auto motion-safe:h-72 motion-safe:w-[26rem]">
     <a
       href={product.link}
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`${product.title} (opens in a new tab)`}
       className={cn(
-        "block h-full w-full overflow-hidden rounded-xl border border-line bg-paper-3 group-hover/product:shadow-2xl",
+        "block h-full w-full overflow-hidden rounded-xl border border-line bg-paper-3 transition-[transform,box-shadow] duration-300 group-hover/product:-translate-y-2 group-hover/product:shadow-2xl",
         "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber",
       )}
     >
@@ -130,11 +136,12 @@ export const ProductCard = ({
         )}
         alt={product.title}
         loading="lazy"
+        decoding="async"
       />
+      <span className="pointer-events-none absolute inset-0 rounded-xl bg-ink opacity-0 transition-opacity group-hover/product:opacity-80 group-focus-within/product:opacity-80" />
+      <span className="absolute bottom-4 left-4 text-lg font-bold text-paper opacity-0 transition-opacity group-hover/product:opacity-100 group-focus-within/product:opacity-100">
+        {product.title}
+      </span>
     </a>
-    <div className="pointer-events-none absolute inset-0 h-full w-full rounded-xl bg-ink opacity-0 transition-opacity group-hover/product:opacity-80 group-focus-within/product:opacity-80" />
-    <h2 className="absolute bottom-4 left-4 text-lg font-bold text-paper opacity-0 transition-opacity group-hover/product:opacity-100 group-focus-within/product:opacity-100">
-      {product.title}
-    </h2>
-  </motion.div>
+  </div>
 );
