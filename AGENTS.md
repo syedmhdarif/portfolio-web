@@ -1,12 +1,51 @@
 # portfolio-web — agent guide
 
-> Canonical agent instructions for this repo. `CLAUDE.MD` and `GEMINI.md` route here. Keep edits in this file only.
+> Canonical agent instructions for this repo. `CLAUDE.md` and `GEMINI.md` route here. Keep edits in this file only.
 >
-> Read by: Claude Code (via `CLAUDE.MD` import), Gemini CLI (via `GEMINI.md` symlink), Codex CLI / Cursor / Aider / Cline / Continue (via the `AGENTS.md` standard, see [agents.md](https://agents.md)).
+> Read by: Claude Code (via `CLAUDE.md` import), Gemini CLI (via `GEMINI.md` symlink), Codex CLI / Cursor / Aider / Cline / Continue (via the `AGENTS.md` standard, see [agents.md](https://agents.md)).
 
 Personal portfolio. React Router v7 + Tailwind v4 + Cloudflare Workers (Wrangler). Primary audience: hiring managers and clients in **Malaysia** and **Singapore**. SEO + AEO (AI Engine Optimisation) is a first-class concern — recent commits have shipped JSON-LD, FAQPage schema, and Malaysian-market keywords. Keep that bar.
 
-Key files: [app/root.tsx](app/root.tsx), [app/routes.ts](app/routes.ts), [app/app.css](app/app.css), [app/content/](app/content/), [react-router.config.ts](react-router.config.ts), [wrangler.toml](wrangler.toml).
+Key files: [CODEBASE_MAP.md](CODEBASE_MAP.md), [app/root.tsx](app/root.tsx), [app/routes.ts](app/routes.ts), [app/app.css](app/app.css), [app/content/](app/content/), [react-router.config.ts](react-router.config.ts), [wrangler.toml](wrangler.toml).
+
+## How agents discover this project
+
+- **Rules:** `AGENTS.md` (this file, cross-tool source of truth) -> `CLAUDE.md` / `CLAUDE.MD` (`@AGENTS.md` import + Claude-only mechanics) and `GEMINI.md` (symlink to this file) -> `~/.claude/CLAUDE.md` (personal, layered on top). Never duplicate a rule outside this file.
+- **Map:** [CODEBASE_MAP.md](CODEBASE_MAP.md) lists routes, components, content, styles, config and deploy. Read it before exploring; update it in the same change when you add or move a route, component folder or content file.
+- **Skills:** installed globally in `~/.agents/skills/`, reached via `.claude/skills`. Hooks in `.claude/hooks/` (`locale-guard.py`, `typecheck.py`) run after Edit/Write.
+
+## Stack at a glance (confirmed from package.json)
+
+- React Router 7.12 (framework mode, `ssr: false`, prerendered routes), React 19, TypeScript strict, Vite 7, npm.
+- Tailwind v4 via `@tailwindcss/vite`; tokens in `app/app.css` (`@theme inline`). No tailwind config file.
+- Motion: `framer-motion` today (`app/components/motion/`). **GSAP + ScrollTrigger is being added**; see Animation conventions.
+- Hosting: Cloudflare Pages (`wrangler.toml`, `build/client`) and GitHub Pages (`BASE_PATH=/portfolio-web`). Details in `CODEBASE_MAP.md` and `DEPLOYMENT.md`.
+- Commands: `npm run dev`, `npm run build`, `npm run typecheck` (`react-router typegen && tsc`), `npm run deploy`.
+- Path alias: `~/*` -> `app/*`.
+
+## Component conventions
+
+- **Location:** page sections in `app/components/home/` (one file per home section, PascalCase, named export). Shared chrome (`Header`, `Footer`, `MobileNav`, `Splash`, `ThemeToggle`, `SectionHeading`, `Monogram`, `icons.tsx`) sits directly in `app/components/`. Motion primitives live in `app/components/motion/` and are re-exported from its `index.ts`; import from `../motion`, not deep paths.
+- **Third-party UI (shadcn / Aceternity / Magic UI):** there is **no `components.json` yet**. If shadcn is initialised, set aliases to `~/components`, `~/components/ui`, `~/lib/utils`, and put every generated or copied component in `app/components/ui/` (kebab-case filenames as the CLI emits). Do not hand-edit generated files beyond tokens; wrap them in a PascalCase component in `app/components/` instead. Map colours onto the existing `--paper / --ink / --amber` tokens, not new palettes.
+- **Naming:** components PascalCase `.tsx`; hooks `useThing.ts`; content modules lowercase `.ts`; route files follow React Router flat routes (`learn.$slug.tsx`).
+- **Copy lives in `app/content/`**, typed (`site.ts`, `hero.ts`, `projects.ts`, `services.ts`, `background.ts`). Components import data; they do not hard-code prose. Copy rules: Market & locale doctrine below.
+- **Styling:** Tailwind utilities with the token colours (`bg-paper`, `text-ink`, `border-line`, `text-amber-text`); light/dark via token swap in `app.css`. Respect `--wrap-page/wide/content` widths and the `--dur-*` / `--ease-*` tokens.
+- **Routes:** add to `app/routes.ts`, create `app/routes/<name>.tsx` with `meta()` (title, description, canonical, OG) and JSON-LD where relevant. New static routes must also be added to `prerender()` in `react-router.config.ts` and to `public/sitemap.xml` (and `llms.txt` when it is content worth citing).
+- **Accessibility:** touch targets >= 44px on mobile, visible focus (`--focus`), no motion without a `prefers-reduced-motion` fallback.
+
+## Animation conventions
+
+- Existing primitives (`Reveal`, `Stagger`/`StaggerItem`, `TextReveal`, `PageTransition`, `CountUp`, `Tilt3D`, `useAfterSplash`) use Framer Motion and the `MOTION` tokens in `motion/tokens.ts`, which mirror the CSS tokens. Reuse them before writing new animation.
+- **GSAP + ScrollTrigger (being added):** use `@gsap/react` `useGSAP()` with a scoped `scope` ref so cleanup is automatic. Register plugins once in a single module (`app/lib/gsap.ts`, mirroring taleem-connect `lib/gsap.ts`), never per component. Import gsap only in client components; the site prerenders, so nothing may touch `window` at module scope.
+- Do not drive the same element with both Framer Motion and GSAP. Pick one per element; scroll-linked and pinned sequences go to GSAP, mount/hover/layout transitions stay in Framer Motion.
+- Reuse the shared easing (`cubic-bezier(0.16, 1, 0.3, 1)` = `power4.out`-like) and durations from `MOTION`; start scroll-triggered animation after the splash via `useAfterSplash`.
+- Every animation honours `prefers-reduced-motion` (use `gsap.matchMedia()`); call `ScrollTrigger.refresh()` after fonts/images change layout and kill triggers on unmount.
+
+## Verification and git
+
+- Run `npm run typecheck` and `npm run build` before claiming done. Verify UI in Chrome DevTools MCP against `npm run dev` at 360x800, 768x1024, 1440x900, plus `prefers-reduced-motion` emulation. Say plainly if the environment blocks it.
+- Do not add `Co-Authored-By` or "Generated with Claude Code" lines to commits or PRs unless the user asks (matches lokal-gig and taleem-connect).
+- Run `gh auth status` first: personal repo `syedmhdarif/portfolio-web` needs the `syedmhdarif` login.
 
 ## Prompt handling
 
