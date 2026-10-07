@@ -1,6 +1,12 @@
 import React from "react";
 import { cn } from "~/lib/utils";
-import { gsap, ScrollTrigger, useGSAP, MOTION_OK, refreshTriggersAfterFonts } from "~/lib/gsap";
+import {
+  gsap,
+  ScrollTrigger,
+  useGSAP,
+  MOTION_OK,
+  refreshTriggersAfterFonts,
+} from "~/lib/gsap";
 
 export type HeroParallaxProduct = {
   title: string;
@@ -22,12 +28,26 @@ const amplitude = () => Math.min(window.innerWidth * 0.07, 112);
  * crosses the viewport. Scrubbed (0.6s smoothing), no pin, no extra scroll
  * height. Reduced motion / no JS renders the static final state as a grid.
  */
-export const HeroParallax = ({ products }: { products: HeroParallaxProduct[] }) => {
+export const HeroParallax = ({
+  products,
+}: {
+  products: HeroParallaxProduct[];
+}) => {
   const ref = React.useRef<HTMLDivElement>(null);
   const perRow = Math.ceil(products.length / ROWS);
-  const rows = Array.from({ length: ROWS }, (_, r) =>
-    products.slice(r * perRow, (r + 1) * perRow),
-  ).filter((row) => row.length > 0);
+  // Each row carries the full list, rotated so its own slice sits mid-row; the
+  // rest are clones that fill the row edge to edge (motion only, hidden from AT).
+  const rows = Array.from({ length: ROWS }, (_, r) => {
+    const start = r * perRow;
+    const own = Math.min(perRow, products.length - start);
+    const lead = Math.floor((products.length - own) / 2);
+    return Array.from({ length: products.length }, (_, i) => {
+      const k = i - lead;
+      const index =
+        (((start + k) % products.length) + products.length) % products.length;
+      return { product: products[index], clone: k < 0 || k >= own };
+    });
+  }).filter((_, r) => r * perRow < products.length);
 
   useGSAP(
     () => {
@@ -47,7 +67,12 @@ export const HeroParallax = ({ products }: { products: HeroParallaxProduct[] }) 
             y: 0,
             opacity: 1,
             ease: "none",
-            scrollTrigger: { trigger: stage, start: "top 90%", end: "top 25%", scrub: 0.6 },
+            scrollTrigger: {
+              trigger: stage,
+              start: "top 90%",
+              end: "top 25%",
+              scrub: 0.6,
+            },
           },
         );
 
@@ -89,34 +114,50 @@ export const HeroParallax = ({ products }: { products: HeroParallaxProduct[] }) 
   );
 
   return (
-    // Full bleed out of `.wrap`; the section clips overflow-x so the page never scrolls sideways.
-    <div
-      ref={ref}
-      className="mx-[calc(50%-50vw)] motion-safe:[mask-image:linear-gradient(to_right,transparent,black_7%,black_93%,transparent)] motion-safe:[perspective:1000px]"
-    >
-      <div
-        data-plane
-        className="mx-auto grid max-w-[var(--wrap-page)] grid-cols-3 gap-6 px-10 motion-safe:flex motion-safe:max-w-none motion-safe:flex-col motion-safe:items-center motion-safe:px-0 motion-safe:will-change-transform"
-      >
-        {rows.map((row, r) => (
-          <div
-            key={r}
-            data-row
-            className="contents motion-safe:flex motion-safe:w-max motion-safe:gap-6 motion-safe:will-change-transform"
-          >
-            {row.map((p) => (
-              <ProductCard product={p} key={p.title} />
-            ))}
-          </div>
-        ))}
+    // Full bleed out of `.wrap`, clipped here so the over-wide rows never scroll the page sideways.
+    <div ref={ref} className="mx-[calc(50%-50vw)] overflow-x-clip">
+      <div className="motion-safe:[mask-image:linear-gradient(to_right,transparent,black_7%,black_93%,transparent)] motion-safe:[perspective:1000px]">
+        <div
+          data-plane
+          className="mx-auto grid max-w-[var(--wrap-page)] grid-cols-3 gap-6 px-10 motion-safe:flex motion-safe:max-w-none motion-safe:flex-col motion-safe:items-center motion-safe:px-0 motion-safe:will-change-transform"
+        >
+          {rows.map((row, r) => (
+            <div
+              key={r}
+              data-row
+              className="contents motion-safe:flex motion-safe:w-max motion-safe:gap-6 motion-safe:will-change-transform"
+            >
+              {row.map(({ product, clone }) => (
+                <ProductCard
+                  product={product}
+                  clone={clone}
+                  key={product.title}
+                />
+              ))}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
 };
 
-export const ProductCard = ({ product }: { product: HeroParallaxProduct }) => (
-  <div className="group/product relative aspect-[5/4] w-full shrink-0 motion-safe:aspect-auto motion-safe:h-72 motion-safe:w-[26rem]">
+export const ProductCard = ({
+  product,
+  clone = false,
+}: {
+  product: HeroParallaxProduct;
+  clone?: boolean;
+}) => (
+  <div
+    aria-hidden={clone || undefined}
+    className={cn(
+      "group/product relative aspect-[5/4] w-full shrink-0 motion-safe:aspect-auto motion-safe:h-80 motion-safe:w-[32rem]",
+      clone && "hidden motion-safe:block",
+    )}
+  >
     <a
+      tabIndex={clone ? -1 : undefined}
       href={product.link}
       target="_blank"
       rel="noopener noreferrer"
@@ -132,7 +173,9 @@ export const ProductCard = ({ product }: { product: HeroParallaxProduct }) => (
         width={600}
         className={cn(
           "h-full w-full",
-          product.fit === "contain" ? "object-contain p-10" : "object-cover object-left-top",
+          product.fit === "contain"
+            ? "object-contain p-10"
+            : "object-cover object-left-top",
         )}
         alt={product.title}
         loading="lazy"

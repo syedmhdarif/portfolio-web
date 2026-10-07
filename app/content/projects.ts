@@ -1,5 +1,3 @@
-import hikayatAppIcon from "../assets/hikayatDailyWhiteBg.png";
-import hikayatDiriImage from "../assets/Hikayat-diri-logo.png";
 import interactiveRoomImage from "../assets/Interactive-room.png";
 
 export type ProjectStatus = "web" | "playstore" | null;
@@ -36,7 +34,7 @@ export const PROJECTS: Project[] = [
     tech: ["React", "TypeScript", "Tailwind", "Supabase", "Vercel"],
     href: "https://lokalgig.my/",
     hrefLabel: "Visit lokalgig.my",
-    image: "/lokalgig-thumbnail.png",
+    image: "/projects/lokalgig.jpeg",
     fit: "cover",
     featured: true,
   },
@@ -83,8 +81,8 @@ export const PROJECTS: Project[] = [
     tech: ["React Native", "TypeScript", "Firebase", "Redux"],
     href: "https://play.google.com/store/apps/details?id=com.hikayatdailyglobal&hl=en",
     hrefLabel: "View on Play Store",
-    image: hikayatAppIcon,
-    fit: "contain",
+    image: "/projects/hikayat-daily.jpeg",
+    fit: "cover",
   },
   {
     id: "hikayat-diri-mobile",
@@ -99,8 +97,8 @@ export const PROJECTS: Project[] = [
     tech: ["React Native", "Expo", "TypeScript"],
     href: "https://play.google.com/store/apps/details?id=com.syedmhdarif.hikayatdiri&hl=en",
     hrefLabel: "View on Play Store",
-    image: hikayatDiriImage,
-    fit: "contain",
+    image: "/projects/hikayat-diri.jpeg",
+    fit: "cover",
   },
   {
     id: "citysage",
