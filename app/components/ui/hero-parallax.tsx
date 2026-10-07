@@ -35,18 +35,27 @@ export const HeroParallax = ({
 }) => {
   const ref = React.useRef<HTMLDivElement>(null);
   const perRow = Math.ceil(products.length / ROWS);
-  // Each row carries the full list, rotated so its own slice sits mid-row; the
-  // rest are clones that fill the row edge to edge (motion only, hidden from AT).
+  // Each row is an odd-length strip centred on screen. The first project of the
+  // row's own slice sits dead centre, the rest of the slice alternate right and
+  // left of it, and clones of the other projects fill out to the edges (motion
+  // only, hidden from AT). So list each row's most important project first.
+  const len = products.length % 2 ? products.length : products.length + 1;
+  const mid = Math.floor(len / 2);
   const rows = Array.from({ length: ROWS }, (_, r) => {
-    const start = r * perRow;
-    const own = Math.min(perRow, products.length - start);
-    const lead = Math.floor((products.length - own) / 2);
-    return Array.from({ length: products.length }, (_, i) => {
-      const k = i - lead;
-      const index =
-        (((start + k) % products.length) + products.length) % products.length;
-      return { product: products[index], clone: k < 0 || k >= own };
+    const own = products.slice(r * perRow, (r + 1) * perRow);
+    const slots: { product: HeroParallaxProduct; clone: boolean }[] = Array(len);
+    own.forEach((product, k) => {
+      const offset = k % 2 ? (k + 1) / 2 : -k / 2;
+      slots[mid + offset] = { product, clone: false };
     });
+    const fill = products.filter((p) => !own.includes(p));
+    let next = r * perRow;
+    for (let i = 0; i < len; i++) {
+      if (slots[i]) continue;
+      const product = fill.length ? fill[next++ % fill.length] : own[0];
+      slots[i] = { product, clone: true };
+    }
+    return slots;
   }).filter((_, r) => r * perRow < products.length);
 
   useGSAP(
@@ -127,11 +136,11 @@ export const HeroParallax = ({
               data-row
               className="contents motion-safe:flex motion-safe:w-max motion-safe:gap-6 motion-safe:will-change-transform"
             >
-              {row.map(({ product, clone }) => (
+              {row.map(({ product, clone }, i) => (
                 <ProductCard
                   product={product}
                   clone={clone}
-                  key={product.title}
+                  key={`${product.title}-${i}`}
                 />
               ))}
             </div>
