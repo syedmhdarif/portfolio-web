@@ -90,9 +90,9 @@ export function Services() {
           <Reveal>
             <h3 className="display text-2xl sm:text-3xl">What you'll need</h3>
             <p className="mt-2 max-w-2xl text-ink-2">
-              Every project ships with its own stack of services. Here's what I
-              set up — and what it costs you to run — across domain, hosting,
-              database, and mobile build.
+              Every project runs on a handful of services. These are the ones I
+              set up and hand over — from domain and hosting to payments,
+              monitoring, and mobile release.
             </p>
           </Reveal>
           <Stagger
@@ -128,7 +128,7 @@ export function Services() {
             className="flex flex-col items-start gap-6 rounded-2xl bg-ink p-8 md:flex-row md:items-center md:justify-between md:p-12"
           >
             <div>
-              <h3 className="display text-3xl text-paper sm:text-4xl">
+              <h3 className="display text-3xl text-paper! sm:text-4xl">
                 Have a project in mind?
               </h3>
               <p className="mt-3 max-w-xl text-paper/70">

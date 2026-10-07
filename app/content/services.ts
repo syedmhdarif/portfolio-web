@@ -77,27 +77,51 @@ export type StackItem = {
 
 export const PROJECT_STACK: StackItem[] = [
   {
-    title: "Domain",
+    title: "Domain & DNS",
     description:
-      "Your name on the web. I help register, configure DNS, set up SSL, and wire up email forwarding.",
-    items: ["Cloudflare", "Namecheap", "Google Domains"],
+      "Your name on the web. I register the domain, point DNS through Cloudflare, and sort out SSL and email records.",
+    items: ["Spaceship", "GoDaddy", "Exabytes", "Cloudflare"],
   },
   {
-    title: "Web Hosting",
+    title: "Hosting & Deploy",
     description:
-      "Global edge delivery with preview URLs on every commit. Vercel is my default for React and Next.js.",
-    items: ["Vercel", "Cloudflare Pages", "Netlify"],
+      "Edge hosting for the front end, a managed server for the API, and preview builds on every push.",
+    items: ["Vercel", "Cloudflare", "Railway", "GitHub Actions"],
   },
   {
     title: "Database & Auth",
     description:
-      "Postgres, auth, storage, and realtime — Supabase gives you a production backend without the ops overhead.",
-    items: ["Supabase", "Firebase", "PostgreSQL"],
+      "Postgres, auth, storage, and realtime on Supabase. Firebase where push notifications or an existing app need it.",
+    items: ["Supabase", "Firebase"],
+  },
+  {
+    title: "Media & Email",
+    description:
+      "Images resized and served from a CDN, plus transactional email — sign-ups, receipts, password resets — that lands in the inbox.",
+    items: ["Cloudinary", "Resend"],
+  },
+  {
+    title: "Payments",
+    description:
+      "Malaysian payment gateways with FPX online banking, cards, and e-wallets, settled in RM.",
+    items: ["ToyyibPay", "Razorpay Curlec"],
+  },
+  {
+    title: "Analytics & Monitoring",
+    description:
+      "See how people use the product, catch errors before your users report them, and track how Google indexes the site.",
+    items: ["PostHog", "SigNoz", "Google Search Console"],
   },
   {
     title: "Mobile Build & Release",
     description:
-      "Automated iOS & Android builds, signing, and store submissions through Expo EAS or Codemagic.",
-    items: ["Expo EAS", "Codemagic", "App Store", "Play Store"],
+      "Automated iOS and Android builds, signing, and store submissions — or a PWA / TWA when a full native app is more than you need.",
+    items: ["Expo EAS", "Codemagic", "PWA / TWA", "App Store", "Play Store"],
+  },
+  {
+    title: "Project Docs & Handover",
+    description:
+      "Specs, progress notes, and a handover guide in one shared workspace, so you are never left guessing how things run.",
+    items: ["Notion", "GitHub"],
   },
 ];
