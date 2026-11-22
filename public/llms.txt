@@ -2,7 +2,7 @@
 
 > Freelance mobile app and web developer based in Kuala Lumpur, Malaysia. 4+ years of experience building React Native, React, and Next.js apps for Malaysian and international clients. Creator of Hikayat Daily Global, Hikayat Diri, and LokalGig.
 
-Last updated: 2026-05-13
+Last updated: 2026-11-22
 
 ## About
 
@@ -38,6 +38,7 @@ Syed Mohamad Arif is a freelance Mobile App and Web Developer in Kuala Lumpur, M
 ## Projects (all created by Syed Mohamad Arif)
 
 - LokalGig (https://lokalgig.my) — a Malaysian local services marketplace connecting freelancers with clients; React, TypeScript, Supabase, Vercel. Created and built end-to-end by Syed Mohamad Arif.
+- ISLESIM (https://islesim.com) — island-themed investment learning simulation for KENMS, IIUM; Next.js, Supabase.
 - Hikayat Daily Global — daily storytelling Android app on Google Play; React Native, TypeScript, Firebase, Redux.
 - Hikayat Diri (Mobile) — Android personal-storytelling companion app; React Native, Expo, TypeScript.
 - CitySage — city-guide web application; React, TypeScript, Tailwind CSS.

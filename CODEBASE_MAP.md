@@ -42,7 +42,7 @@ Prerendered paths (`react-router.config.ts`): `/`, `/background`, `/learn`, `/le
 
 ## Content (`app/content/`, typed data, all copy)
 
-`site.ts` (identity: name, alternate names, URLs, experience years, JSON-LD inputs), `hero.ts` (stats, social pills), `projects.ts` (`PROJECTS` = 8 projects incl. Maahad Tahfiz Abu Bakar, Halim Suhor Architect, LokalGig Sitelog; `FEATURED_PROJECT`, `GRID_PROJECTS`, counts). Work section (`home/Work.tsx`): md+ renders `WorkParallax` (HeroParallax over all PROJECTS, every card `target=_blank`); below md renders the featured card + single-column card list. Thumbnails: `public/projects/*.jpeg` (1280x800 captures) plus `public/*-thumbnail.png` and `app/assets/`, `services.ts` (services, process, project stack), `background.ts` (experience, education, skills, marquee).
+`site.ts` (identity: name, alternate names, URLs, experience years, JSON-LD inputs), `hero.ts` (stats, social pills), `projects.ts` (`PROJECTS` = 9 projects incl. ISLESIM, Maahad Tahfiz Abu Bakar, Halim Suhor Architect, LokalGig Sitelog; `FEATURED_PROJECT`, `GRID_PROJECTS`, counts). Work section (`home/Work.tsx`): md+ renders `WorkParallax` (HeroParallax over all PROJECTS, every card `target=_blank`); below md renders the featured card + single-column card list. Thumbnails: `public/projects/*.jpeg` / `islesim.webp` (1280x800 captures) plus `public/*-thumbnail.png` and `app/assets/`, `services.ts` (services, process, project stack), `background.ts` (experience, education, skills, marquee).
 
 ## Styles (`app/app.css`, 369 lines)
 
