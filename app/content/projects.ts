@@ -39,6 +39,21 @@ export const PROJECTS: Project[] = [
     featured: true,
   },
   {
+    id: "islesim",
+    name: "ISLESIM",
+    category: "Web Application · Education",
+    schemaType: "WebApplication",
+    status: "web",
+    statusLabel: "Live on the web",
+    description:
+      "Island-themed investment learning simulation for KENMS, IIUM. Students join with a module code and sail through 11 ports, each a lesson, with a scoreboard.",
+    tech: ["Next.js", "Supabase"],
+    href: "https://islesim.com",
+    hrefLabel: "Visit islesim.com",
+    image: "/projects/islesim.webp",
+    fit: "cover",
+  },
+  {
     id: "maahad-tahfiz-abu-bakar",
     name: "Maahad Tahfiz Abu Bakar",
     category: "Website · Education",
