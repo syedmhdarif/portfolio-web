@@ -10,6 +10,7 @@ import {
   LINKEDIN_URL,
   GITHUB_URL,
 } from "../../content/site";
+import { iconButtonVariants } from "~/components/ui/primitives";
 
 const CHANNELS = [
   { label: "Email", value: EMAIL, href: `mailto:${EMAIL}`, Icon: Mail, external: false },
@@ -88,7 +89,7 @@ export function Contact() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="grid h-12 w-12 place-items-center rounded-full border border-line text-ink transition-colors hover:border-ink-3 hover:text-amber-text"
+                  className={iconButtonVariants({ size: "lg" })}
                 >
                   <Icon className="h-5 w-5" />
                 </a>

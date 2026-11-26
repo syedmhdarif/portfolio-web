@@ -4,6 +4,7 @@ import { Link } from "react-router";
 import { Shield, Clock, ArrowUpRight } from "../components/icons";
 import { Reveal, Stagger, StaggerItem } from "../components/motion";
 import { SectionHeading } from "../components/SectionHeading";
+import { Tag } from "~/components/ui/primitives";
 
 const PAGE_TITLE = "Learning Space – Notes on Software Engineering & Security | Syed Mohamad Arif";
 const PAGE_DESCRIPTION =
@@ -118,7 +119,7 @@ export default function LearnPage() {
             </div>
             <div className="p-7 md:col-span-8 md:p-10">
               <div className="flex items-center gap-3">
-                <span className="tag text-xs">{featured.category}</span>
+                <Tag>{featured.category}</Tag>
                 <span className="flex items-center gap-1.5 text-sm text-ink-3">
                   <Clock className="h-4 w-4" />
                   {featured.readTime}
@@ -177,7 +178,7 @@ export default function LearnPage() {
                 <Link to={`/learn/${topic.slug}`} className="flex h-full flex-col">
                   <div className="flex items-center gap-3">
                     <topic.icon className="h-6 w-6 text-amber-text" />
-                    <span className="tag text-xs">{topic.category}</span>
+                    <Tag>{topic.category}</Tag>
                   </div>
                   <h3 className="mt-4 text-xl font-bold text-ink group-hover:text-amber-text">
                     {topic.title}

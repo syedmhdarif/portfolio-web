@@ -3,6 +3,7 @@ import { Github, Linkedin, Mail, WhatsApp } from "./icons";
 import { Monogram } from "./Monogram";
 import { NAV_ITEMS } from "./nav-items";
 import { EMAIL, GITHUB_URL, LINKEDIN_URL, WHATSAPP_URL, PERSON_NAME } from "../content/site";
+import { iconButtonVariants } from "~/components/ui/primitives";
 
 const SOCIALS = [
   { label: "LinkedIn", href: LINKEDIN_URL, Icon: Linkedin },
@@ -51,7 +52,7 @@ export function Footer() {
                   target={href.startsWith("mailto:") ? undefined : "_blank"}
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="grid h-11 w-11 place-items-center rounded-full border border-line text-ink transition-colors hover:border-ink-3 hover:text-amber-text"
+                  className={iconButtonVariants()}
                 >
                   <Icon className="h-5 w-5" />
                 </a>

@@ -5,3 +5,6 @@
 # React Router
 /.react-router/
 /build/
+
+# Local symlink to personal skills; machine-specific, never commit
+/.claude/skills

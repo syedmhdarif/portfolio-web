@@ -7,6 +7,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../ui/
 import { gsap, useGSAP, MOTION_OK, MOTION_REDUCED, FINE_POINTER } from "~/lib/gsap";
 import { HERO_STATS, SOCIAL_PILLS } from "../../content/hero";
 import { PERSON_NAME, GITHUB_URL } from "../../content/site";
+import { Chip, buttonVariants, iconButtonVariants } from "~/components/ui/primitives";
 
 const HERO_SHAPE_VIEWBOX = "0 0 358 371";
 const HERO_SHAPE_PATH =
@@ -36,7 +37,7 @@ function SocialIcons() {
               target={s.href.startsWith("mailto:") ? undefined : "_blank"}
               rel="noopener noreferrer"
               aria-label={s.label}
-              className="grid h-11 w-11 place-items-center rounded-full border border-line text-ink-2 transition-colors hover:border-ink hover:bg-ink hover:text-paper"
+              className={iconButtonVariants({ className: "text-ink-2 hover:border-ink hover:bg-ink hover:text-paper" })}
             >
               <Icon className="h-[18px] w-[18px]" />
             </a>
@@ -295,10 +296,7 @@ export function Hero() {
           className="order-2 lg:order-1 lg:col-span-5"
         >
           <StaggerItem>
-            <span className="chip">
-              <span className="chip-dot" aria-hidden="true" />
-              Available for freelance &amp; full-time
-            </span>
+            <Chip dot>Available for freelance &amp; full-time</Chip>
           </StaggerItem>
 
           {/* Masked clip-rise on the display headline — the signature entrance. */}
@@ -323,11 +321,11 @@ export function Hero() {
           </StaggerItem>
 
           <StaggerItem className="mt-6 flex flex-wrap items-center gap-3">
-            <a href="#contact" className="btn btn-primary">
+            <a href="#contact" className={buttonVariants({ variant: "primary" })}>
               <Mail className="h-5 w-5" />
               Get in touch
             </a>
-            <a href="#work" className="btn btn-ghost">
+            <a href="#work" className={buttonVariants({ variant: "ghost" })}>
               View work
             </a>
           </StaggerItem>

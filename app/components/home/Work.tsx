@@ -3,6 +3,8 @@ import { SectionHeading } from "../SectionHeading";
 import { ArrowUpRight } from "../icons";
 import { FEATURED_PROJECT, GRID_PROJECTS, PROJECTS, type Project } from "../../content/projects";
 import { HeroParallax, type HeroParallaxProduct } from "~/components/ui/hero-parallax";
+import { Tag, buttonVariants } from "~/components/ui/primitives";
+
 
 /**
  * Tracks the cursor for the glowing-effect border. rAF-throttled so a fast
@@ -37,9 +39,9 @@ function TechTags({ tech }: { tech: string[] }) {
   return (
     <div className="flex flex-wrap gap-2">
       {tech.map((t) => (
-        <span key={t} className="tag text-xs">
+        <Tag key={t}>
           {t}
-        </span>
+        </Tag>
       ))}
     </div>
   );
@@ -176,7 +178,7 @@ function FeaturedProject({ project }: { project: Project }) {
             target="_blank"
             rel="noopener noreferrer"
             itemProp="url"
-            className="btn btn-amber mt-7 w-fit"
+            className={buttonVariants({ variant: "amber", className: "mt-7 w-fit" })}
           >
             {project.hrefLabel}
             <ArrowUpRight className="h-5 w-5" />
