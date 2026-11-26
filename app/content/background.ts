@@ -9,41 +9,51 @@ export type Experience = {
 
 export const EXPERIENCE: Experience[] = [
   {
-    title: "Mobile App Developer",
+    title: "Software Engineer (Mobile & Backend)",
     company: "Paywatch Malaysia",
     period: "Feb 2025 — Present",
     isCurrent: true,
     responsibilities: [
-      "Build and enhance key features such as health insurance, critical illness insurance, QR payments, and voucher systems",
-      "Work closely with UI/UX designers to translate designs into smooth, user-friendly components",
-      "Manage TestFlight and Firebase App Distribution for testing and releases",
-      "Support CI/CD processes through Azure Pipeline to ensure efficient builds and deployments",
+      "Built React Native insurance and healthcare purchase flows (MoneeInsure life insurance, Zurich TenangCare, IMU Healthcare with MediPay QR payments), including the SeaInsure to MoneeInsure rebrand",
+      "Built QR Pay, the Indonesian QRIS payment flow in the app with partner M-Bayar, added Codemagic Patch OTA updates with CI guards, and maintained and upgraded core mobile dependencies (React Navigation v7, React Query, Reanimated 4)",
+      "Primary author of the IMU Healthcare Merchant Portal, taking it from scaffold to production with Next.js, GraphQL and role-based access",
+      "Built Shinhan Bank Vietnam payouts end to end on Node/Fastify, from bank integration to admin UI, and carried the launch through bank UAT and ops handoff",
+      "Built and maintained data and infrastructure for these services, including PostgreSQL and Cosmos DB data layers, Kubernetes deployments, CI/CD and observability",
+      "Built the team Claude Code skills and MCP integrations, covering AI-assisted pre-PR checks and ticket-to-code and spec-to-story workflows, and set the team AI-use rules",
     ],
-    technologies: ["React Native", "TypeScript", "Firebase", "Azure DevOps", "Maestro"],
+    technologies: [
+      "React Native", "Next.js", "GraphQL", "Node.js", "Fastify", "PostgreSQL",
+      "Cosmos DB", "Kubernetes", "Codemagic", "Claude Code", "MCP",
+    ],
   },
   {
     title: "Junior Mobile App Developer",
     company: "Zonar Malaysia",
     period: "Sep 2023 — Jan 2025",
     responsibilities: [
-      "Specialise in React Native development using Firebase, Redux, and React Navigation",
-      "Responsible for designing the UI/UX of the Zonar app, ensuring user-friendly functionality",
-      "Work across the full project lifecycle using insights from Google Analytics",
-      "Follow Agile sprints with regular scrum meetings to track progress",
+      "Led React Native development of the Zonar app, with core modules from authentication to real-time sync on iOS and Android",
+      "Owned UI/UX in Figma",
+      "Shipped in Agile sprints",
     ],
-    technologies: ["React Native", "Firebase", "Redux", "Figma", "Google Analytics"],
+    technologies: ["React Native", "Firebase", "Redux", "React Navigation", "Figma"],
   },
   {
     title: "Junior Mobile App Developer",
     company: "Accenture",
     period: "Aug 2022 — Sep 2023",
     responsibilities: [
-      "Maintain, enhance, and build new features for the Unifi mobile prepaid (TM) app",
-      "Integrate RESTful APIs and manage state with Redux",
-      "Implement OneSignal for push notifications",
-      "Use Git for efficient version control and team collaboration",
+      "Shipped Unifi Mobile Prepaid (TM) features on iOS and Android with REST APIs, Redux and OneSignal in an enterprise Git workflow",
     ],
-    technologies: ["React Native", "Redux", "RESTful APIs", "OneSignal", "Git"],
+    technologies: ["React Native", "Redux", "REST APIs", "OneSignal", "Git"],
+  },
+  {
+    title: "UI UX",
+    company: "AiSara",
+    period: "Aug 2021 — Jul 2022",
+    responsibilities: [
+      "UI/UX design with Figma and Adobe XD for product interfaces",
+    ],
+    technologies: ["Figma", "Adobe XD"],
   },
 ];
 
@@ -57,7 +67,7 @@ export const EDUCATION: Education[] = [
   {
     qualification: "Bachelor of Information Technology",
     institution: "International Islamic University Malaysia",
-    period: "2017 — 2020",
+    period: "2017 — 2021",
   },
   {
     qualification: "Foundation in Engineering",
@@ -73,37 +83,38 @@ export type SkillGroup = {
 
 export const SKILLS: SkillGroup[] = [
   {
-    title: "Languages",
-    skills: ["JavaScript", "TypeScript", "HTML/CSS", "SQL", "Swift", "Java/Kotlin"],
+    title: "Mobile",
+    skills: ["React Native (New Arch)", "Redux Toolkit", "Firebase", "React Query", "Reanimated", "Codemagic", "EAS", "Figma", "Adobe XD"],
   },
   {
-    title: "Frameworks",
-    skills: ["React Native", "React.js", "Next.js", "Node.js", "Redux", "React Query"],
+    title: "Backend",
+    skills: ["TypeScript", "JavaScript", "Node.js", "Fastify", "NestJS", "GraphQL (Yoga)", "Next.js", "React 19", "Playwright", "Vitest"],
   },
   {
-    title: "Tools",
-    skills: ["Android Studio", "Xcode", "VS Code", "Figma", "Postman", "Maestro"],
+    title: "Data and Infra",
+    skills: ["PostgreSQL", "Drizzle", "Azure Cosmos DB", "Kubernetes", "Kustomize", "Argo CD", "Azure Key Vault", "GitHub Actions", "OpenTelemetry", "SigNoz"],
   },
   {
-    title: "Databases",
-    skills: ["PostgreSQL", "MySQL", "MongoDB", "Firebase"],
+    title: "AI Tooling",
+    skills: ["Claude Code (skills)", "Codex", "Cursor", "MCP integrations", "Automation pipelines"],
   },
 ];
 
 /** Flat list for the marquee strip. */
 export const SKILLS_MARQUEE: string[] = [
   "React Native",
-  "React",
   "TypeScript",
   "Next.js",
-  "Expo",
-  "Firebase",
-  "Supabase",
-  "Redux",
-  "Tailwind",
-  "Figma",
   "Node.js",
+  "Fastify",
+  "NestJS",
+  "GraphQL",
   "PostgreSQL",
-  "CI/CD",
-  "Three.js",
+  "Kubernetes",
+  "Codemagic",
+  "GitHub Actions",
+  "OpenTelemetry",
+  "Claude Code",
+  "MCP",
+  "Figma",
 ];

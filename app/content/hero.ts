@@ -10,7 +10,7 @@ export type HeroStat = {
 
 /** Truthful, countable figures only (see brief — no inflated metrics). */
 export const HERO_STATS: HeroStat[] = [
-  { value: 4, suffix: "+", label: "Years building products" },
+  { value: 5, suffix: "+", label: "Years building products" },
   { value: SHIPPED_PROJECT_COUNT, suffix: "+", label: "Web & mobile products shipped" },
 ];
 

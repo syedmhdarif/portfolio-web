@@ -26,13 +26,11 @@ export const PERSON_ALTERNATE_NAMES = ["syedmhdarif", "Syed Arif"];
  * Canonical experience claim used across visible UI, JSON-LD, metadata, and
  * LLM files. Update this when the claim changes (e.g. annually).
  *
- * Decision rationale: work history starts Aug 2022 (Accenture). As of
- * May 2026, that is roughly 3 years 9 months of professional experience.
- * "4+ years" is the most accurate forward-looking claim. Using "5 years"
- * previously overstated; "4+ years" keeps it truthful.
+ * Decision rationale: work history starts Aug 2021 (AiSara, UI/UX), roughly
+ * 5 years 3 months as of Nov 2026, so "5+ years" is accurate.
  */
-export const EXPERIENCE_YEARS = "4+";
-export const EXPERIENCE_YEARS_LONG = "4+ years";
+export const EXPERIENCE_YEARS = "5+";
+export const EXPERIENCE_YEARS_LONG = "5+ years";
 
 // ── Location ────────────────────────────────────────────────────────────────
 
@@ -47,6 +45,8 @@ export const PHONE_DISPLAY = "+60 14-529 7072";
 export const WHATSAPP_URL = "https://wa.me/60145297072";
 export const LINKEDIN_URL = "https://linkedin.com/in/syedmhdarif";
 export const GITHUB_URL = "https://github.com/syedmhdarif";
+/** CV PDF in public/. Relative (no leading slash) callers must prefix the deploy base path. */
+export const RESUME_FILE = "syed-mohamad-arif-resume.pdf";
 
 // ── Site URLs ───────────────────────────────────────────────────────────────
 
@@ -59,12 +59,12 @@ export const OG_IMAGE_URL = `${SITE_URL}/og-image.png`;
  * Manually maintained date for structured data `dateModified`.
  * Update ONLY when profile/service content substantially changes.
  */
-export const CONTENT_LAST_MODIFIED = "2026-05-13";
+export const CONTENT_LAST_MODIFIED = "2026-11-27";
 export const PROFILE_DATE_CREATED = "2024-01-01";
 
 // ── Current role ────────────────────────────────────────────────────────────
 
-export const CURRENT_ROLE = "Mobile App Developer";
+export const CURRENT_ROLE = "Software Engineer (Mobile & Backend)";
 export const CURRENT_EMPLOYER = "Paywatch Malaysia";
 export const CURRENT_EMPLOYER_URL = "https://paywatch.com/";
 
@@ -76,22 +76,27 @@ export const HOMEPAGE_FAQ: { question: string; answer: string }[] = [
   {
     question: "Who is Syed Mohamad Arif?",
     answer:
-      `Syed Mohamad Arif is a mobile app and web developer based in ${LOCATION_SHORT} with ${EXPERIENCE_YEARS_LONG} of experience building cross-platform applications with React Native, React, and TypeScript. He currently works as a ${CURRENT_ROLE} at ${CURRENT_EMPLOYER} and is the creator of Hikayat Daily Global, Hikayat Diri, and LokalGig.`,
+      `Syed Mohamad Arif is a full-stack developer based in ${LOCATION_SHORT} with ${EXPERIENCE_YEARS_LONG} of product experience across React Native, Next.js, and Node.js. He currently works as a ${CURRENT_ROLE} at ${CURRENT_EMPLOYER}, building earned-wage access fintech across 6 markets (MY, HK, PH, ID, SG, VN), and is the creator of Hikayat Daily Global, Hikayat Diri, and LokalGig.`,
   },
   {
-    question: "What mobile app development services do you offer in Malaysia?",
+    question: "What development services do you offer in Malaysia?",
     answer:
-      `Cross-platform iOS and Android apps from a single React Native + Expo codebase, with native modules where needed. Full release pipelines run through Expo EAS or Codemagic, including Apple App Store and Google Play Store submission. Services cover design in Figma, development in TypeScript, testing, and deployment.`,
+      `Cross-platform iOS and Android apps in React Native, Next.js web apps and portals, and Node.js / Fastify backend services, including payments and bank integrations. Release pipelines run through Codemagic or Expo EAS, including Apple App Store and Google Play Store submission. Services cover design in Figma, development in TypeScript, testing, and deployment.`,
   },
   {
     question: "Do you build both iOS and Android apps?",
     answer:
-      "Yes. Syed Mohamad Arif builds cross-platform iOS and Android apps from a single React Native + Expo codebase, with native modules where needed. Full release pipelines run through Expo EAS or Codemagic, including Apple App Store and Google Play Store submission.",
+      "Yes. Syed Mohamad Arif builds cross-platform iOS and Android apps in React Native from a single codebase, with native modules where needed. Releases run through Codemagic or Expo EAS, including Apple App Store and Google Play Store submission and over-the-air updates.",
   },
   {
-    question: "What stack do you use for React Native projects?",
+    question: "Do you work on fintech and backend projects?",
     answer:
-      "React Native with Expo for the core framework, TypeScript for type safety, Redux or React Query for state management, Firebase or Supabase for backend services, and Expo EAS or Codemagic for CI/CD and store submissions.",
+      "Yes. At Paywatch he works on earned-wage access fintech across 6 markets (MY, HK, PH, ID, SG, VN): React Native apps, Next.js portals, and Node / Fastify services, including QR payments and bank payout integrations, backed by PostgreSQL, Kubernetes, and CI/CD.",
+  },
+  {
+    question: "What stack do you use?",
+    answer:
+      "React Native for mobile, Next.js and React 19 for web, and TypeScript with Node.js, Fastify, NestJS, and GraphQL for backend services. Data layers use PostgreSQL (Drizzle), Cosmos DB, or Firebase; delivery uses Codemagic, EAS, GitHub Actions, and Kubernetes. He also works AI-first with Claude Code skills and MCP integrations.",
   },
   {
     question: "How much does a mobile app cost in Malaysia?",

@@ -96,12 +96,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
                   familyName: "Arif",
                   alternateName: ["syedmhdarif", "Syed Arif"],
                   jobTitle: [
-                    "Freelance Mobile App Developer",
-                    "Frontend Developer",
+                    "Full-Stack Developer",
+                    "Software Engineer (Mobile & Backend)",
                     "React Native Developer",
-                    "Web App Developer"
+                    "Next.js Developer",
+                    "Node.js Developer"
                   ],
-                  description: `Freelance mobile app and web developer based in Kuala Lumpur, Malaysia, with 4+ years of experience building React Native, React, and Next.js apps for Malaysian and international clients. Creator of Hikayat Daily Global, Hikayat Diri, and LokalGig.`,
+                  description: `Full-stack developer (React Native, Next.js, Node.js) based in Kuala Lumpur, Malaysia, with 5+ years of product experience. Builds earned-wage access fintech at Paywatch across 6 markets (MY, HK, PH, ID, SG, VN), and takes on freelance work for Malaysian and international clients. Creator of Hikayat Daily Global, Hikayat Diri, and LokalGig.`,
                   url: "https://syedmohamadarif.site/",
                   mainEntityOfPage: "https://syedmohamadarif.site/",
                   image: {
@@ -134,7 +135,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
                   ],
                   knowsAbout: [
                     "React Native", "React", "TypeScript", "JavaScript", "Mobile App Development",
-                    "Frontend Development", "Next.js", "Node.js", "Redux", "Firebase",
+                    "Full-Stack Development", "Next.js", "Node.js", "Fastify", "NestJS", "GraphQL", "PostgreSQL", "Kubernetes",
+                    "Fintech", "Payments", "Claude Code", "MCP", "Redux", "Firebase",
                     "iOS Development", "Android Development", "UI/UX Design", "Figma",
                     "Supabase", "Tailwind CSS", "Three.js", "OWASP Top 10", "Web Application Security"
                   ],
@@ -142,10 +144,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
                   hasOccupation: [
                     {
                       "@type": "Occupation",
-                      name: "Mobile App Developer",
+                      name: "Software Engineer (Mobile & Backend)",
                       occupationLocation: { "@type": "Country", name: "Malaysia" },
                       estimatedSalary: { "@type": "MonetaryAmountDistribution", name: "base", currency: "MYR" },
-                      skills: "React Native, TypeScript, Firebase, Redux, CI/CD, Expo, EAS, Codemagic"
+                      skills: "React Native, Next.js, Node.js, Fastify, GraphQL, PostgreSQL, Kubernetes, CI/CD, Codemagic, Claude Code, MCP"
                     }
                   ],
                   worksFor: {
@@ -165,7 +167,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                   "@id": "https://syedmohamadarif.site/#website",
                   url: "https://syedmohamadarif.site/",
                   name: "Syed Mohamad Arif - Portfolio",
-                  description: "Portfolio website of Syed Mohamad Arif, a Frontend & Mobile Developer from Malaysia",
+                  description: "Portfolio website of Syed Mohamad Arif, a Full-Stack Developer (React Native, Next.js, Node.js) from Malaysia",
                   publisher: { "@id": "https://syedmohamadarif.site/#person" },
                   inLanguage: "en-US"
                 },

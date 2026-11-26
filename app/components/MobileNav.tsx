@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { Link } from "react-router";
-import { Menu, X } from "./icons";
+import { Download, Menu, X } from "./icons";
 import { ThemeToggle } from "./ThemeToggle";
 import { NAV_ITEMS } from "./nav-items";
-import { LOCATION_SHORT } from "../content/site";
-import { Chip, iconButtonVariants } from "~/components/ui/primitives";
+import { LOCATION_SHORT, RESUME_FILE } from "../content/site";
+import { Chip, buttonVariants, iconButtonVariants } from "~/components/ui/primitives";
 
 /**
  * Mobile navigation: hamburger trigger + full-height drawer.
@@ -124,6 +124,17 @@ export function MobileNav() {
               ))}
             </ul>
           </nav>
+
+          <a
+            href={`${import.meta.env.BASE_URL.replace(/\/?$/, "/")}${RESUME_FILE}`}
+            download="Syed-Mohamad-Arif-CV.pdf"
+            type="application/pdf"
+            onClick={() => setOpen(false)}
+            className={buttonVariants({ variant: "ghost", className: "mt-8 w-full justify-center" })}
+          >
+            <Download className="h-5 w-5" />
+            Download CV
+          </a>
 
           <div className="mt-auto flex items-center justify-between pt-8">
             <Chip dot>
