@@ -2,6 +2,7 @@ import type { Route } from "./+types/learn.$slug";
 import { Link, useParams } from "react-router";
 import { ArrowLeft, ArrowUpRight, Shield, Clock } from "../components/icons";
 import { Reveal } from "../components/motion";
+import { Card, Tag, buttonVariants } from "~/components/ui/primitives";
 
 type ArticleMeta = {
   title: string;
@@ -217,10 +218,10 @@ export default function ArticlePage() {
           </nav>
 
           <div className="flex flex-wrap items-center gap-3">
-            <span className="tag inline-flex items-center gap-1.5 text-xs">
+            <Tag className="inline-flex items-center gap-1.5">
               <Shield className="h-3.5 w-3.5" />
               {article.category}
-            </span>
+            </Tag>
             <span className="flex items-center gap-1.5 text-sm text-ink-3">
               <Clock className="h-3.5 w-3.5" />
               {article.readTime}
@@ -246,7 +247,7 @@ export default function ArticlePage() {
             <ArrowLeft className="h-4 w-4" />
             <span>All topics</span>
           </Link>
-          <Link to="/" className="btn btn-ghost">
+          <Link to="/" className={buttonVariants({ variant: "ghost" })}>
             Portfolio
             <ArrowUpRight className="h-4 w-4" />
           </Link>
@@ -261,7 +262,7 @@ export default function ArticlePage() {
 function SectionCard({ children }: { children: React.ReactNode }) {
   return (
     <Reveal>
-      <div className="card mb-8 p-6 md:p-8">{children}</div>
+      <Card className="mb-8 p-6 md:p-8">{children}</Card>
     </Reveal>
   );
 }

@@ -5,6 +5,7 @@ import { Menu, X } from "./icons";
 import { ThemeToggle } from "./ThemeToggle";
 import { NAV_ITEMS } from "./nav-items";
 import { LOCATION_SHORT } from "../content/site";
+import { Chip, iconButtonVariants } from "~/components/ui/primitives";
 
 /**
  * Mobile navigation: hamburger trigger + full-height drawer.
@@ -73,7 +74,7 @@ export function MobileNav() {
         aria-expanded={open}
         aria-controls="mobile-nav-drawer"
         onClick={() => setOpen((v) => !v)}
-        className="grid h-11 w-11 place-items-center rounded-full border border-line text-ink transition-colors hover:border-ink-3"
+        className={iconButtonVariants()}
       >
         {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
       </button>
@@ -125,10 +126,9 @@ export function MobileNav() {
           </nav>
 
           <div className="mt-auto flex items-center justify-between pt-8">
-            <span className="chip">
-              <span className="chip-dot" aria-hidden="true" />
+            <Chip dot>
               Open to work · {LOCATION_SHORT.split(",")[0]}
-            </span>
+            </Chip>
             <ThemeToggle />
           </div>
         </div>

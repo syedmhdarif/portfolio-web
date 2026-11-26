@@ -2,6 +2,8 @@ import { Reveal, Stagger, StaggerItem, ParallaxLayer } from "../motion";
 import { SectionHeading } from "../SectionHeading";
 import { ArrowUpRight, Check } from "../icons";
 import { SERVICES, PROCESS, PROJECT_STACK } from "../../content/services";
+import { Tag, buttonVariants } from "~/components/ui/primitives";
+
 
 function ServiceCard({ service }: { service: (typeof SERVICES)[number] }) {
   return (
@@ -19,9 +21,9 @@ function ServiceCard({ service }: { service: (typeof SERVICES)[number] }) {
       </ul>
       <div className="mt-7 flex flex-wrap gap-2 border-t border-line pt-6">
         {service.stack.map((s) => (
-          <span key={s} className="tag text-xs">
+          <Tag key={s}>
             {s}
-          </span>
+          </Tag>
         ))}
       </div>
     </StaggerItem>
@@ -75,9 +77,9 @@ export function Services() {
                 </p>
                 <div className="mt-5 flex flex-wrap gap-2">
                   {step.tools.map((t) => (
-                    <span key={t} className="tag text-xs">
+                    <Tag key={t}>
                       {t}
-                    </span>
+                    </Tag>
                   ))}
                 </div>
               </StaggerItem>
@@ -110,9 +112,9 @@ export function Services() {
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2 border-t border-line pt-4">
                   {item.items.map((i) => (
-                    <span key={i} className="tag text-xs">
+                    <Tag key={i}>
                       {i}
-                    </span>
+                    </Tag>
                   ))}
                 </div>
               </StaggerItem>
@@ -136,7 +138,7 @@ export function Services() {
                 let's talk through scope, stack, and timeline. No obligation.
               </p>
             </div>
-            <a href="#contact" className="btn btn-amber shrink-0">
+            <a href="#contact" className={buttonVariants({ variant: "amber", className: "shrink-0" })}>
               Have a chat
               <ArrowUpRight className="h-5 w-5" />
             </a>

@@ -5,6 +5,7 @@ import { SectionHeading } from "../components/SectionHeading";
 import { GraduationCap, ArrowUpRight } from "../components/icons";
 import { EXPERIENCE, EDUCATION, SKILLS, SKILLS_MARQUEE } from "../content/background";
 import { SITE_URL, OG_IMAGE_URL, PERSON_NAME } from "../content/site";
+import { Tag, buttonVariants } from "~/components/ui/primitives";
 
 const TITLE = `Background — Experience, Education & Skills | ${PERSON_NAME}`;
 const DESCRIPTION =
@@ -92,9 +93,9 @@ function ExperienceTimeline() {
               </ul>
               <div className="mt-4 flex flex-wrap gap-2">
                 {job.technologies.map((t) => (
-                  <span key={t} className="tag text-xs">
+                  <Tag key={t}>
                     {t}
-                  </span>
+                  </Tag>
                 ))}
               </div>
             </StaggerItem>
@@ -154,9 +155,9 @@ function SkillsSection() {
               <h3 className="text-lg font-bold text-ink">{group.title}</h3>
               <div className="mt-4 flex flex-wrap gap-2">
                 {group.skills.map((s) => (
-                  <span key={s} className="tag text-xs">
+                  <Tag key={s}>
                     {s}
-                  </span>
+                  </Tag>
                 ))}
               </div>
             </StaggerItem>
@@ -178,7 +179,7 @@ function SkillsSection() {
 
       <div className="wrap mt-16">
         <Reveal>
-          <Link to="/#contact" className="btn btn-primary">
+          <Link to="/#contact" className={buttonVariants({ variant: "primary" })}>
             Let's work together
             <ArrowUpRight className="h-5 w-5" />
           </Link>

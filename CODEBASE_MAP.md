@@ -31,6 +31,7 @@ Prerendered paths (`react-router.config.ts`): `/`, `/background`, `/learn`, `/le
 - `home/`: `Hero`, `About`, `Work`, `Services`, `Contact`, `Faq` (one per home section; ids match `HOME_SECTION_IDS`).
 - `motion/` (barrel `index.ts`). Framer Motion: `Reveal`, `Stagger`/`StaggerItem`, `TextReveal`, `PageTransition`, `CountUp`, `Tilt3D`, `useAfterSplash`, `MOTION` tokens (`tokens.ts`, mirrors CSS easing/duration). GSAP: `ParallaxLayer` (scrubbed `yPercent`, 8-12, decorative layers only: Services dark CTA, Contact signature email), `WordReveal` (manual word split, staggered rise, `start: "top 85%"`, once; used for every `SectionHeading` h2).
 - `ui/` (third-party shadcn/Aceternity): `hero-parallax.tsx` (hand-ported Aceternity Hero Parallax, `motion/react`, `products {title, link, thumbnail}`, rows = ceil(n/3)). `components.json` exists (new-york, css `app/app.css`, aliases `~/components`, `~/components/ui`, `~/lib/utils`, `~/lib`); `cn()` in `app/lib/utils.ts`.
+- `ui/primitives.tsx`: design-system primitives over the token classes in `app.css` — `buttonVariants`/`Button` (primary | amber | ghost), `iconButtonVariants` (44/48px round icon control), `Chip` (`dot`), `Tag`, `Card`. Use these instead of raw `btn`/`chip`/`tag`/`card` classes.
 - `ui/tooltip.tsx`: shadcn-style Radix Tooltip mapped to `--ink/--paper` (keyframe `.tooltip-pop` in `app.css`). Used on the Hero card buttons.
 
 ## Animation
@@ -63,4 +64,4 @@ Single stylesheet, "Editorial Bold": cream/ink/amber, amber is the only chroma. 
 
 ## Agent setup
 
-`.claude/settings.json` hooks (PostToolUse on Edit/Write): `hooks/locale-guard.py`, `hooks/typecheck.py`. `.claude/skills` -> global skills. `docs/SEO_GEO_AEO_AUDIT_AND_ENHANCEMENT_PLAN.md`: SEO/AEO plan.
+`.claude/settings.json` hooks (PostToolUse on Edit/Write): `hooks/locale-guard.py`, `hooks/typecheck.py`. `.claude/skills` is a local, git-ignored symlink to personal skills (not in the repo). `docs/SEO_GEO_AEO_AUDIT_AND_ENHANCEMENT_PLAN.md`: SEO/AEO plan.

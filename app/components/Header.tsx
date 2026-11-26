@@ -4,6 +4,7 @@ import { ThemeToggle } from "./ThemeToggle";
 import { MobileNav } from "./MobileNav";
 import { NAV_ITEMS, HOME_SECTION_IDS } from "./nav-items";
 import { LOCATION_SHORT } from "../content/site";
+import { Chip } from "~/components/ui/primitives";
 
 function useScrolled(threshold = 16) {
   const [scrolled, setScrolled] = useState(false);
@@ -95,10 +96,9 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <span className="chip hidden lg:inline-flex">
-            <span className="chip-dot" aria-hidden="true" />
+          <Chip dot className="hidden lg:inline-flex">
             Open to work · {LOCATION_SHORT.split(",")[0]}
-          </span>
+          </Chip>
           <ThemeToggle className="hidden sm:grid" />
           <MobileNav />
         </div>
