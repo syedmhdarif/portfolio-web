@@ -17,8 +17,19 @@ export type HeroParallaxProduct = {
 };
 
 const ROWS = 3;
-/** Horizontal travel of each row, each way: 7vw capped at 112px (the edge mask hides the gap). */
-const amplitude = () => Math.min(window.innerWidth * 0.07, 112);
+// Card width (ProductCard) = (min(100vw, --wrap-page) - 3rem wrap padding - 2 * 1.5rem gap) / 3.
+/**
+ * Horizontal travel of each row, each way: 7vw capped at 112px, and never more
+ * than the free space either side of the 3 visible cards (minus an 8px safety),
+ * so no card leaves the viewport at the scroll extremes.
+ */
+const amplitude = () => {
+  const vw = window.innerWidth;
+  const rowW = Math.min(vw, 1280) - 48; // 3 cards + 2 gaps; 1280 = --wrap-page
+  // Row is centred on 100vw, but a classic scrollbar eats the right edge: measure the tighter side.
+  const rightFree = document.documentElement.clientWidth - (vw + rowW) / 2;
+  return Math.max(0, Math.min(vw * 0.07, 112, (vw - rowW) / 2 - 8, rightFree - 8));
+};
 
 /**
  * Hero-parallax wall, ported to GSAP ScrollTrigger after taleem-connect's
@@ -125,7 +136,7 @@ export const HeroParallax = ({
   return (
     // Full bleed out of `.wrap`, clipped here so the over-wide rows never scroll the page sideways.
     <div ref={ref} className="mx-[calc(50%-50vw)] overflow-x-clip">
-      <div className="motion-safe:[mask-image:linear-gradient(to_right,transparent,black_7%,black_93%,transparent)] motion-safe:[perspective:1000px]">
+      <div className="motion-safe:[perspective:1000px]">
         <div
           data-plane
           className="mx-auto grid max-w-[var(--wrap-page)] grid-cols-3 gap-6 px-10 motion-safe:flex motion-safe:max-w-none motion-safe:flex-col motion-safe:items-center motion-safe:px-0 motion-safe:will-change-transform"
@@ -161,7 +172,7 @@ export const ProductCard = ({
   <div
     aria-hidden={clone || undefined}
     className={cn(
-      "group/product relative aspect-[5/4] w-full shrink-0 motion-safe:aspect-auto motion-safe:h-80 motion-safe:w-[32rem]",
+      "group/product relative aspect-[5/4] w-full shrink-0 motion-safe:aspect-[8/5] motion-safe:w-[calc((min(100vw,var(--wrap-page))_-_3rem_-_3rem)/3)]",
       clone && "hidden motion-safe:block",
     )}
   >
