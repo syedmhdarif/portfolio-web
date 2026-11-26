@@ -1,15 +1,15 @@
-# Syed Mohamad Arif — Freelance Mobile App & Web Developer in Malaysia
+# Syed Mohamad Arif — Full-Stack Developer (React Native, Next.js, Node.js) in Malaysia
 
-> Full portfolio details for Syed Mohamad Arif, a freelance mobile app and web developer based in Kuala Lumpur, Malaysia. Creator of Hikayat Daily Global, Hikayat Diri, and LokalGig. 4+ years of experience building React Native, React, and Next.js apps for Malaysian and international clients.
+> Full portfolio details for Syed Mohamad Arif, a full-stack developer based in Kuala Lumpur, Malaysia. Creator of Hikayat Daily Global, Hikayat Diri, and LokalGig. 5+ years of product experience building earned-wage access fintech across 6 markets (MY, HK, PH, ID, SG, VN) with React Native, Next.js, and Node.js.
 
 Website: https://syedmohamadarif.site
-Last updated: 2026-11-22
+Last updated: 2026-11-27
 
 ---
 
 ## About
 
-Syed Mohamad Arif is a freelance Mobile App and Web Developer based in Sentul, Kuala Lumpur, Malaysia, with 4+ years of professional experience. He specializes in React Native and Expo for cross-platform iOS and Android apps, and React, Next.js, and TypeScript for the web. He works across the full product lifecycle — UI/UX design and prototyping in Figma, development, testing, CI/CD, and deployment to Vercel and the App Store / Play Store. He bridges the gap between design and engineering and is currently a Mobile App Developer at Paywatch Malaysia.
+Syed Mohamad Arif is a full-stack developer based in Sentul, Kuala Lumpur, Malaysia, with 5+ years of product experience. He builds earned-wage access fintech at Paywatch across 6 markets (MY, HK, PH, ID, SG, VN), shipping React Native apps, Next.js portals, and Node / Fastify services, including payments and bank payout integrations. He works AI-first with Claude Code skills, MCP integrations, and automation pipelines. He is currently a Software Engineer (Mobile & Backend) at Paywatch Malaysia.
 
 He offers freelance website and mobile app development services to Malaysian SMEs, startups, and international clients. Engagements run remotely across Malaysia (Kuala Lumpur, Petaling Jaya, Shah Alam, Selangor, Penang, Johor) and worldwide. Invoicing is supported in MYR and USD.
 
@@ -30,17 +30,17 @@ He offers freelance website and mobile app development services to Malaysian SME
 
 ## Skills & Technologies
 
-### Languages
-JavaScript, TypeScript, HTML/CSS, SQL, Swift, Java/Kotlin
+### Mobile
+React Native (New Arch), Redux Toolkit, Firebase, React Query, Reanimated, Codemagic, EAS, Figma, Adobe XD
 
-### Frameworks
-React Native, React.js, Next.js, Node.js, Redux, React Query
+### Backend
+TypeScript, JavaScript, Node.js, Fastify, NestJS, GraphQL (Yoga), Next.js, React 19, Playwright, Vitest
 
-### Tools
-Android Studio, Xcode, VS Code, Figma, Postman, Maestro, Git
+### Data and Infra
+PostgreSQL, Drizzle, Azure Cosmos DB, Kubernetes, Kustomize, Argo CD, Azure Key Vault, GitHub Actions, OpenTelemetry, SigNoz
 
-### Databases & Backend
-PostgreSQL, MySQL, MongoDB, Firebase, Supabase
+### AI Tooling
+Claude Code (skills), Codex, Cursor, MCP integrations, Automation pipelines
 
 ### Build & Release
 Expo, EAS, Codemagic, Vercel, Cloudflare Pages, Azure DevOps, TestFlight, Firebase App Distribution
@@ -52,26 +52,27 @@ OWASP Top 10 awareness, ASVS-aligned access control, secure authentication and a
 
 ## Work Experience
 
-### Mobile App Developer @ Paywatch Malaysia (Feb 2025 – Present)
-- Build and enhance key features such as health insurance, critical illness insurance, QR payments, and voucher systems
-- Work closely with UI/UX designers to translate Figma designs into smooth, user-friendly components
-- Manage TestFlight and Firebase App Distribution for testing and releases
-- Support CI/CD processes through Azure Pipeline to ensure efficient builds and deployments
-- Stack: React Native, TypeScript, Firebase, Azure DevOps, Maestro
+### Software Engineer (Mobile & Backend) @ Paywatch Malaysia (Feb 2025 – Present)
+- Built React Native insurance and healthcare purchase flows (MoneeInsure life insurance, Zurich TenangCare, IMU Healthcare with MediPay QR payments), including the SeaInsure to MoneeInsure rebrand
+- Built QR Pay, the Indonesian QRIS payment flow in the app with partner M-Bayar, added Codemagic Patch OTA updates with CI guards, and maintained and upgraded core mobile dependencies (React Navigation v7, React Query, Reanimated 4)
+- Primary author of the IMU Healthcare Merchant Portal, taking it from scaffold to production with Next.js, GraphQL and role-based access
+- Built Shinhan Bank Vietnam payouts end to end on Node/Fastify, from bank integration to admin UI, and carried the launch through bank UAT and ops handoff
+- Built and maintained data and infrastructure for these services, including PostgreSQL and Cosmos DB data layers, Kubernetes deployments, CI/CD and observability
+- Built the team Claude Code skills and MCP integrations, covering AI-assisted pre-PR checks and ticket-to-code and spec-to-story workflows, and set the team AI-use rules
+- Stack: React Native, Next.js, GraphQL, Node.js, Fastify, PostgreSQL, Cosmos DB, Kubernetes, Codemagic, Claude Code, MCP
 
 ### Junior Mobile App Developer @ Zonar Malaysia (Sep 2023 – Jan 2025)
-- Specialized in React Native development with Firebase, Redux, and React Navigation
-- Designed the UI/UX of the Zonar app, ensuring user-friendly functionality
-- Worked across the full project lifecycle using insights from Google Analytics
-- Followed Agile sprints with regular scrum meetings to track progress
-- Stack: React Native, Firebase, Redux, Figma, Google Analytics
+- Led React Native development of the Zonar app, with core modules from authentication to real-time sync (Firebase, Redux, React Navigation) on iOS and Android
+- Owned UI/UX in Figma; shipped in Agile sprints
+- Stack: React Native, Firebase, Redux, React Navigation, Figma
 
 ### Junior Mobile App Developer @ Accenture (Aug 2022 – Sep 2023)
-- Maintained, enhanced, and built new features for the Unifi Mobile Prepaid (TM) app
-- Integrated RESTful APIs and managed state with Redux
-- Implemented OneSignal for push notifications
-- Used Git for efficient version control and team collaboration
-- Stack: React Native, Redux, RESTful APIs, OneSignal, Git
+- Shipped Unifi Mobile Prepaid (TM) features on iOS and Android with REST APIs, Redux and OneSignal in an enterprise Git workflow
+- Stack: React Native, Redux, REST APIs, OneSignal, Git
+
+### UI UX @ AiSara (Aug 2021 – Jul 2022)
+- UI/UX design with Figma and Adobe XD for product interfaces
+- Stack: Figma, Adobe XD
 
 ---
 
@@ -155,7 +156,7 @@ A concise study guide to the OWASP Top 10 (2021): what OWASP is, the methodology
 ## Education
 
 ### Bachelor of Information Technology
-International Islamic University Malaysia (IIUM), 2017 – 2020
+International Islamic University Malaysia (IIUM), 2017 – 2021
 
 ### Foundation in Engineering
 CFS IIUM Petaling Jaya, 2015 – 2017
@@ -165,16 +166,19 @@ CFS IIUM Petaling Jaya, 2015 – 2017
 ## Frequently Asked Questions
 
 ### Who is Syed Mohamad Arif?
-Syed Mohamad Arif is a mobile app and web developer based in Kuala Lumpur, Malaysia with 4+ years of experience building cross-platform applications with React Native, React, and TypeScript. He currently works as a Mobile App Developer at Paywatch Malaysia and is the creator of Hikayat Daily Global, Hikayat Diri, and LokalGig.
+Syed Mohamad Arif is a full-stack developer based in Kuala Lumpur, Malaysia with 5+ years of product experience across React Native, Next.js, and Node.js. He currently works as a Software Engineer (Mobile & Backend) at Paywatch Malaysia, building earned-wage access fintech across 6 markets (MY, HK, PH, ID, SG, VN), and is the creator of Hikayat Daily Global, Hikayat Diri, and LokalGig.
 
-### What mobile app development services do you offer in Malaysia?
-Cross-platform iOS and Android apps from a single React Native + Expo codebase, with native modules where needed. Full release pipelines run through Expo EAS or Codemagic, including Apple App Store and Google Play Store submission. Services cover design in Figma, development in TypeScript, testing, and deployment.
+### What development services do you offer in Malaysia?
+Cross-platform iOS and Android apps in React Native, Next.js web apps and portals, and Node.js / Fastify backend services, including payments and bank integrations. Release pipelines run through Codemagic or Expo EAS, including Apple App Store and Google Play Store submission. Services cover design in Figma, development in TypeScript, testing, and deployment.
 
 ### Do you build both iOS and Android apps?
 Yes. Syed Mohamad Arif builds cross-platform iOS and Android apps from a single React Native + Expo codebase, with native modules where needed. Full release pipelines run through Expo EAS or Codemagic, including Apple App Store and Google Play Store submission.
 
-### What stack do you use for React Native projects?
-React Native with Expo for the core framework, TypeScript for type safety, Redux or React Query for state management, Firebase or Supabase for backend services, and Expo EAS or Codemagic for CI/CD and store submissions.
+### Do you work on fintech and backend projects?
+Yes. At Paywatch he works on earned-wage access fintech across 6 markets (MY, HK, PH, ID, SG, VN): React Native apps, Next.js portals, and Node / Fastify services, including QR payments and bank payout integrations, backed by PostgreSQL, Kubernetes, and CI/CD.
+
+### What stack do you use?
+React Native for mobile, Next.js and React 19 for web, and TypeScript with Node.js, Fastify, NestJS, and GraphQL for backend services. Data layers use PostgreSQL (Drizzle), Cosmos DB, or Firebase; delivery uses Codemagic, EAS, GitHub Actions, and Kubernetes. He also works AI-first with Claude Code skills and MCP integrations.
 
 ### How much does a mobile app cost in Malaysia?
 Cost depends on scope, integrations, and timeline. A basic single-platform MVP typically starts in the low five figures MYR; a full cross-platform iOS and Android app with auth, payments, push notifications, and store submission usually lands in the mid-to-high five figures MYR. Syed Mohamad Arif provides clear, fixed-scope quotes after a free discovery call. Reach out at syedarifjr@gmail.com for a tailored estimate.

@@ -14,10 +14,10 @@ import {
   HOMEPAGE_FAQ,
 } from "../content/site";
 
-const TITLE = `Freelance Mobile App Developer Malaysia | Syed Mohamad Arif`;
+const TITLE = `Full-Stack Developer Malaysia (React Native, Next.js, Node.js) | Syed Mohamad Arif`;
 const DESCRIPTION =
-  `Hire Syed Mohamad Arif — a freelance mobile app and web developer in Kuala Lumpur, Malaysia. ${EXPERIENCE_YEARS_LONG} building React Native, React, and Next.js apps for Malaysian and international clients. Creator of Hikayat Daily Global, Hikayat Diri, and LokalGig.`;
-const OG_TITLE = "Syed Mohamad Arif – Mobile App & Web Developer in Malaysia";
+  `Hire Syed Mohamad Arif — a full-stack developer in Kuala Lumpur, Malaysia. ${EXPERIENCE_YEARS_LONG} building fintech with React Native, Next.js, and Node.js, including payments and bank payouts across 6 markets. Creator of Hikayat Daily Global, Hikayat Diri, and LokalGig.`;
+const OG_TITLE = "Syed Mohamad Arif – Full-Stack Developer in Malaysia";
 const URL = `${SITE_URL}/`;
 
 export function meta(_: Route.MetaArgs) {
@@ -30,7 +30,7 @@ export function meta(_: Route.MetaArgs) {
     { property: "og:type", content: "profile" },
     { property: "og:url", content: URL },
     { property: "og:image", content: OG_IMAGE_URL },
-    { property: "og:image:alt", content: "Syed Mohamad Arif - Frontend & Mobile Developer" },
+    { property: "og:image:alt", content: "Syed Mohamad Arif - Full-Stack Developer" },
     { property: "profile:first_name", content: "Syed Mohamad" },
     { property: "profile:last_name", content: "Arif" },
     { property: "profile:username", content: "syedmhdarif" },
@@ -41,7 +41,7 @@ export function meta(_: Route.MetaArgs) {
     // Route-specific keywords (short, relevant to homepage only)
     {
       name: "keywords",
-      content: "Syed Mohamad Arif, mobile app developer Malaysia, freelance React Native developer, web developer Kuala Lumpur, LokalGig, Hikayat Daily Global",
+      content: "Syed Mohamad Arif, full-stack developer Malaysia, React Native developer, Next.js developer, Node.js developer, fintech developer Kuala Lumpur, LokalGig, Hikayat Daily Global",
     },
     // Homepage-specific JSON-LD: ProfilePage, ProfessionalService, MobileApplication, BreadcrumbList, FAQPage
     {
@@ -52,7 +52,7 @@ export function meta(_: Route.MetaArgs) {
             "@type": "ProfilePage",
             "@id": `${SITE_URL}/#profilepage`,
             url: URL,
-            name: "Syed Mohamad Arif - Frontend & Mobile Developer Portfolio",
+            name: "Syed Mohamad Arif - Full-Stack Developer Portfolio",
             mainEntity: { "@id": `${SITE_URL}/#person` },
             dateCreated: PROFILE_DATE_CREATED,
             dateModified: CONTENT_LAST_MODIFIED,
@@ -106,7 +106,7 @@ export function meta(_: Route.MetaArgs) {
           {
             "@type": "ProfessionalService",
             "@id": `${SITE_URL}/#service`,
-            name: "Syed Mohamad Arif — Freelance Mobile App & Web Developer in Malaysia",
+            name: "Syed Mohamad Arif — Freelance Full-Stack Developer in Malaysia",
             description:
               "Freelance mobile app and web development services for Malaysian and international clients. Marketing sites, dashboards, full-stack web apps, and cross-platform iOS & Android apps with React Native.",
             url: `${URL}#services`,
@@ -148,6 +148,8 @@ export function meta(_: Route.MetaArgs) {
               "Frontend Development",
               "React Development",
               "Next.js Development",
+              "Backend Development (Node.js, Fastify)",
+              "Fintech and Payments Integration",
               "UI/UX Implementation",
             ],
             knowsAbout: [
@@ -156,6 +158,11 @@ export function meta(_: Route.MetaArgs) {
               "React",
               "Next.js",
               "TypeScript",
+              "Node.js",
+              "Fastify",
+              "GraphQL",
+              "PostgreSQL",
+              "Kubernetes",
               "Tailwind CSS",
               "Supabase",
               "Firebase",

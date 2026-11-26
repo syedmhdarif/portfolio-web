@@ -10,9 +10,9 @@ import {
 
 const FACTS = [
   { k: "Based in", v: "Kuala Lumpur, MY" },
-  { k: "Focus", v: "React Native · React" },
+  { k: "Focus", v: "React Native · Next.js · Node.js" },
   { k: "Now", v: `${CURRENT_ROLE}, ${CURRENT_EMPLOYER}` },
-  { k: "Markets", v: "Malaysia · Singapore · SEA" },
+  { k: "Markets", v: "MY · HK · PH · ID · SG · VN" },
 ];
 
 export function About() {
@@ -31,17 +31,20 @@ export function About() {
           <Reveal>
             <div itemScope itemType="https://schema.org/Person">
               <meta itemProp="name" content="Syed Mohamad Arif" />
-              <meta itemProp="jobTitle" content="Mobile & Web Developer" />
+              <meta itemProp="jobTitle" content="Full-Stack Developer" />
               <meta itemProp="address" content="Kuala Lumpur, Malaysia" />
               <p className="text-xl leading-relaxed text-ink sm:text-2xl" itemProp="description">
-                I'm a mobile &amp; web developer based in{" "}
+                I'm a full-stack developer based in{" "}
                 <span className="text-amber-text">{LOCATION_SHORT}</span>, with{" "}
-                {EXPERIENCE_YEARS_LONG} building cross-platform apps with React
-                Native and fast web products with React.
+                {EXPERIENCE_YEARS_LONG} building fintech products: React Native apps,
+                Next.js portals, and Node/Fastify services, including payments
+                and bank payout integrations.
               </p>
               <p className="mt-6 text-lg leading-relaxed text-ink-2">
-                I work across the full product lifecycle — UI/UX in Figma,
-                development in TypeScript, testing, and store deployment. I care
+                At Paywatch I build earned-wage access fintech across six markets,
+                and I work AI-first with Claude Code skills, MCP integrations,
+                and automation pipelines. Across the product lifecycle I cover
+                UI/UX in Figma, development in TypeScript, testing, and deployment. I care
                 about the details that make software feel calm and considered:
                 type, motion, performance, and accessibility. Comfortable with
                 Git, CI/CD, and Agile delivery, I bridge design and engineering

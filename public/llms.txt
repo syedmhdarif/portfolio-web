@@ -1,19 +1,19 @@
-# Syed Mohamad Arif — Freelance Mobile App & Web Developer in Malaysia
+# Syed Mohamad Arif — Full-Stack Developer (React Native, Next.js, Node.js) in Malaysia
 
-> Freelance mobile app and web developer based in Kuala Lumpur, Malaysia. 4+ years of experience building React Native, React, and Next.js apps for Malaysian and international clients. Creator of Hikayat Daily Global, Hikayat Diri, and LokalGig.
+> Full-stack developer based in Kuala Lumpur, Malaysia. 5+ years of product experience building earned-wage access fintech at Paywatch across 6 markets (MY, HK, PH, ID, SG, VN) with React Native, Next.js, and Node.js / Fastify, including payments and bank payout integrations. Available for freelance work with Malaysian and international clients. Creator of Hikayat Daily Global, Hikayat Diri, and LokalGig.
 
-Last updated: 2026-11-22
+Last updated: 2026-11-27
 
 ## About
 
-Syed Mohamad Arif is a freelance Mobile App and Web Developer in Kuala Lumpur, Malaysia, specialising in React Native for cross-platform iOS and Android apps and React / Next.js for the web. He works across the full product lifecycle — UI/UX design and prototyping in Figma, development in TypeScript, testing, CI/CD, and store / cloud deployment. Currently a Mobile App Developer at Paywatch Malaysia and available for freelance engagements with Malaysian SMEs, startups, and international clients.
+Syed Mohamad Arif is a full-stack developer in Kuala Lumpur, Malaysia. He ships React Native apps, Next.js portals, and Node / Fastify services, including payments and bank payout integrations, and works AI-first with Claude Code skills, MCP integrations, and automation pipelines. Currently a Software Engineer (Mobile & Backend) at Paywatch Malaysia and available for freelance engagements with Malaysian SMEs, startups, and international clients.
 
 ## Quick facts
 
 - Name: Syed Mohamad Arif (also: Syed Arif, syedmhdarif)
-- Role: Freelance Mobile App Developer · Frontend Developer · React Native Developer · Web App Developer
+- Role: Full-Stack Developer · React Native · Next.js · Node.js · Fintech
 - Location: Sentul, Kuala Lumpur, Malaysia
-- Experience: 4+ years
+- Experience: 5+ years
 - Current employer: Paywatch Malaysia
 - Languages: English, Bahasa Malaysia
 - Currencies invoiced: MYR, USD

@@ -1,6 +1,6 @@
 import { Reveal, ParallaxLayer } from "../motion";
 import { SectionHeading } from "../SectionHeading";
-import { ArrowUpRight, Mail, Phone, WhatsApp, MapPin, Linkedin, Github } from "../icons";
+import { ArrowUpRight, Download, Mail, Phone, WhatsApp, MapPin, Linkedin, Github } from "../icons";
 import {
   EMAIL,
   PHONE,
@@ -9,8 +9,9 @@ import {
   LOCATION_SHORT,
   LINKEDIN_URL,
   GITHUB_URL,
+  RESUME_FILE,
 } from "../../content/site";
-import { iconButtonVariants } from "~/components/ui/primitives";
+import { buttonVariants, iconButtonVariants } from "~/components/ui/primitives";
 
 const CHANNELS = [
   { label: "Email", value: EMAIL, href: `mailto:${EMAIL}`, Icon: Mail, external: false },
@@ -81,7 +82,16 @@ export function Contact() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <div className="mt-6 flex items-center gap-3">
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              <a
+                href={`${import.meta.env.BASE_URL.replace(/\/?$/, "/")}${RESUME_FILE}`}
+                download="Syed-Mohamad-Arif-CV.pdf"
+                type="application/pdf"
+                className={buttonVariants({ variant: "ghost" })}
+              >
+                <Download className="h-5 w-5" />
+                Download CV
+              </a>
               {SOCIALS.map(({ label, href, Icon }) => (
                 <a
                   key={label}

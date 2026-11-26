@@ -1,10 +1,10 @@
 # Syed Mohamad Arif - Portfolio
 
-> Frontend & Mobile Developer based in Kuala Lumpur, Malaysia. Creator of Hikayat Daily Global app. 4+ years of experience building high-performance mobile apps with React Native, TypeScript, and modern web technologies.
+> Full-Stack Developer (React Native, Next.js, Node.js) based in Kuala Lumpur, Malaysia. 5+ years of product experience building earned-wage access fintech at Paywatch across 6 markets. Creator of Hikayat Daily Global app.
 
 ## About
 
-Syed Mohamad Arif is a dedicated Frontend & Mobile Developer specializing in React Native for mobile apps and React for web platforms. He works across the full product lifecycle — from UI/UX design and prototyping to development, testing, and deployment. Skilled in Git, CI/CD, and Agile practices.
+Syed Mohamad Arif is a full-stack developer who ships React Native apps, Next.js portals, and Node / Fastify services, including payments and bank payout integrations. He works AI-first with Claude Code skills, MCP integrations, and automation pipelines, and is skilled in CI/CD and Agile practices.
 
 ## Contact
 

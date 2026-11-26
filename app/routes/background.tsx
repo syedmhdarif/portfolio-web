@@ -9,7 +9,7 @@ import { Tag, buttonVariants } from "~/components/ui/primitives";
 
 const TITLE = `Background — Experience, Education & Skills | ${PERSON_NAME}`;
 const DESCRIPTION =
-  "The professional background of Syed Mohamad Arif — mobile app developer roles at Paywatch, Zonar, and Accenture, an Information Technology degree from IIUM, and a full skills breakdown across React Native, React, and TypeScript.";
+  "The professional background of Syed Mohamad Arif — software engineering roles at Paywatch, Zonar, Accenture, and AiSara, an Information Technology degree from IIUM (2017 — 2021), and a skills breakdown across React Native, Next.js, Node.js, and infrastructure.";
 const URL = `${SITE_URL}/background`;
 
 export function meta(_: Route.MetaArgs) {

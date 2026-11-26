@@ -1,12 +1,12 @@
 import { useRef, type ComponentType } from "react";
 import { Link } from "react-router";
 import profileImage from "../../assets/syedArif.png";
-import { ArrowUpRight, Github, Linkedin, Mail, WhatsApp } from "../icons";
+import { ArrowUpRight, Download, Github, Linkedin, Mail, WhatsApp } from "../icons";
 import { Stagger, StaggerItem, CountUp, Tilt3D, TextReveal, useAfterSplash } from "../motion";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../ui/tooltip";
 import { gsap, useGSAP, MOTION_OK, MOTION_REDUCED, FINE_POINTER } from "~/lib/gsap";
 import { HERO_STATS, SOCIAL_PILLS } from "../../content/hero";
-import { PERSON_NAME, GITHUB_URL } from "../../content/site";
+import { PERSON_NAME, GITHUB_URL, RESUME_FILE } from "../../content/site";
 import { Chip, buttonVariants, iconButtonVariants } from "~/components/ui/primitives";
 
 const HERO_SHAPE_VIEWBOX = "0 0 358 371";
@@ -183,7 +183,7 @@ function PortraitCard({ ready }: { ready: boolean }) {
             preserveAspectRatio="xMidYMid meet"
             className="absolute inset-0 h-full w-full overflow-visible"
             role="img"
-            aria-label="Syed Mohamad Arif — mobile and web developer based in Kuala Lumpur"
+            aria-label="Syed Mohamad Arif — full-stack developer based in Kuala Lumpur"
           >
             <defs>
               {/* Notch shape: a clipPath keeps the edge crisp regardless of the animated mask. */}
@@ -300,9 +300,10 @@ export function Hero() {
           </StaggerItem>
 
           {/* Masked clip-rise on the display headline — the signature entrance. */}
-          <h1 className="display mt-5 text-[clamp(2.75rem,7vw,5.5rem)] leading-[0.9]">
-            <TextReveal trigger="mount" play={ready} delay={0.12} className="block">
-              Frontend
+          {/* "Full-Stack" is ~10 display chars: capped at 4.5rem so it fits the lg col-span-5 (~390px at 1024). */}
+          <h1 className="display mt-5 text-[clamp(2.5rem,5.6vw,4.5rem)] leading-[0.9]">
+            <TextReveal trigger="mount" play={ready} delay={0.12} className="block whitespace-nowrap">
+              Full-Stack
             </TextReveal>
             <TextReveal trigger="mount" play={ready} delay={0.22} className="block">
               Developer<span className="text-amber">.</span>
@@ -312,9 +313,10 @@ export function Hero() {
           <StaggerItem>
             <p className="mt-5 max-w-md leading-relaxed text-ink-2">
               I'm <span className="font-medium text-ink">{PERSON_NAME}</span>, a
-              freelance mobile &amp; frontend developer in Kuala Lumpur,
-              Malaysia. I ship cross-platform apps and fast websites across
-              Malaysia, Singapore &amp; SEA — and I'm the creator of{" "}
+              full-stack developer in Kuala Lumpur, Malaysia. I build React
+              Native apps, Next.js portals and Node.js services for earned-wage
+              fintech across 6 markets, and for clients across Malaysia,
+              Singapore &amp; SEA — and I'm the creator of{" "}
               <span className="text-amber-text">LokalGig</span> and{" "}
               <span className="text-amber-text">Hikayat Daily</span>.
             </p>
@@ -327,6 +329,15 @@ export function Hero() {
             </a>
             <a href="#work" className={buttonVariants({ variant: "ghost" })}>
               View work
+            </a>
+            <a
+              href={`${import.meta.env.BASE_URL.replace(/\/?$/, "/")}${RESUME_FILE}`}
+              download="Syed-Mohamad-Arif-CV.pdf"
+              type="application/pdf"
+              className={buttonVariants({ variant: "ghost" })}
+            >
+              <Download className="h-5 w-5" />
+              Download CV
             </a>
           </StaggerItem>
 
