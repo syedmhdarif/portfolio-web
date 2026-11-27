@@ -143,7 +143,7 @@ export function meta({ params }: Route.MetaArgs) {
             mainEntityOfPage: url,
             datePublished: article.datePublished,
             dateModified: article.dateModified,
-            inLanguage: "en-US",
+            inLanguage: "en-MY",
             articleSection: article.category,
             keywords: article.keywords.join(", "),
             wordCount: article.wordCount,

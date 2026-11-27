@@ -13,6 +13,7 @@ import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { Splash } from "./components/Splash";
 import { PageTransition } from "./components/motion/PageTransition";
+import { EMAIL, PHONE, RESUME_FILE, SITE_URL, CONTENT_LAST_MODIFIED } from "./content/site";
 
 export const links: Route.LinksFunction = () => [
   { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32.png" },
@@ -52,7 +53,7 @@ const SPLASH_INIT = `(function(){try{var m=window.matchMedia;var reduce=m&&m('(p
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en-MY">
       <head>
         <script dangerouslySetInnerHTML={{ __html: NO_FLASH_THEME }} />
         <script dangerouslySetInnerHTML={{ __html: SPLASH_INIT }} />
@@ -68,8 +69,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name="geo.position" content="3.1390;101.6869" />
         <meta name="ICBM" content="3.1390, 101.6869" />
         <meta property="og:site_name" content="Syed Mohamad Arif Portfolio" />
-        <meta property="og:locale" content="en_US" />
-        <meta property="og:locale:alternate" content="en_MY" />
+        <meta property="og:locale" content="en_MY" />
+        <meta property="og:locale:alternate" content="en_SG" />
         {/* ms_MY locale alternate removed: no Malay pages exist yet.
             Re-add when real hreflang-alternate Malay routes are created. */}
         <meta name="twitter:creator" content="@syedmhdarif" />
@@ -111,8 +112,16 @@ export function Layout({ children }: { children: React.ReactNode }) {
                     width: 1200,
                     height: 630
                   },
-                  email: "mailto:syedarifjr@gmail.com",
-                  telephone: "+60145297072",
+                  email: `mailto:${EMAIL}`,
+                  telephone: PHONE,
+                  subjectOf: {
+                    "@type": "DigitalDocument",
+                    name: "Syed Mohamad Arif — CV",
+                    url: `${SITE_URL}/${RESUME_FILE}`,
+                    encodingFormat: "application/pdf",
+                    inLanguage: "en-MY",
+                    dateModified: CONTENT_LAST_MODIFIED,
+                  },
                   nationality: { "@type": "Country", name: "Malaysia" },
                   address: {
                     "@type": "PostalAddress",
@@ -169,7 +178,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                   name: "Syed Mohamad Arif - Portfolio",
                   description: "Portfolio website of Syed Mohamad Arif, a Full-Stack Developer (React Native, Next.js, Node.js) from Malaysia",
                   publisher: { "@id": "https://syedmohamadarif.site/#person" },
-                  inLanguage: "en-US"
+                  inLanguage: "en-MY"
                 },
               ]
             }),
