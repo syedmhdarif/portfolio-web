@@ -36,7 +36,7 @@ export function meta(_: Route.MetaArgs) {
             url: PAGE_URL,
             name: PAGE_TITLE,
             description: PAGE_DESCRIPTION,
-            inLanguage: "en-US",
+            inLanguage: "en-MY",
             isPartOf: { "@id": "https://syedmohamadarif.site/#website" },
             about: { "@id": "https://syedmohamadarif.site/#person" },
             author: { "@id": "https://syedmohamadarif.site/#person" },

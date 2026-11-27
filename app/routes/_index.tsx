@@ -12,6 +12,8 @@ import {
   CONTENT_LAST_MODIFIED,
   PROFILE_DATE_CREATED,
   HOMEPAGE_FAQ,
+  EMAIL,
+  PHONE,
 } from "../content/site";
 
 const TITLE = `Full-Stack Developer Malaysia (React Native, Next.js, Node.js) | Syed Mohamad Arif`;
@@ -56,7 +58,7 @@ export function meta(_: Route.MetaArgs) {
             mainEntity: { "@id": `${SITE_URL}/#person` },
             dateCreated: PROFILE_DATE_CREATED,
             dateModified: CONTENT_LAST_MODIFIED,
-            inLanguage: "en-US",
+            inLanguage: "en-MY",
           },
           {
             "@type": "MobileApplication",
@@ -76,7 +78,7 @@ export function meta(_: Route.MetaArgs) {
             offers: {
               "@type": "Offer",
               price: "0",
-              priceCurrency: "USD",
+              priceCurrency: "MYR",
               availability: "https://schema.org/InStock",
             },
           },
@@ -108,14 +110,14 @@ export function meta(_: Route.MetaArgs) {
             "@id": `${SITE_URL}/#service`,
             name: "Syed Mohamad Arif — Freelance Full-Stack Developer in Malaysia",
             description:
-              "Freelance mobile app and web development services for Malaysian and international clients. Marketing sites, dashboards, full-stack web apps, and cross-platform iOS & Android apps with React Native.",
+              "Freelance mobile app and web development services for clients in Malaysia, Singapore and abroad. Marketing sites, dashboards, full-stack web apps, and cross-platform iOS & Android apps with React Native.",
             url: `${URL}#services`,
             image: OG_IMAGE_URL,
             priceRange: "$$",
-            currenciesAccepted: "MYR, USD",
+            currenciesAccepted: "MYR, SGD, USD",
             paymentAccepted: "Bank Transfer, DuitNow, Wise, PayPal",
-            telephone: "+60145297072",
-            email: "syedarifjr@gmail.com",
+            telephone: PHONE,
+            email: EMAIL,
             address: {
               "@type": "PostalAddress",
               addressLocality: "Sentul, Kuala Lumpur",
@@ -135,6 +137,7 @@ export function meta(_: Route.MetaArgs) {
               { "@type": "City", name: "Petaling Jaya" },
               { "@type": "City", name: "Shah Alam" },
               { "@type": "AdministrativeArea", name: "Selangor" },
+              { "@type": "Country", name: "Singapore" },
               { "@type": "Place", name: "Worldwide (remote)" },
             ],
             serviceType: [
