@@ -27,7 +27,7 @@ const SOCIAL_ICONS: Record<string, ComponentType<{ className?: string }>> = {
 
 function SocialIcons() {
   return (
-    <ul className="flex items-center gap-2.5">
+    <ul className="flex items-center gap-2">
       {SOCIAL_PILLS.map((s) => {
         const Icon = SOCIAL_ICONS[s.label] ?? Mail;
         return (
@@ -37,7 +37,7 @@ function SocialIcons() {
               target={s.href.startsWith("mailto:") ? undefined : "_blank"}
               rel="noopener noreferrer"
               aria-label={s.label}
-              className={iconButtonVariants({ className: "text-ink-2 hover:border-ink hover:bg-ink hover:text-paper" })}
+              className={iconButtonVariants({ className: "border-transparent bg-paper/90 text-ink-2 shadow-[0_6px_20px_-8px_rgba(0,0,0,0.35)] backdrop-blur-md hover:border-ink hover:bg-ink hover:text-paper" })}
             >
               <Icon className="h-[18px] w-[18px]" />
             </a>
@@ -68,6 +68,7 @@ function PortraitCard({ ready }: { ready: boolean }) {
       const scrim = q<SVGRectElement>("[data-hero-scrim]");
       const name = q<HTMLElement>("[data-hero-name]");
       const buttons = q<HTMLElement>("[data-magnet]");
+      const actions = q<HTMLElement>("[data-hero-actions]");
 
       const mm = gsap.matchMedia();
 
@@ -86,6 +87,7 @@ function PortraitCard({ ready }: { ready: boolean }) {
           gsap.set(scrim, { opacity: 0 });
           gsap.set(name, { opacity: 0, y: 14, filter: "blur(6px)" });
           gsap.set(buttons, { opacity: 0, scale: 0.6 });
+          gsap.set(actions, { opacity: 0, y: 12 });
         };
         hidden();
         if (!ready) return;
@@ -105,7 +107,8 @@ function PortraitCard({ ready }: { ready: boolean }) {
             buttons,
             { opacity: 1, scale: 1, duration: 0.6, stagger: 0.08, ease: "back.out(1.8)" },
             0.8
-          );
+          )
+          .to(actions, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.9);
       });
 
       // Pointer-driven effects — desktop fine pointers only (touch scroll stays jank-free).
@@ -176,7 +179,7 @@ function PortraitCard({ ready }: { ready: boolean }) {
 
   return (
     <div ref={cardRef} className="hero-card order-1 lg:order-2 md:col-span-7">
-      <Tilt3D className="relative mx-auto w-full max-w-[38rem] lg:mr-0 lg:ml-auto">
+      <Tilt3D className="relative mx-auto w-full max-w-[30rem] lg:mr-0 lg:ml-auto">
         <div className="relative" style={{ aspectRatio: "358 / 371" }}>
           <svg
             viewBox={HERO_SHAPE_VIEWBOX}
@@ -270,6 +273,27 @@ function PortraitCard({ ready }: { ready: boolean }) {
               <TooltipContent side="right">Selected work</TooltipContent>
             </Tooltip>
           </span>
+
+          {/* CV + socials sit on the photo's bottom-right, inside the shape's rounded corner. */}
+          <div
+            data-hero-actions
+            className="absolute right-[5%] bottom-[5%] z-10 flex flex-col items-end gap-2"
+          >
+            <a
+              href={`${import.meta.env.BASE_URL.replace(/\/?$/, "/")}${RESUME_FILE}`}
+              download="Syed-Mohamad-Arif-CV.pdf"
+              type="application/pdf"
+              // .btn is unlayered CSS, so these overrides need `!` to beat .btn-ghost.
+              className={buttonVariants({
+                variant: "ghost",
+                className: "min-h-11 border-transparent! bg-paper/90! px-4! py-2! text-sm! shadow-[0_6px_20px_-8px_rgba(0,0,0,0.35)] backdrop-blur-md",
+              })}
+            >
+              <Download className="h-4 w-4" />
+              Download CV
+            </a>
+            <SocialIcons />
+          </div>
         </div>
       </Tilt3D>
     </div>
@@ -330,19 +354,6 @@ export function Hero() {
             <a href="#work" className={buttonVariants({ variant: "ghost" })}>
               View work
             </a>
-            <a
-              href={`${import.meta.env.BASE_URL.replace(/\/?$/, "/")}${RESUME_FILE}`}
-              download="Syed-Mohamad-Arif-CV.pdf"
-              type="application/pdf"
-              className={buttonVariants({ variant: "ghost" })}
-            >
-              <Download className="h-5 w-5" />
-              Download CV
-            </a>
-          </StaggerItem>
-
-          <StaggerItem className="mt-6">
-            <SocialIcons />
           </StaggerItem>
 
           {/* Stats — on the left, in view with everything else */}
